@@ -8,12 +8,20 @@ class App extends Component {
     super(props);
 
     this.state = {
-      activities: []
+      activities: [
+        {name: 'none', description: 'none'}
+      ]
     }
   }
 
   fetchActivities = () => {
-    fetch(`${config.API_ENDPOINT}/activity`)
+    fetch(`${config.API_ENDPOINT}/activity`, {
+      method: 'GET',
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
       .then(res=>res.json())
       .then(response => {
         this.setState({

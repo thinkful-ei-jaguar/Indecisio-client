@@ -8,6 +8,8 @@ export default class Dashboard extends Component {
       activityGenerated: false
     }
   }
+
+  
   
   toggleActivityGenerated = () => {
     this.setState({
@@ -51,11 +53,11 @@ export default class Dashboard extends Component {
           Random Activity Please!
         </button>
         <div className="display-random-activity">
-          <p>{this.props.state.activities[0] && this.state.activityGenerated
+          <p>{this.props.state.activities && this.state.activityGenerated
           ? `Your random activity is: ${this.props.state.activities[randomActivityIndex].name}`        
           : ''}</p>
           <p>
-          {this.props.state.activities[0] && this.state.activityGenerated
+          {this.props.state.activities && this.state.activityGenerated
           ? `The description is: ${this.props.state.activities[randomActivityIndex].description}`        
           : ''}
           </p>
@@ -65,4 +67,8 @@ export default class Dashboard extends Component {
       </div>
     )
   }
+}
+
+Dashboard.defaultProps = {
+  activities: []
 }
