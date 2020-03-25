@@ -1,12 +1,39 @@
 import React, { Component } from 'react';
 import Dashboard from './Dashboard';
+import config from './config'
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activities: []
+    }
+  }
+
+  fetchActivities = () => {
+    fetch(`${config.API_ENDPOINT}/activity`)
+      .then(res=>res.json())
+      .then(response => {
+        this.setState({
+          activities: response
+        })
+      })
+  }
+
+  propsToPass = {
+    fetchActivities: this.fetchActivities
+  }
+
+  componentDidMount() {
+    this.fetchActivities()
+  }
 
   render() {
   return (
     <main className='App'>
-      <Dashboard />
+      <Dashboard {...this.propsToPass} state={this.state} />
     </main>
   );
   
