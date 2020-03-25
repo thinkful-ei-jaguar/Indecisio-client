@@ -33,6 +33,10 @@ export class ActivityProvider extends Component {
 
   }
 
+  componentDidMount () {
+    this.fetchActivities()
+  }
+
   render() {
     
     const value = {

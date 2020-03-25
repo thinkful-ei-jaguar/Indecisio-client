@@ -11,8 +11,6 @@ export default class Dashboard extends Component {
     }
   }
 
-
-
   toggleActivityGenerated = () => {
     this.setState({
       activityGenerated: true
@@ -20,7 +18,7 @@ export default class Dashboard extends Component {
   }
 
   getRandomActivity = () => {
-    console.log(this.props.state.activities)
+    console.log(this.context.activities)
     this.toggleActivityGenerated()
   }
 
@@ -42,12 +40,14 @@ export default class Dashboard extends Component {
     this.setState({
       activityGenerated: false
     })
-    this.context.fetchActivities()
   }
-  
+
   render() {
     let randomActivityIndex = 0;
-    randomActivityIndex = this.props.state ? [Math.floor(Math.random() * this.props.state.activities.length)] : 0;
+    randomActivityIndex = this.context.activities[0]
+      ? [Math.floor(Math.random() * this.context.activities.length)] 
+      : 0;
+    
     console.log('inside the component:',this.context.activities)
     
     return (
@@ -61,12 +61,12 @@ export default class Dashboard extends Component {
           Random Activity Please!
         </button>
         <div className="display-random-activity">
-          <p>{this.props.state.activities && this.state.activityGenerated
-          ? `Your random activity is: ${this.props.state.activities[randomActivityIndex].name}`        
+          <p>{this.context.activities && this.state.activityGenerated
+          ? `Your random activity is: ${this.context.activities[randomActivityIndex].name}`        
           : ''}</p>
           <p>
-          {this.props.state.activities && this.state.activityGenerated
-          ? `The description is: ${this.props.state.activities[randomActivityIndex].description}`        
+          {this.context.activities && this.state.activityGenerated
+          ? `The description is: ${this.context.activities[randomActivityIndex].description}`        
           : ''}
           </p>
         {this.state.activityGenerated && <button onClick={this.acceptRandomActivity}>Accept</button>}
