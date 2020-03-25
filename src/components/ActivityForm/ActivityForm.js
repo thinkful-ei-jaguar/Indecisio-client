@@ -1,8 +1,8 @@
 import React from 'react';
-import ActivityService from '../../services/activity-service';
+import ActivityService from '../services/activity-service';
 import ValidationError from '../ValidationError/ValidationError';
 import './ActivityForm.css';
-export default class LoginForm extends React.Component {
+export default class ActivityForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

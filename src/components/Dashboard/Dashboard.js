@@ -1,15 +1,31 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import config from '../../config';
 
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      activityGenerated: false
+      activityGenerated: false,
+      activities: []
     }
   }
 
-  
+  fetchActivities = () => {
+    fetch(`${config.API_ENDPOINT}/activity`, {
+      method: 'GET',
+      headers : { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    })
+      .then(res=>res.json())
+      .then(response => {
+        this.setState({
+          activities: response
+        })
+      })
+  }
   
   toggleActivityGenerated = () => {
     this.setState({
@@ -18,7 +34,7 @@ export default class Dashboard extends Component {
   }
 
   getRandomActivity = () => {
-    console.log(this.props.state.activities)
+    console.log(this.state.activities)
     this.toggleActivityGenerated()
   }
 
@@ -37,6 +53,7 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
+    this.fetchActivities()
     this.setState({
       activityGenerated: false
     })
@@ -44,7 +61,7 @@ export default class Dashboard extends Component {
 
   render() {
     let randomActivityIndex = 0;
-    randomActivityIndex = this.props.state ? [Math.floor(Math.random() * this.props.state.activities.length)] : 0;
+    randomActivityIndex = this.state ? [Math.floor(Math.random() * this.state.activities.length)] : 0;
     
     return (
       <div>
@@ -53,12 +70,12 @@ export default class Dashboard extends Component {
           Random Activity Please!
         </button>
         <div className="display-random-activity">
-          <p>{this.props.state.activities && this.state.activityGenerated
+          <p>{this.state.activities && this.state.activityGenerated
           ? `Your random activity is: ${this.props.state.activities[randomActivityIndex].name}`        
           : ''}</p>
           <p>
-          {this.props.state.activities && this.state.activityGenerated
-          ? `The description is: ${this.props.state.activities[randomActivityIndex].description}`        
+          {this.state.activities && this.state.activityGenerated
+          ? `The description is: ${this.state.activities[randomActivityIndex].description}`        
           : ''}
           </p>
         {this.state.activityGenerated && <button onClick={this.acceptRandomActivity}>Accept</button>}

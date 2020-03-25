@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Dashboard from './Dashboard';
-import config from './config'
+import { Route, Switch } from 'react-router-dom';
+//import PrivateRoute from './components/PrivateRoute'
+//import PublicOnlyRoute from '../src/components/PublicOnlyRoute/PublicOnlyRoute'
+import Dashboard from './components/Dashboard/Dashboard';
 import ActivityForm from './components/ActivityForm/ActivityForm';
 
 
@@ -16,35 +18,17 @@ class App extends Component {
     }
   }
 
-  fetchActivities = () => {
-    fetch(`${config.API_ENDPOINT}/activity`, {
-      method: 'GET',
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-    })
-      .then(res=>res.json())
-      .then(response => {
-        this.setState({
-          activities: response
-        })
-      })
-  }
-
-  propsToPass = {
-    fetchActivities: this.fetchActivities
-  }
-
-  componentDidMount() {
-    this.fetchActivities()
-  }
-
   render() {
   return (
     <main className='App'>
-      <Dashboard {...this.propsToPass} state={this.state} />
-      <ActivityForm />
+      <Switch>
+        <Route 
+          path={'/dashboard'}
+          component={Dashboard}/>
+        <Route
+          path={'/add-activity'}
+          component={ActivityForm}/>
+      </Switch>
     </main>
   );
   
