@@ -45,6 +45,7 @@ export default class Dashboard extends Component {
   render() {
     let randomActivityIndex = 0;
     randomActivityIndex = this.props.state ? [Math.floor(Math.random() * this.props.state.activities.length)] : 0;
+    console.log('inside the component:',this.props.state)
     
     return (
       <div>
