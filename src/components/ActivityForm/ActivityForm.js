@@ -17,14 +17,6 @@ export default class LoginForm extends React.Component {
 		}
 	};
 	
-	validateNewActivitySubmit (value)  {
-		const name = value.trim();
-		if (!name.length){
-			return 'Name of activity is required'
-		} else {
-			return false
-		}
-	}
 	
 	
 	clearError = () => {
@@ -68,7 +60,10 @@ export default class LoginForm extends React.Component {
 					<label className='form-input-label' htmlFor="name">Name</label><input className='activity-form-text-input'  name="name" placeholder='name' type="text" onChange={this.handleChange} value={this.state.name}/>
 					<label className='form-input-label' htmlFor="description">Description</label><textarea maxLength='200' className='activity-form-textarea-input' placeholder='description' name="description"  onChange={this.handleChange} value={this.state.description}/>
 						{error && (<ValidationError message={error} clearError={this.clearError}/>)}
+						<div className='form-control-group'>
 					<button className='button-primary'type='submit'>Submit</button>
+					<button className='button-cancel' onClick={() => this.setState({name:'',description:''})}>Cancel</button>
+						</div>
 				</form>
 			</section>
 		)
