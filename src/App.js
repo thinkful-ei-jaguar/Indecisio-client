@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Dashboard from './Dashboard';
 import config from './config'
+import ActivityForm from './components/ActivityForm/ActivityForm';
+
 
 class App extends Component {
 
@@ -42,6 +44,7 @@ class App extends Component {
   return (
     <main className='App'>
       <Dashboard {...this.propsToPass} state={this.state} />
+      <ActivityForm />
     </main>
   );
   
