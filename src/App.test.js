@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 
 // make the App component available
 import App from './App';
-import Dashboard from './Dashboard'
+import Dashboard from './components/Dashboard/Dashboard'
 
 // this is the test case
 it('renders App without crashing', () => {
@@ -20,13 +20,12 @@ it('renders App without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-it.skip('renders App and Dashboard without crashing', () => {
+it('renders App and Dashboard without crashing', () => {
   // first create a DOM element to render the component into
   const div = document.createElement('div');
-  let activities = [{name: 'none', description: 'none'}, {name:'none2', description: 'none2'}]
   
-  console.log(activities[0])
-  ReactDOM.render(<Dashboard state={activities} />, div);
+  
+  ReactDOM.render(<Dashboard />, div);
   
   ReactDOM.unmountComponentAtNode(div);
 });
