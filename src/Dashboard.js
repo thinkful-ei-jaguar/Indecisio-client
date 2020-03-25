@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import ActivityContext from './contexts/ActivityContext'
 
 export default class Dashboard extends Component {
+  static contextType = ActivityContext;
   constructor(props) {
     super(props);
 
@@ -9,8 +11,8 @@ export default class Dashboard extends Component {
     }
   }
 
-  
-  
+
+
   toggleActivityGenerated = () => {
     this.setState({
       activityGenerated: true
@@ -40,16 +42,21 @@ export default class Dashboard extends Component {
     this.setState({
       activityGenerated: false
     })
+    this.context.fetchActivities()
   }
-
+  
   render() {
     let randomActivityIndex = 0;
     randomActivityIndex = this.props.state ? [Math.floor(Math.random() * this.props.state.activities.length)] : 0;
-    console.log('inside the component:',this.props.state)
+    console.log('inside the component:',this.context.activities)
     
     return (
       <div>
         <h1>Indecisio</h1>
+        <div className="test-context">
+          Hi, this will have context if it is working:
+          {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
+        </div>
         <button onClick={this.getRandomActivity}>
           Random Activity Please!
         </button>
