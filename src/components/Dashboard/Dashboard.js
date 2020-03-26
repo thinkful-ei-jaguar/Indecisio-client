@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
-
+import ActivityList from '../ActivityList/ActivityList'
 
 export default class Dashboard extends Component {
   static contextType = ActivityContext;
@@ -93,6 +93,7 @@ export default class Dashboard extends Component {
         {this.state.activityGenerated && <button onClick={this.acceptRandomActivity}>Accept</button>}
         {this.state.activityGenerated && <button onClick={this.declineRandomActivity}>Decline</button>}
         </div>
+        <ActivityList />
       </div>
     )
   }
