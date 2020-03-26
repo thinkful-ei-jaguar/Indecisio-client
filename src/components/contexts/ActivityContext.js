@@ -18,7 +18,7 @@ export class ActivityProvider extends Component {
     }
   }
   
-  fetchActivities = () => {
+  componentDidMount () {
     ActivityService.fetchActivities()
       .then(res=> {
         console.log('Fetched this using service function:', res);
@@ -27,14 +27,6 @@ export class ActivityProvider extends Component {
           activities: res
       });
     })
-  }
-  
-  postActivity = () => {
-
-  }
-
-  componentDidMount () {
-    this.fetchActivities()
   }
 
   render() {
