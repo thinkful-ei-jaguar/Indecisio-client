@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-//import PrivateRoute from './components/PrivateRoute'
-//import PublicOnlyRoute from '../src/components/PublicOnlyRoute/PublicOnlyRoute'
+import { Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute'
+import PublicOnlyRoute from './components/PublicOnlyRoute/PublicOnlyRoute'
 import Dashboard from './components/Dashboard/Dashboard';
 import ActivityForm from './components/ActivityForm/ActivityForm';
 import RegistrationForm from './components/RegistrationForm/RegistrationForm';
@@ -16,20 +16,20 @@ class App extends Component {
   return (
     <main className='App'>
       <Switch>
-        <Route
+        <PublicOnlyRoute
           exact
           path={'/'}
           component={RegistrationForm}
         />
-        <Route
+        <PublicOnlyRoute
           exact
           path={'/login'}
           component={LoginForm}
         />
-        <Route 
+        <PrivateRoute 
           path={'/dashboard'}
           component={Dashboard}/>
-        <Route
+        <PrivateRoute
           path={'/add-activity'}
           component={ActivityForm}/>
       </Switch>
