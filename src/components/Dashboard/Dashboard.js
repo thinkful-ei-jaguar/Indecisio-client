@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
 import ActivityList from '../ActivityList/ActivityList'
+import { Link } from 'react-router-dom'
 
 export default class Dashboard extends Component {
   static contextType = ActivityContext;
@@ -61,11 +62,7 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    // let randomActivityIndex = 0;
-    // randomActivityIndex = this.context.activities[0]
-    //   ? [Math.floor(Math.random() * this.context.activities.length)] 
-    //   : 0;
-    
+  
     return (
       <div>
         <h1>Indecisio</h1>
@@ -73,9 +70,14 @@ export default class Dashboard extends Component {
           Hi, this will have context if it is working:
           {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
         </div>
-        <button onClick={this.getRandomActivity}>
+        <button className="get-random-button" onClick={this.getRandomActivity}>
           Random Activity Please!
         </button>
+        <Link to='/add-activity'>
+          <button className="add-activity-button">
+            Add new activity
+          </button>
+        </Link>
         <div className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0] 
             ? `You have chosen "${this.context.activities[this.state.randomIndex].name}."  Enjoy!`
