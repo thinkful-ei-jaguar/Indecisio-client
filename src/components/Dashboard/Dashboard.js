@@ -59,6 +59,7 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
+    this.context.fetchContextActivities()
     this.setState({
       activityGenerated: false,
       activitySelected: false

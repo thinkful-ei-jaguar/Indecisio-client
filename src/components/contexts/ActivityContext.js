@@ -3,7 +3,7 @@ import ActivityService from '../services/activity-service'
 
 const ActivityContext = React.createContext({
   activities: [],
-  fetchActivities: () => {},
+  fetchContextActivities: () => {},
   postActivity: () => {}
 });
 
@@ -16,8 +16,12 @@ export class ActivityProvider extends Component {
       activities: []
     }
   }
-  
-  componentDidMount () {
+  /**
+   * Use auth to determine if logged in, store that in 
+   * state for fetched activities
+   */
+
+  fetchContextActivities = () => {
     ActivityService.fetchActivities()
       .then(res=> {
         console.log('Fetched this using service function:', res);
@@ -31,7 +35,7 @@ export class ActivityProvider extends Component {
   render() {
     
     const value = {
-      fetchActivities: this.fetchActivities,
+      fetchContextActivities: this.fetchContextActivities,
       activities: this.state.activities
     }
 

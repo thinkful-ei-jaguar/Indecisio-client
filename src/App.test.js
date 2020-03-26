@@ -29,7 +29,11 @@ it('renders App and Dashboard without crashing', () => {
   const div = document.createElement('div');
   
   
-  ReactDOM.render(<Dashboard />, div);
+  ReactDOM.render(
+    <BrowserRouter>
+      <Dashboard />
+    </BrowserRouter>
+    , div);
   
   ReactDOM.unmountComponentAtNode(div);
 });

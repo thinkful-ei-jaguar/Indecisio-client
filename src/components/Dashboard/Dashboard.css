@@ -115,3 +115,7 @@ li {
 
   
 }
+
+p {
+  overflow-wrap: break-word;
+}
