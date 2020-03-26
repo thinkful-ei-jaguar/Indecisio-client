@@ -9,7 +9,8 @@ export default class Dashboard extends Component {
 
     this.state = {
       activityGenerated: false,
-      activities: []
+      activities: [],
+      activityChosen: ''
     }
   }
 
@@ -19,9 +20,7 @@ export default class Dashboard extends Component {
     })
   }
 
-  getRandomActivity = () => {
-    console.log(this.context.activities)
-    
+  getRandomActivity = () => {  
     this.toggleActivityGenerated()
   }
 
@@ -34,9 +33,7 @@ export default class Dashboard extends Component {
 
   declineRandomActivity = () => {
     console.log('Random activity declined :(')
-    this.setState({
-      activityGenerated: false
-    })
+    this.getRandomActivity()
   }
 
   componentDidMount() {
