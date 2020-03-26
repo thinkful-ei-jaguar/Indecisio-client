@@ -55,11 +55,8 @@ export default class ActivityForm extends React.Component {
 			
 			ActivityService.postActivity(newActivity)
 				.then(res => {
-					
 					this.setState({name: '', description: ''})
-					
 				})
-				
 				.catch(res => {
 					this.setState({error: res.error});
 					this.props.onSubmitActivitySuccess();
@@ -86,7 +83,9 @@ export default class ActivityForm extends React.Component {
 					       placeholder='name'
 					       type="text"
 					       onChange={this.handleChange}
-					       value={name}/>
+					       value={name}
+							required
+						/>
 					<label
 						className='form-input-label'
 						htmlFor="description">
@@ -98,7 +97,9 @@ export default class ActivityForm extends React.Component {
 						placeholder='description'
 						name="description"
 						onChange={this.handleChange}
-						value={description}/>
+						value={description}
+						required
+					/>
 					
 					<div className='form-control-group'>
 						<button className='button-primary' type='submit'>Submit</button>
