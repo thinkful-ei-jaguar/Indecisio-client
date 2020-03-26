@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import ActivityContext from '../../contexts/ActivityContext'
+import ActivityContext from '../contexts/ActivityContext'
+
 
 export default class Dashboard extends Component {
   static contextType = ActivityContext;
@@ -7,7 +8,8 @@ export default class Dashboard extends Component {
     super(props);
 
     this.state = {
-      activityGenerated: false
+      activityGenerated: false,
+      activities: []
     }
   }
 
@@ -19,6 +21,7 @@ export default class Dashboard extends Component {
 
   getRandomActivity = () => {
     console.log(this.context.activities)
+
     this.toggleActivityGenerated()
   }
 
@@ -37,6 +40,7 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
+    this.fetchActivities()
     this.setState({
       activityGenerated: false
     })
