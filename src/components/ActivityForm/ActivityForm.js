@@ -61,7 +61,7 @@ export default class LoginForm extends React.Component {
 					<label className='form-input-label' htmlFor="description">Description</label><textarea maxLength='200' className='activity-form-textarea-input' placeholder='description' name="description"  onChange={this.handleChange} value={this.state.description}/>
 						{error && (<ValidationError message={error} clearError={this.clearError}/>)}
 						<div className='form-control-group'>
-					<button className='button-primary'type='submit'>Submit</button>
+					<button className='button-primary' type='submit'>Submit</button>
 					<button className='button-cancel' onClick={() => this.setState({name:'',description:''})}>Cancel</button>
 						</div>
 				</form>
