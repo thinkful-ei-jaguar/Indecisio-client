@@ -20,7 +20,7 @@ class LoginForm extends Component {
                     {error && (<ValidationError message={error} />)}
                 <button className='button-primary' type='submit'>Submit</button>
                 <Link to='/' className='login-redirect-link'>
-                    Don't have an account yet?
+                    Don't have an account with us?
                 </Link>
             </form>
             </section>
