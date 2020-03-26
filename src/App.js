@@ -4,7 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 //import PublicOnlyRoute from '../src/components/PublicOnlyRoute/PublicOnlyRoute'
 import Dashboard from './components/Dashboard/Dashboard';
 import ActivityForm from './components/ActivityForm/ActivityForm';
-import LoginForm from './components/LoginForm/LoginForm'
+import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import LoginForm from './components/LoginForm/LoginForm';
 
 
 class App extends Component {
@@ -23,6 +24,10 @@ class App extends Component {
   return (
     <main className='App'>
       <Switch>
+        <Route
+          path={'/'}
+          component={RegistrationForm}
+        />
         <Route
           path={'/login'}
           component={LoginForm}
