@@ -3,7 +3,9 @@ import config from '../config'
 import ActivityService from '../services/activity-service'
 
 const ActivityContext = React.createContext({
-  activities: []
+  activities: [],
+  fetchActivities: () => {},
+  postActivity: () => {}
 });
 
 export default ActivityContext;
@@ -16,11 +18,36 @@ export class ActivityProvider extends Component {
     }
   }
   
+  fetchActivities = () => {
+    ActivityService.fetchActivities()
+      .then(res=> {
+        console.log('Fetched this using service function:', res);
+
+        this.setState({
+          activities: res
+      });
+    })
+  }
+  
+  postActivity = () => {
+
+  }
+
+  componentDidMount () {
+    this.fetchActivities()
+  }
+
   render() {
+    
+    const value = {
+      fetchActivities: this.fetchActivities,
+      activities: this.state.activities
+    }
+
     return (
-      <div>
-        
-      </div>
+      <ActivityContext.Provider value={value}>
+        {this.props.children}
+      </ActivityContext.Provider>
     )
   }
 }
