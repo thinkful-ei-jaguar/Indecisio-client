@@ -15,10 +15,31 @@ class LoginForm extends Component {
         this.firstInput.current.focus()
     }
 
+    handleLoginSuccess = () => {
+        const { location, history } = this.props
+        const destination = (location.state || {}).from || '/dashboard'
+        history.push(destination)
+    }
+
     handleLogin = (e) => {
         e.preventDefault()
         const {username, password} = e.target
-        
+
+        this.setState({ error: null })
+
+        AuthApiService.postLogin({
+            username: username.value,
+            password: password.value
+        })
+            .then(res => {
+                username.value = ''
+                password.value = ''
+                this.context.processLogin(res.authToken)
+                this.handleLoginSuccess()
+            })
+            .catch(res => {
+                this.setState({ error: res.error })
+            })
     }
 
     render() {
