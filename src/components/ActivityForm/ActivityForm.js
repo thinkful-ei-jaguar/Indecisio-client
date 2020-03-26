@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import ActivityService from '../services/activity-service';
 import ValidationError from '../ValidationError/ValidationError';
 import './ActivityForm.css';
@@ -8,6 +9,7 @@ export default class ActivityForm extends React.Component {
 		this.state = {
 			name: '',
 			description: '',
+			toDashboard: false,
 			error: null
 		}};
 	
@@ -55,19 +57,21 @@ export default class ActivityForm extends React.Component {
 			
 			ActivityService.postActivity(newActivity)
 				.then(res => {
-					this.setState({name: '', description: ''})
+					this.setState({name: '', description: '', toDashboard: true})
 				})
 				.catch(res => {
 					this.setState({error: res.error});
-					this.props.onSubmitActivitySuccess();
 				});
 		}
 	};
 	
 	
 	render() {
-		const { name, description, error } = this.state;
+		const { name, description, toDashboard, error } = this.state;
 		
+		if(toDashboard) {
+			return <Redirect to="/dashboard" />
+		}
 		return (
 			<section id='form-wrapper'>
 				<form className="activity-form" onSubmit={this.handleSubmit}>

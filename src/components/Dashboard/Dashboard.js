@@ -83,6 +83,7 @@ export default class Dashboard extends Component {
             Add new activity
           </button>
         </Link>
+        <section className='result-wrapper'>
         <div className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0] 
             ? `You have chosen "${this.context.activities[this.state.randomIndex].name}."  Enjoy!`
@@ -98,9 +99,10 @@ export default class Dashboard extends Component {
             : ''}
           </p>
         {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
-        {this.state.activityGenerated && <button className="button-primary" onClick={this.declineRandomActivity}>Decline</button>}
+        {this.state.activityGenerated && <button className="button-cancel" onClick={this.declineRandomActivity}>Decline</button>}
         </div>
         <ActivityList />
+        </section>
       </div>
     )
   }
