@@ -6,14 +6,14 @@ export default class ActivityForm extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-		name: '',
-		description: '',
-		error: null
+			name: '',
+			description: '',
+			error: null
 		}};
 	
 	static defaultProps = {
 		onSubmitActivitySuccess: () => {
-			this.history.push("/");
+			this.location.push("/dashboard");
 		}
 	};
 	
@@ -32,38 +32,78 @@ export default class ActivityForm extends React.Component {
 		})
 	};
 	
+	handleReset = (event) => {
+		console.log('Reset form')
+		event.preventDefault();
+		this.setState({
+			name: '',
+			description: ''
+		})
+	}
+	
 	handleSubmit = (event) => {
+		console.log('Submitting: ' + this.state);
 		event.preventDefault();
 		const {name, description} = this.state;
 		const newActivity = {name, description};
-		console.log(newActivity);
-		ActivityService.postActivity(newActivity)
-			.then(res => {
-				this.setState({name: '', description: ''})
-			})
 		
-			.catch(res => {
-				this.setState({ error: res.error});
-				this.props.onSubmitActivitySuccess();
-			});
+		if(!name.length) {
+			this.setState({error: 'Please enter a name for added activity'})
+		} else if (!description.length) {
+			this.setState({error: 'Please enter a description for added activity'})
+		} else if(name.length && description.length){
+			
+			ActivityService.postActivity(newActivity)
+				.then(res => {
+					
+					this.setState({name: '', description: ''})
+					
+				})
+				
+				.catch(res => {
+					this.setState({error: res.error});
+					this.props.onSubmitActivitySuccess();
+				});
+		}
 	};
 	
 	
 	render() {
-		const { error } = this.state;
+		const { name, description, error } = this.state;
 		
 		return (
 			<section id='form-wrapper'>
 				<form className="activity-form" onSubmit={this.handleSubmit}>
 				<h2>Add Activity</h2>
+					{error && (<ValidationError message={error} clearError={this.clearError}/>)}
+					<label
+						className='form-input-label'
+						htmlFor="name">
+							Name
+					</label>
+					<input className='activity-form-text-input'
+					       name="name"
+					       placeholder='name'
+					       type="text"
+					       onChange={this.handleChange}
+					       value={name}/>
+					<label
+						className='form-input-label'
+						htmlFor="description">
+							Description
+					</label>
+					<textarea
+						maxLength='200'
+						className='activity-form-textarea-input'
+						placeholder='description'
+						name="description"
+						onChange={this.handleChange}
+						value={description}/>
 					
-					<label className='form-input-label' htmlFor="name">Name</label><input className='activity-form-text-input'  name="name" placeholder='name' type="text" onChange={this.handleChange} value={this.state.name}/>
-					<label className='form-input-label' htmlFor="description">Description</label><textarea maxLength='200' className='activity-form-textarea-input' placeholder='description' name="description"  onChange={this.handleChange} value={this.state.description}/>
-						{error && (<ValidationError message={error} clearError={this.clearError}/>)}
-						<div className='form-control-group'>
-					<button className='button-primary' type='submit'>Submit</button>
-					<button className='button-cancel' onClick={() => this.setState({name:'',description:''})}>Cancel</button>
-						</div>
+					<div className='form-control-group'>
+						<button className='button-primary' type='submit'>Submit</button>
+						<button className='button-cancel'  type='reset' onClick={this.handleReset}>Cancel</button>
+					</div>
 				</form>
 			</section>
 		)

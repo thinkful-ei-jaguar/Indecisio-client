@@ -3,6 +3,9 @@ import ActivityContext from '../contexts/ActivityContext'
 
 
 export default class Dashboard extends Component {
+  
+  
+  
   static contextType = ActivityContext;
   constructor(props) {
     super(props);

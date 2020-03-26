@@ -76,7 +76,7 @@ input:focus  {
     cursor: pointer;
     background-color: hsl(131, 77%, 29%);
     color: white;
-    padding: 1vh 2vw;
+    padding: 1vh 1vw;
     border-radius: 5px;
     text-align: center;
     width: 40%;
@@ -107,7 +107,7 @@ input:focus  {
 .button-cancel {
     border: none;
     color: #db545e;
-    padding: 1vh 2vw;
+    padding: 1vh 1vw;
     border-radius: 5px;
     cursor:pointer;
     background: #8f9faf;
