@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
 
   getRandomActivity = () => {
     console.log(this.context.activities)
-
+    
     this.toggleActivityGenerated()
   }
 
@@ -40,7 +40,6 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.fetchActivities()
     this.setState({
       activityGenerated: false
     })
