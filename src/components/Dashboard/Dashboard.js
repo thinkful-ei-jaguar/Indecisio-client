@@ -9,8 +9,9 @@ export default class Dashboard extends Component {
 
     this.state = {
       activityGenerated: false,
+      activitySelected: true,
       activities: [],
-      activityChosen: ''
+      randomIndex: 0
     }
   }
 
@@ -21,13 +22,18 @@ export default class Dashboard extends Component {
   }
 
   getRandomActivity = () => {  
+    this.createRandomIndex()
     this.toggleActivityGenerated()
+    this.setState({
+      activitySelected: false
+    })
   }
 
   acceptRandomActivity = () => {
     console.log('Random activity accepted :)')
     this.setState({
-      activityGenerated: false
+      activityGenerated: false,
+      activitySelected: true
     })
   }
 
@@ -36,17 +42,29 @@ export default class Dashboard extends Component {
     this.getRandomActivity()
   }
 
-  componentDidMount() {
-    this.setState({
-      activityGenerated: false
-    })
-  }
-
-  render() {
+  createRandomIndex = () => {
     let randomActivityIndex = 0;
     randomActivityIndex = this.context.activities[0]
       ? [Math.floor(Math.random() * this.context.activities.length)] 
       : 0;
+
+    this.setState({
+      randomIndex: randomActivityIndex
+    })
+  }
+
+  componentDidMount() {
+    this.setState({
+      activityGenerated: false,
+      activitySelected: false
+    })
+  }
+
+  render() {
+    // let randomActivityIndex = 0;
+    // randomActivityIndex = this.context.activities[0]
+    //   ? [Math.floor(Math.random() * this.context.activities.length)] 
+    //   : 0;
     
     return (
       <div>
@@ -58,13 +76,18 @@ export default class Dashboard extends Component {
         <button onClick={this.getRandomActivity}>
           Random Activity Please!
         </button>
+        <div className="display-chosen-activity">
+          {this.state.activitySelected && this.context.activities[0] 
+            ? `You have chosen "${this.context.activities[this.state.randomIndex].name}."  Enjoy!`
+            : ''}
+        </div>
         <div className="display-random-activity">
           <p>{this.context.activities && this.state.activityGenerated
-            ? `Your random activity is: ${this.context.activities[randomActivityIndex].name}`        
+            ? `Your random activity is: ${this.context.activities[this.state.randomIndex].name}`        
             : ''}</p>
           <p>
           {this.context.activities && this.state.activityGenerated
-            ? `The description is: ${this.context.activities[randomActivityIndex].description}`        
+            ? `The description is: ${this.context.activities[this.state.randomIndex].description}`        
             : ''}
           </p>
         {this.state.activityGenerated && <button onClick={this.acceptRandomActivity}>Accept</button>}
