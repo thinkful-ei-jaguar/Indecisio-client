@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
-
+import '../Dashboard/Dashboard.css'
 export default class ActivityList extends Component {
   static contextType = ActivityContext;
   render() {

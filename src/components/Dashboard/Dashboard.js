@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
 import ActivityList from '../ActivityList/ActivityList'
 import { Link } from 'react-router-dom'
+import './Dashboard.css'
 
 export default class Dashboard extends Component {
   static contextType = ActivityContext;
@@ -64,17 +65,17 @@ export default class Dashboard extends Component {
   render() {
   
     return (
-      <div>
+      <div className="activity-form" id="form-wrapper">
         <h1>Indecisio</h1>
         <div className="test-context">
           Hi, this will have context if it is working:
           {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
         </div>
-        <button className="get-random-button" onClick={this.getRandomActivity}>
+        <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
           Random Activity Please!
         </button>
         <Link to='/add-activity'>
-          <button className="add-activity-button">
+          <button className="add-activity-button button-primary">
             Add new activity
           </button>
         </Link>
@@ -92,8 +93,8 @@ export default class Dashboard extends Component {
             ? `The description is: ${this.context.activities[this.state.randomIndex].description}`        
             : ''}
           </p>
-        {this.state.activityGenerated && <button onClick={this.acceptRandomActivity}>Accept</button>}
-        {this.state.activityGenerated && <button onClick={this.declineRandomActivity}>Decline</button>}
+        {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
+        {this.state.activityGenerated && <button className="button-primary" onClick={this.declineRandomActivity}>Decline</button>}
         </div>
         <ActivityList />
       </div>
