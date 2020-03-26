@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ValidationError from '../ValidationError/ValidationError';
 //import AuthApiService from '../../services/auth-api-service';
 
@@ -19,6 +19,9 @@ class LoginForm extends Component {
                     <input className='login-form-password-input activity-form-text-input' name='password' placeholder='Password' type='text' required/>
                     {error && (<ValidationError message={error} />)}
                 <button className='button-primary' type='submit'>Submit</button>
+                <Link to='/' className='login-redirect-link'>
+                    Don't have an account yet?
+                </Link>
             </form>
             </section>
         )

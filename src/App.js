@@ -25,10 +25,12 @@ class App extends Component {
     <main className='App'>
       <Switch>
         <Route
+          exact
           path={'/'}
           component={RegistrationForm}
         />
         <Route
+          exact
           path={'/login'}
           component={LoginForm}
         />

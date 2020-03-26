@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 //import AuthApiService from '../services/auth-api-service';
 import ValidationError from '../ValidationError/ValidationError';
 
@@ -20,6 +21,9 @@ class RegistrationForm extends Component {
                     <label className='form-input-label' htmlFor='password'/>
                         <input className='registration-form-text-input activity-form-text-input' name='password' placeholder='Password' type='text' required/>
                     <button className='button-primary' type='submit'>Submit</button>
+                    <Link to='/login' className='register-redirect-link'>
+                        Already have an account?
+                    </Link>
                 </form>
             </section>
         )
