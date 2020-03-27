@@ -30,7 +30,6 @@ class NavBar extends Component {
    render() {
    return (
       <section className="NavBar">
-         <h1>Indecisio</h1>
          <ul id='navlist'>
             {TokenService.hasAuthToken()
                ? this.renderPrivateNav()

@@ -17,6 +17,7 @@ class App extends Component {
   return (
     <main className='App'>
       <header>
+        <h1>Indecisio</h1>
       <NavBar />
       </header>
       <Switch>
