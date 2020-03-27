@@ -57,7 +57,7 @@ class RegistrationForm extends Component {
                     <label className='form-input-label' htmlFor='password'/>
                         <input className='registration-form-text-input activity-form-text-input' name='password' placeholder='Password' type='password' required/>
                     <button className='button-primary' type='submit'>Submit</button>
-                    <button className='button-primary'>Login as Guest</button>
+                    <button className='button-primary' onClick={this.handleGuestLogin}>Login as Guest</button>
                     <Link to='/login' className='register-redirect-link'>
                         Already have an account?
                     </Link>
