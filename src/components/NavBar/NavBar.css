@@ -4,6 +4,10 @@
     align-items: baseline;
     background-color: inherit ;
     margin: .5vh 1vw;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100vh;
 }
 #navlist {
     display: flex;
