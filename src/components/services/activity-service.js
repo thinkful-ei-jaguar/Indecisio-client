@@ -1,4 +1,4 @@
-import   config   from '../../config';
+import config from '../../config';
 import TokenService from '../services/token-service';
 
 const ActivityService = {
@@ -29,7 +29,21 @@ const ActivityService = {
 				: Promise.reject('Cannot get Activities')
 			)
 	
-}
+	},
+
+	updateActivity: (activity_id, updatedActivity) => {
+		return fetch(`${config.API_ENDPOINT}/activity/${activity_id}`, {
+			method: 'PATCH',
+			headers : {
+    		'content-type': 'application/json',
+				'authorization': `Bearer ${TokenService.getAuthToken()}`
+			 },
+			body: JSON.stringify(updatedActivity)
+		})
+		.then(res => res.ok
+			? Promise.resolve()
+			: Promise.reject('An error occured while trying to update')
+		)}
 }
 
 export default ActivityService;

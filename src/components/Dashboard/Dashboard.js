@@ -3,6 +3,7 @@ import ActivityContext from '../contexts/ActivityContext'
 import ActivityList from '../ActivityList/ActivityList'
 import { Link } from 'react-router-dom'
 import './Dashboard.css'
+import ActivityService from '../services/activity-service'
 
 export default class Dashboard extends Component {
   
@@ -40,10 +41,30 @@ export default class Dashboard extends Component {
       activityGenerated: false,
       activitySelected: true
     })
+    ActivityService.updateActivity(
+      this.context.activities[this.state.randomIndex].id,
+      {
+        name: this.context.activities[this.state.randomIndex].name,
+        description: this.context.activities[this.state.randomIndex].description,
+        is_accepted: true,
+        is_rejected: false
+      })
+      .then(res => this.context.fetchContextActivities())
+
+
   }
 
   declineRandomActivity = () => {
     console.log('Random activity declined :(')
+    ActivityService.updateActivity(
+      this.context.activities[this.state.randomIndex].id,
+      {
+        name: this.context.activities[this.state.randomIndex].name,
+        description: this.context.activities[this.state.randomIndex].description,
+        is_accepted: false,
+        is_rejected: true
+      })
+      .then(res => this.context.fetchContextActivities())
     this.getRandomActivity()
   }
 
@@ -56,6 +77,22 @@ export default class Dashboard extends Component {
     this.setState({
       randomIndex: randomActivityIndex
     })
+  }
+
+  lastDecision = () => {
+    if (this.context.activities[this.state.randomIndex].is_rejected && !this.context.activities[this.state.randomIndex].is_accepted) {
+      console.log('rejected')
+      return 'rejected'
+    }
+    else if (!this.context.activities[this.state.randomIndex].is_rejected && this.context.activities[this.state.randomIndex].is_accepted) {
+      console.log('accepted')
+      return 'accepted'
+    }
+    else {
+      console.log('neither')
+      return 'neither accepted nor rejected'
+    }
+
   }
 
   componentDidMount() {
@@ -71,10 +108,10 @@ export default class Dashboard extends Component {
     return (
       <div className="activity-form" id="form-wrapper">
         <h1>Indecisio</h1>
-        <div className="test-context">
+        {/* <div className="test-context">
           Hi, this will have context if it is working:
           {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
-        </div>
+        </div> */}
         <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
           Random Activity Please!
         </button>
@@ -96,6 +133,11 @@ export default class Dashboard extends Component {
           <p>
           {this.context.activities && this.state.activityGenerated
             ? `The description is: ${this.context.activities[this.state.randomIndex].description}`        
+            : ''}
+          </p>
+          <p>
+          {this.context.activities && this.state.activityGenerated
+            ? `Last time you ${this.lastDecision()} this choice`        
             : ''}
           </p>
         {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
