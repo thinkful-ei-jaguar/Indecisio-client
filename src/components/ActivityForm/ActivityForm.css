@@ -1,6 +1,4 @@
-body {
-   background-color: rgba(9, 135, 100, 0.53);
-}
+
 
 #form-wrapper {
     margin: 10vh auto;
@@ -8,12 +6,14 @@ body {
     max-width: 650px;
     justify-content: space-around;
     flex-basis: 60vw;
-    border-radius: 25px;
+    border-radius: 0px;
     flex-flow: column nowrap;
-    background-color: hsl(208, 83%, 38%);
-    min-height: 80vh;
-    box-shadow: -5px 20px 15px 0px inset rgba(189, 255, 226, 0.22),
-                -5px 8px 19px 9px rgba(91, 63, 99, 0.22);
+    background-color: inherit;
+    box-shadow: none;
+    min-height: 55vh;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 79, 25, 0.27);
+
 }
 
 .activity-form {
@@ -24,7 +24,7 @@ body {
     flex-basis: 40vh;
     align-items: center;
     flex-grow: 4;
-    min-height: 90%;
+    min-height: 60%;
 
 }
 input:focus  {
@@ -36,11 +36,14 @@ input:focus  {
 }
 
 .activity-form > h2 {
-    color: #bdffe2;
+    color: #360033;
     font-size: 4vh;
     font-family: "Gill Sans";
 }
-
+h2#form-name {
+    margin: 1vh auto;
+    color: aquamarine;
+}
 
 
 .form-input-label {
@@ -53,21 +56,21 @@ input:focus  {
     border-radius: 5px;
     flex-grow: 0.5;
     min-width: 60%;
-    padding: 2vh 2vw;
+    padding: 1vh 1vw;
     font-size: 1.2rem;
-    box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.65);
+   box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.65);
 }
 
 .activity-form-text-input {
     display:flex;
     flex-direction: row;
     border: none;
-    background-color: hsla(180, 70%, 80%);
+    background-color: hsla(215, 74%, 12%, 0.56);
     border-radius: 5px;
     flex-grow: 0;
     min-width: 50%;
-    padding: 2vh 2vw;
-    font-size: 1.2rem;
+    padding: 1vh 1vw;
+    font-size: 1.4vh;
     box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.65);
 }
 
