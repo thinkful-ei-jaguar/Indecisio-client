@@ -6,13 +6,13 @@
     max-width: 650px;
     justify-content: space-around;
     flex-basis: 60vw;
-    border-radius: 0px;
+    border-radius: 30px;
     flex-flow: column nowrap;
-    background-color: inherit;
     box-shadow: none;
     min-height: 55vh;
     background-blend-mode: overlay;
-    background-color: rgba(0, 79, 25, 0.27);
+    background-color: rgba(1, 0, 75, 0.82);
+
 
 }
 
@@ -36,8 +36,8 @@ input:focus  {
 }
 
 .activity-form > h2 {
-    color: #360033;
-    font-size: 4vh;
+    color: aquamarine;
+    font-size: 5vh;
     font-family: "Gill Sans";
 }
 h2#form-name {
@@ -52,12 +52,12 @@ h2#form-name {
 }
 .activity-form-textarea-input {
   border: none;
-    background-color: hsla(180, 70%, 80%);
+    background-color: hsl(180, 70%, 80%);
     border-radius: 5px;
     flex-grow: 0.5;
-    min-width: 60%;
+    min-width: 50%;
     padding: 1vh 1vw;
-    font-size: 1.2rem;
+    font-size: 1.8vh;
    box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.65);
 }
 
@@ -65,12 +65,12 @@ h2#form-name {
     display:flex;
     flex-direction: row;
     border: none;
-    background-color: hsla(215, 74%, 12%, 0.56);
+    background-color: hsla(174, 100%, 47%, 0.93);
     border-radius: 5px;
     flex-grow: 0;
     min-width: 50%;
     padding: 1vh 1vw;
-    font-size: 1.4vh;
+    font-size: 1.8vh;
     box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.65);
 }
 
@@ -82,29 +82,28 @@ h2#form-name {
     padding: 1vh 1vw;
     border-radius: 5px;
     text-align: center;
-    width: 50%;
+    width: 45%;
     font-size: 2.2vh;
-    box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
+    box-shadow: -2px 10px 11px 0 inset rgba(189, 255, 226, 0.22),
                  -1px 3px 3px 3px rgba(25, 62, 124, 0.43);
     transition-property: background;
     transition-duration: 1s;
     transition-timing-function: ease-in-out;
-    border: none;
+
 
 }
 .button-primary:focus {
-    outline: none;
-    border: none;
+    outline: none;border: none;
 }
 .button-primary:hover {
     background-color: hsl(138, 89%, 38%);
-    border: none;
+
 }
 .button-primary:active {
     background-color: hsl(142, 94%, 39%);
-    box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
+    box-shadow: -2px 10px 11px 0 inset rgba(189, 255, 226, 0.22),
     -1px 3px 3px 3px inset rgba(25, 62, 124, 0.43);
-    border: none;
+
 }
 
 .button-cancel {
@@ -115,8 +114,8 @@ h2#form-name {
     cursor:pointer;
     background: #8f9faf;
     font-size: 2.2vh;
-    width: 40%;
-    box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
+    width: 45%;
+    box-shadow: -2px 10px 11px 0 inset rgba(189, 255, 226, 0.22),
     -1px 3px 3px 3px rgba(25, 62, 124, 0.43);
     transition-property: background;
     transition-duration: 1s;
@@ -137,7 +136,7 @@ h2#form-name {
 .button-cancel:active {
     background-color: #d64a4d;
     color: white;
-    box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
+    box-shadow: -2px 10px 11px 0 inset rgba(189, 255, 226, 0.22),
     -1px 3px 3px 3px inset rgba(25, 62, 124, 0.43);
 }
 

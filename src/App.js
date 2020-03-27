@@ -12,7 +12,7 @@ import LoginForm from './components/LoginForm/LoginForm';
  */
 class App extends Component {
 
-  render() {gti
+  render() {
   return (
     <main className='App'>
       <Switch>
