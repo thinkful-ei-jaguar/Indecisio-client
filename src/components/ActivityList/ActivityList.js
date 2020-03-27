@@ -12,9 +12,12 @@ export default class ActivityList extends Component {
           : activity.is_accepted && !activity.is_rejected 
           ? 'accepted' 
           : 'neither accepted nor rejected';
-        return <li key={index}>{activity.name}  Last time you {whatTheyDid} this activity</li>})
-      
-      : [];
+
+        return <li className="activity-list-item" key={index}>
+                <h3 className="activity-name">{activity.name}</h3>
+                <p className="previous-choice">Last time you {whatTheyDid} this activity.</p>
+              </li>})
+          : [];
     return (
       <ul className="activity-list">
         <h2>Possible Activities: </h2>
