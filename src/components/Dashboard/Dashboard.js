@@ -115,11 +115,7 @@ export default class Dashboard extends Component {
         <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
           Random Activity Please!
         </button>
-        <Link to='/add-activity'>
-          <button className="add-activity-button button-primary">
-            Add new activity
-          </button>
-        </Link>
+        
         <section className='result-wrapper'>
         <div className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0] 
