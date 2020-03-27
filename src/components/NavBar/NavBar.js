@@ -13,17 +13,17 @@ class NavBar extends Component {
 
    renderPrivateNav = () => {
       return <>
-               <li>Hello {this.context.user.name}!</li>
-               <li><Link to='/dashboard'>Home</Link></li>
-               <li><Link to='/add-activity'>Add</Link></li>
-               <li><Link to='/login' onClick={this.handleLogout}>Logout</Link></li>
+               <li>Hello, {this.context.user.name}!</li>
+               <li><Link id='nav-link' to='/dashboard'>Home</Link></li>
+               <li><Link id='nav-link' to='/add-activity'>Add</Link></li>
+               <li><Link id='nav-link' to='/login' onClick={this.handleLogout}>Logout</Link></li>
             </>
    }
 
    renderPublicNav = () => {
       return <>
-               <li><Link to='/login'>Login</Link></li>
-               <li><Link to='/'>Register</Link></li>
+               <li><Link id='nav-link' to='/login'>Login</Link></li>
+               <li><Link id='nav-link' to='/'>Register</Link></li>
             </>
    }
 

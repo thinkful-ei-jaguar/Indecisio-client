@@ -14,3 +14,6 @@
     text-decoration: none;
     color: #bdffe2;
 }
+#nav-link:hover {
+    text-decoration: underline;
+}
