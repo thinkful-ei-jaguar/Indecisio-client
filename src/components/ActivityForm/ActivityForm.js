@@ -75,7 +75,7 @@ export default class ActivityForm extends React.Component {
 		return (
 			<section id='form-wrapper'>
 				<form className="activity-form" onSubmit={this.handleSubmit}>
-				<h2>Add Activity</h2>
+					<h2 id='form-name'>Add Activity</h2>
 					{error && (<ValidationError message={error} clearError={this.clearError}/>)}
 					<label
 						className='form-input-label'

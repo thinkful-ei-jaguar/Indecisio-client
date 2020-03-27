@@ -109,11 +109,17 @@ input:focus  {
   max-width: 300px;
 }
 
-li {
-  max-width: 400px;
-  padding-bottom: 1em;
-  list-style-type: none;
 
+
+li.activity-list-item {
+
+  max-width: 400px; 
+  list-style-type: none;
+  border: 1px solid green;
+  margin-bottom: 0.5em;
+  
+  
+  
   
 }
 
