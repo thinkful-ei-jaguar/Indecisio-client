@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import PublicOnlyRoute from './components/PublicOnlyRoute/PublicOnlyRoute'
 import Dashboard from './components/Dashboard/Dashboard';
@@ -15,6 +16,10 @@ class App extends Component {
   render() {
   return (
     <main className='App'>
+      <header>
+        <h1>Indecisio</h1>
+      <NavBar />
+      </header>
       <Switch>
         <PublicOnlyRoute
           exact
