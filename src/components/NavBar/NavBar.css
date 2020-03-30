@@ -2,21 +2,23 @@
     display: flex;
     justify-content: space-evenly;
     align-items: baseline;
-    background-color: inherit ;
-    margin: .5vh 1vw;
+
+    margin: 0vh auto;
     overflow: hidden;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
+    background: var(--accent-three);
 }
 #navlist {
     display: flex;
-    width: 50%;
+    width: 90%;
     justify-content: space-around;
+    list-style-type: none;
 }
 #navlist a {
     text-decoration: none;
-    color: #bdffe2;
+    color: var(--accent-one);
 }
 #nav-link:hover {
     text-decoration: underline;

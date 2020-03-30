@@ -8,16 +8,15 @@ import ActivityForm from './components/ActivityForm/ActivityForm';
 import RegistrationForm from './components/RegistrationForm/RegistrationForm';
 import LoginForm from './components/LoginForm/LoginForm';
 
+
 /**
  * We could probably change App to be a functional component -Blade 03-25-20
  */
-class App extends Component {
-
-  render() {
+export default function App() {
   return (
     <main className='App'>
-      <header>
-        <h1>Indecisio</h1>
+      <header id='app-header'>
+        <h1 id='brand'>{''}</h1>
       <NavBar />
       </header>
       <Switch>
@@ -26,6 +25,7 @@ class App extends Component {
           path={'/'}
           component={RegistrationForm}
         />
+        
         <PublicOnlyRoute
           exact
           path={'/login'}
@@ -40,8 +40,5 @@ class App extends Component {
       </Switch>
     </main>
   );
-  }
 }
-
-export default App;
 

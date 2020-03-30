@@ -11,7 +11,7 @@ body {
    flex-basis: 60vw;
    border-radius: 25px;
    flex-flow: column nowrap;
-   background-color: hsl(217, 72%, 40%);
+   background-color: var(--accent-three);
    min-height: 80vh;
    box-shadow: -5px 20px 15px 0px inset rgba(189, 255, 226, 0.22),
                -5px 8px 19px 9px rgba(91, 63, 99, 0.22);
@@ -38,7 +38,7 @@ input:focus  {
 }
 
 .activity-form > h2 {
-   color: #bdffe2;
+   color: var(--main-fg);
    font-size: 4vh;
    font-family: "Gill Sans";
 }
@@ -106,8 +106,17 @@ input:focus  {
 }
 
 .display-random-activity, .display-chosen-activity {
-  max-width: 300px;
+  max-width: 100%;
 }
+
+.display-random-activity > p {
+    padding: 0 5vw;
+}
+
+.display-random-activity > button {
+    margin: 0 2vw;
+}
+
 
 
 
@@ -115,7 +124,7 @@ li.activity-list-item {
 
   max-width: 400px; 
   list-style-type: none;
-  border: 1px solid green;
+
   margin-bottom: 0.5em;
   
   
@@ -124,11 +133,21 @@ li.activity-list-item {
 }
 
 .activity-list {
-    height: 30vh;
-overflow: hidden;
+
+    height: 50%;
+    overflow: hidden;
 }
 
 
 .result-wrapper {
-    height: 50vh;
+    height: 70vh;
+    max-width: 70%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
 }
