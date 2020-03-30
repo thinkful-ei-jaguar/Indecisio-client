@@ -135,8 +135,12 @@ export default class Dashboard extends Component {
             ? `Last time you ${this.lastDecision()} this choice`        
             : ''}
           </p>
-        {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
-        {this.state.activityGenerated && <button className="button-cancel" onClick={this.declineRandomActivity}>Decline</button>}
+        <div className="button-group">
+          
+          {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
+          {this.state.activityGenerated && <button className="button-cancel" onClick={this.declineRandomActivity}>Decline</button>}
+        </div>
+        
         </div>
         <ActivityList />
         </section>

@@ -1,13 +1,19 @@
 
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Cabin:400,500,500i,600,600i,700i|Do+Hyeon|Exo:100,100i,400,500,500i,600,600i,800i,900,900i|Gotu|Play|Quantico:400,700|Teko:400,500,600&display=swap');
 
-
+:root {
+  --main-bg: #275283;
+  --main-fg: #419ABE;
+  --accent-one: #56e3e3;
+  --accent-two: #6e97e7;
+  --accent-three: #233A85
+}
 
 
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Exo', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -22,6 +28,22 @@ code {
 }
 
 body {
-  background-image: url("./POSSIBLEBACKS/polygons/newbg12.png");
+  background-color: var(--main-bg);
+  color: white;
+}
+h1,h2,h3,h4,h5 {
+  color: var(--accent-three);
 }
 
+.app-header {
+  display: flex;
+}
+
+#brand {
+  background-image: url('./assets/indecisio.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 5vh;
+  width: auto;
+  align-self: center;
+}
