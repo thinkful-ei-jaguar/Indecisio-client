@@ -8,12 +8,44 @@ import './RegistrationForm.css';
 class RegistrationForm extends Component {
     static contextType = UserContext
 
-    state = { error: null }
+    state = { 
+        error: null,
+        touched: false,
+        password: '' 
+    }
 
     firstInput = React.createRef()
 
     componentDidMount() {
         this.firstInput.current.focus()
+    }
+
+    passwordUpdated = (e) => {
+        this.setState({
+            touched: true,
+            password: e
+        })
+    }
+
+    validatePassword = () => {
+        const password = this.state.password;
+        const hasNum = /\d/;
+        const hasUpperCase = /([A-Z])/;
+        const hasSpecialChar = /([!@#$%^&])/;
+        console.log(password)
+        if (password.length <= 7) {
+            return 'Password needs to be 8 characters long'
+        }
+        else if (!hasNum.test(password)) {
+            return 'Password must contain a number'
+        }
+        else if(!hasUpperCase.test(password)) {
+            return 'Password must contain an uppercase letter'
+        }
+        else if(!hasSpecialChar.test(password)) {
+            return 'Password must contain a special character'
+        }
+        return null
     }
 
     handleRegisterSuccess = () => {
@@ -64,7 +96,7 @@ class RegistrationForm extends Component {
 
     
     render() {
-        const { error } = this.state
+        const { error, touched } = this.state
 
         return (<>
             <section id='introduction'>
@@ -75,12 +107,13 @@ class RegistrationForm extends Component {
                 <form className='registration-form activity-form' onSubmit={e => this.handleRegistration(e)}>
                     <h2>Register</h2>
                 {error && (<ValidationError message={error}/>)}
+                {touched && (<ValidationError message={this.validatePassword()}/>)}
                     <label className='form-input-label' htmlFor='name'>Name</label>
                         <input className='registration-form-text-input activity-form-text-input' ref={this.firstInput} name='name' placeholder='Name' type='text' required/>
                     <label className='form-input-label' htmlFor='username'>Username</label>
                         <input className='registration-form-text-input activity-form-text-input' name='username' placeholder='Username' type='text' required/>
                     <label className='form-input-label' htmlFor='password'/>
-                        <input className='registration-form-text-input activity-form-text-input' name='password' placeholder='Password' type='password' required/>
+                        <input className='registration-form-text-input activity-form-text-input' onChange={e => this.passwordUpdated(e.currentTarget.value)} name='password' placeholder='Password' type='password' required/>
                     <button className='button-primary' type='submit'>Submit</button>
                     <button className='button-primary' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
                     <Link to='/login' className='register-redirect-link'>
