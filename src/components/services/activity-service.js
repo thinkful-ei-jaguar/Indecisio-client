@@ -43,7 +43,15 @@ const ActivityService = {
 		.then(res => res.ok
 			? Promise.resolve()
 			: Promise.reject('An error occured while trying to update')
-		)}
-}
+		)},
+
+	fetchCategories: () => {
+
+	},
+
+	fetchByCategory: () => {
+		
+	}
+}	
 
 export default ActivityService;
