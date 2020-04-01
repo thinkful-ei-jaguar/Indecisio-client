@@ -74,7 +74,7 @@ class RegistrationForm extends Component {
             <section id='form-wrapper'>
                 <form className='registration-form activity-form' onSubmit={e => this.handleRegistration(e)}>
                     <h2>Register</h2>
-                {error && (<ValidationError message={error}/>)}
+                {error && <ValidationError message={error}/>}
                     <label className='form-input-label' htmlFor='name'>Name</label>
                         <input className='registration-form-text-input activity-form-text-input' ref={this.firstInput} name='name' placeholder='Name' type='text' required/>
                     <label className='form-input-label' htmlFor='username'>Username</label>
@@ -82,7 +82,7 @@ class RegistrationForm extends Component {
                     <label className='form-input-label' htmlFor='password'/>
                         <input className='registration-form-text-input activity-form-text-input' name='password' placeholder='Password' type='password' required/>
                     <button className='button-primary' type='submit'>Submit</button>
-                    <button className='button-primary' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
+                    <button className='button-guest' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
                     <Link to='/login' className='register-redirect-link'>
                         Already have an account?
                     </Link>

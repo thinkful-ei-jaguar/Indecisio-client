@@ -6,7 +6,7 @@
     max-width: 650px;
     justify-content: space-around;
     flex-basis: 60vw;
-    border-radius: 30px;
+    border-radius: 10px;
     flex-flow: column nowrap;
     box-shadow: none;
     min-height: 55vh;
@@ -89,7 +89,8 @@ input:focus  {
 
 }
 .button-primary:focus {
-    outline: none;border: none;
+    outline: none;
+    border: none;
 }
 .button-primary:hover {
     background-color: hsl(155, 79%, 40%);
@@ -141,4 +142,32 @@ input:focus  {
     display: flex;
     min-width: 50%;
     justify-content: space-around;
+}
+form > a {
+    color: #9fd7ff;
+}
+a.nav-link {
+    color: white;
+}
+#navlist > li > a {
+    color: white;
+    font-size: 1.8vh;
+    font-weight: bold;
+}
+
+#form-wrapper > form > input.login-form-username-input.activity-form-text-input {
+    color: white;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--white);
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--white);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--white);
 }

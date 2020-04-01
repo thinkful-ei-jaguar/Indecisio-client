@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
@@ -16,8 +16,8 @@ export default function App() {
   return (
     <main className='App'>
       <header id='app-header'>
-        <h1 id='brand'>{''}</h1>
-      <NavBar />
+      
+        <NavBar />
       </header>
       <Switch>
         <PublicOnlyRoute
