@@ -18,7 +18,8 @@ export default class Dashboard extends Component {
       activitySelected: true,
       activities: [],
       randomIndex: 0,
-      categories: []
+      categories: [],
+      filter: ''
     }
   }
 
@@ -96,17 +97,33 @@ export default class Dashboard extends Component {
 
   }
 
+  handleFilterChange = (event) => {
+    this.setState({
+      filter: event.target.value
+    }, () => console.log(this.state))
+
+    
+  }
+
   componentDidMount() {
     this.context.fetchContextActivities()
     this.setState({
       activityGenerated: false,
       activitySelected: false
     })
+    
+    /**
+     * Right now these are just testing the connection to
+     * the back end.  They might need to be used
+     * from within context.
+     */
     ActivityService.fetchCategories()
       .then(res => this.setState({
         categories: res
       }))
-    ActivityService.fetchActivitiesByCategory('Entertainment')
+    
+    ActivityService.fetchActivitiesByCategory('Fitness')
+      .then(res=>console.log('Fitness category:', res))
   }
 
   render() {
@@ -120,6 +137,22 @@ export default class Dashboard extends Component {
         <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
           Random Activity Please!
         </button>
+
+        <div className="dropdown-div">
+          <label htmlFor="filter-select"></label>
+          <select 
+            value={this.state.filter} 
+            onChange={this.handleFilterChange} 
+          >
+            <option id="filter-select" value="Entertainment">Entertainment</option>
+            <option id="filter-select" value="Chores">Chores</option>
+            <option id="filter-select" value="Learn">Learn</option>
+            <option id="filter-select" value="Fitness">Fitness</option>
+            <option id="filter-select" value="Socialize">Socialize</option>
+          </select>
+      
+      </div>
+      
         
         <section className='result-wrapper'>
         <div className="display-chosen-activity">
