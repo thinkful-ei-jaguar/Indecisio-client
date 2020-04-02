@@ -3,12 +3,18 @@
 
 :root {
   --main-bg: #275283;
-  --main-fg: #6e97e7;
-  --accent-one:#419ABE;
+
+  --main-fg: #002fab;
+  --accent-one: #419ABE;
   --accent-two: #00dae3;
   --accent-three: #233A85;
   --white: #fdfbfd;
   --light-text: #adf8ff;
+
+
+
+
+
 }
 
 

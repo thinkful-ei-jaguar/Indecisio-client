@@ -6,50 +6,50 @@ import AuthApiService from '../services/auth-api-service';
 import './LoginForm.css';
 
 class LoginForm extends Component {
-    static contextType = UserContext
+    static contextType = UserContext;
 
-    state = { error: null }
+    state = { error: null };
 
-    firstInput = React.createRef()
+    firstInput = React.createRef();
 
     componentDidMount() {
         this.firstInput.current.focus()
     }
 
     handleLoginSuccess = () => {
-        const { location, history } = this.props
-        const destination = (location.state || {}).from || '/dashboard'
+        const { location, history } = this.props;
+        const destination = (location.state || {}).from || '/dashboard';
         history.push(destination)
     }
 
     handleLogin = (e) => {
-        e.preventDefault()
-        const {username, password} = e.target
+        e.preventDefault();
+        const {username, password} = e.target;
 
-        this.setState({ error: null })
+        this.setState({ error: null });
 
         AuthApiService.postLogin({
             username: username.value,
             password: password.value
         })
             .then(res => {
-                username.value = ''
-                password.value = ''
-                this.context.processLogin(res.authToken)
+                username.value = '';
+                password.value = '';
+                this.context.processLogin(res.authToken);
                 this.handleLoginSuccess()
             })
             .catch(res => {
                 this.setState({ error: res.error })
             })
-    }
+    };
 
     render() {
-        const { error } = this.state
+        const { error } = this.state;
         return (
             <>
             <section id='introduction'>
-                <p>Stuck inside and indecisive?</p>
-                <p>Indecisio helps cure your boredom by suggesting things to do based on your mood and favorite activities.</p>
+                <p>Welcome back!!!</p>
+                <p>We are so happy you have decided not to burden yourself with choice.</p>
             </section>
             <section id='form-wrapper'>
             <form className="login-form activity-form" onSubmit={e => this.handleLogin(e)}>
