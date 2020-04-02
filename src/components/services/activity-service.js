@@ -31,6 +31,21 @@ const ActivityService = {
 	
 	},
 
+	fetchActivitiesByCategory : (cat_name) => {
+    return fetch(`${config.API_ENDPOINT}/categories/${cat_name}`, {
+      method: 'GET',
+      headers : {
+        'content-type': 'application/json',
+		'authorization': `Bearer ${TokenService.getAuthToken()}`
+       }
+    })
+			.then(res => res.ok
+				? Promise.resolve(res.json())
+				: Promise.reject('Cannot get Activities')
+			)
+	
+	},
+
 	updateActivity: (activity_id, updatedActivity) => {
 		return fetch(`${config.API_ENDPOINT}/activity/${activity_id}`, {
 			method: 'PATCH',
@@ -43,7 +58,22 @@ const ActivityService = {
 		.then(res => res.ok
 			? Promise.resolve()
 			: Promise.reject('An error occured while trying to update')
-		)}
-}
+		)},
+
+	fetchCategories: () => {
+		return fetch(`${config.API_ENDPOINT}/categories`, {
+			method: 'GET',
+			headers : {
+    		'content-type': 'application/json',
+				'authorization': `Bearer ${TokenService.getAuthToken()}`
+			 },
+		})
+		.then(res => res.json())
+	},
+
+	fetchByCategory: () => {
+
+	}
+}	
 
 export default ActivityService;
