@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
 import ActivityList from '../ActivityList/ActivityList'
-
+import { Link } from 'react-router-dom'
+import UserProfile from '../UserProfile/UserProfile'
 import './Dashboard.css'
 import ActivityService from '../services/activity-service'
 
@@ -104,9 +105,9 @@ export default class Dashboard extends Component {
   }
 
   render() {
-  
-    return (
-      <div className="dashboard" id="dashboard-wrapper">
+    return (<>
+    
+      <div className="activity-form" id="form-wrapper">
         {/* <div className="test-context">
           Hi, this will have context if it is working:
           {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
@@ -145,7 +146,10 @@ export default class Dashboard extends Component {
         </div>
         <ActivityList />
         </section>
+        
       </div>
+      <UserProfile />
+      </>
     )
   }
 }
