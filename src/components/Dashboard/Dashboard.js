@@ -106,6 +106,7 @@ export default class Dashboard extends Component {
       .then(res => this.setState({
         categories: res
       }))
+    ActivityService.fetchActivitiesByCategory('Entertainment')
   }
 
   render() {
