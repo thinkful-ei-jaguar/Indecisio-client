@@ -7,6 +7,7 @@ export default class UserProfile extends Component {
         error: null,
         topUserActivities: []
     }
+
     componentDidMount() {
         ProfileService.getUserProfile()
             .then(res => {
@@ -18,17 +19,19 @@ export default class UserProfile extends Component {
 
     render() {
         const {error, topUserActivities} = this.state
-        return(<>
+        return(
+        <section id="form-wrapper">
+            <h2>Your Top Activities</h2>
             {error && <p>{error}</p>}
             <ol>
                 {topUserActivities.map(activity => {
                     return <li>
-                                <p>{activity.name}</p>
-                                <p>{activity.accepted_count}</p>
+                                <h3>{activity.name}</h3>
+                                {/* <p>You've completed this activity {activity.accepted_count} times!</p> */}
                             </li>
                 })}
             </ol>
-        </>
+        </section>
         )
     }
 }

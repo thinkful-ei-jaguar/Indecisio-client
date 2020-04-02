@@ -107,7 +107,7 @@ export default class Dashboard extends Component {
   render() {
   
     return (<>
-    <UserProfile />
+    
       <div className="activity-form" id="form-wrapper">
         {/* <div className="test-context">
           Hi, this will have context if it is working:
@@ -148,7 +148,7 @@ export default class Dashboard extends Component {
         </section>
         
       </div>
-      
+      <UserProfile />
       </>
     )
   }
