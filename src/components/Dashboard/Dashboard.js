@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
-import ActivityList from '../ActivityList/ActivityList'
+import ActivityList from '../MyList/MyList'
 import { Link } from 'react-router-dom'
 import './Dashboard.css'
 import ActivityService from '../services/activity-service'
@@ -17,7 +17,8 @@ export default class Dashboard extends Component {
       activityGenerated: false,
       activitySelected: true,
       activities: [],
-      randomIndex: 0
+      randomIndex: 0,
+      categories: []
     }
   }
 
@@ -101,10 +102,14 @@ export default class Dashboard extends Component {
       activityGenerated: false,
       activitySelected: false
     })
+    ActivityService.fetchCategories()
+      .then(res => this.setState({
+        categories: res
+      }))
   }
 
   render() {
-  
+    console.log(this.state.categories)
     return (
       <div className="activity-form" id="form-wrapper">
         {/* <div className="test-context">

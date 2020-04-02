@@ -46,11 +46,18 @@ const ActivityService = {
 		)},
 
 	fetchCategories: () => {
-
+		return fetch(`${config.API_ENDPOINT}/categories`, {
+			method: 'GET',
+			headers : {
+    		'content-type': 'application/json',
+				'authorization': `Bearer ${TokenService.getAuthToken()}`
+			 },
+		})
+		.then(res => res.json())
 	},
 
 	fetchByCategory: () => {
-		
+
 	}
 }	
 

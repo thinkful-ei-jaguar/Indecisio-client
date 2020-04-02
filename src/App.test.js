@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Dashboard from './components/Dashboard/Dashboard'
 import { BrowserRouter } from 'react-router-dom'
-import ActivityList from './components/ActivityList/ActivityList';
+import ActivityList from './components/MyList/MyList';
 import ActivityForm from './components/ActivityForm/ActivityForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import RegistrationForm from './components/RegistrationForm/RegistrationForm';
