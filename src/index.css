@@ -3,12 +3,16 @@
 
 :root {
   --main-bg: #275283;
-  --main-fg: #419ABE;
-  --accent-one: #56e3e3;
-  --accent-two: #6e97e7;
-  --accent-three: #233A85
+  --main-fg: #6e97e7;
+  --accent-one:#419ABE;
+  --accent-two: #00dae3;
+  --accent-three: #233A85;
+  --white: #fdfbfd;
+  --light-text: #adf8ff;
 }
 
+
+*:not(body) { transition: all .5s ease; }
 
 
 body {
@@ -34,16 +38,11 @@ body {
 h1,h2,h3,h4,h5 {
   color: var(--accent-three);
 }
+#form-wrapper > form > h2 {
+  color: var(--accent-three);
+}
 
 .app-header {
   display: flex;
 }
 
-#brand {
-  background-image: url('./assets/indecisio.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 5vh;
-  width: auto;
-  align-self: center;
-}

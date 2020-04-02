@@ -1,28 +1,28 @@
-body {
-  background-color: rgba(13, 54, 8, 0.53);
-  color: #bdffe2;
-}
 
-#form-wrapper {
+
+#dashboard-wrapper {
    margin: 10vh auto;
    display: flex;
    max-width: 500px;
-   justify-content: space-around;
+   justify-content: space-between;
+    align-items: center;
    flex-basis: 60vw;
-   border-radius: 25px;
-   flex-flow: column nowrap;
-   background-color: var(--accent-three);
-   min-height: 80vh;
-   box-shadow: -5px 20px 15px 0px inset rgba(189, 255, 226, 0.22),
-               -5px 8px 19px 9px rgba(91, 63, 99, 0.22);
+   border-radius: 10px;
+   flex-flow: column  nowrap;
+   background-color: var(--main-fg);
+   min-height: 60vh;
+    max-height: 70vh;
+
    
 }
 
-.activity-form {
-   min-width: 50%;
+.dashboard {
+   min-width: 75vw;
+    max-height: 65vh;
    display: flex;
-   justify-content: space-evenly;
-   flex-flow: column wrap;
+   justify-content: space-between;
+   flex-flow: column-reverse wrap;
+    align-items: center;
    flex-basis: 40vh;
    align-items: center;
    flex-grow: 4;
@@ -33,11 +33,11 @@ input:focus  {
    outline: none;
 }
 
-.activity-form:focus {
+.dashboard:focus {
    outline: none;
 }
 
-.activity-form > h2 {
+.dashboard > h2 {
    color: var(--main-fg);
    font-size: 4vh;
    font-family: "Gill Sans";
@@ -49,9 +49,9 @@ input:focus  {
 
    display: none;
 }
-.activity-form-textarea-input {
+.dashboard-textarea-input {
  border: none;
-   background-color: hsl(180, 70%, 80%);
+   background-color: var(--accent-two);
    border-radius: 5px;
    flex-grow: 0.5;
    min-width: 60%;
@@ -60,11 +60,11 @@ input:focus  {
    box-shadow: 1px 3px 19px inset rgba(70, 70, 140, 0.65);
 }
 
-.activity-form-text-input {
+.dashboard-text-input {
    display:flex;
    flex-direction: row;
    border: none;
-   background-color: hsl(180, 70%, 80%);
+   background-color: var(--accent-two);
    border-radius: 5px;
    flex-grow: 0;
    min-width: 60%;
@@ -106,23 +106,23 @@ input:focus  {
 }
 
 .display-random-activity, .display-chosen-activity {
-  max-width: 100%;
+  min-width: 100%;
 }
 
 .display-random-activity > p {
-    padding: 0 5vw;
+    padding: .5vh 2vw;
 }
 
 .display-random-activity > button {
-    margin: 0 2vw;
+    margin: 1vh 1vw;
 }
 
-
+#dashboard-wrapper > section > button
 
 
 li.activity-list-item {
 
-  max-width: 400px; 
+  max-width: 90%;
   list-style-type: none;
 
   margin-bottom: 0.5em;
@@ -134,16 +134,17 @@ li.activity-list-item {
 
 .activity-list {
 
-    height: 50%;
+    height: 60%;
     overflow: hidden;
+    margin-top: 0;
 }
 
 
 .result-wrapper {
     height: 70vh;
-    max-width: 70%;
+
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: column-reverse nowrap;
     justify-content: space-between;
 }
 

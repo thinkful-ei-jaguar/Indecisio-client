@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ValidationError from '../ValidationError/ValidationError';
 import UserContext from '../contexts/UserContext'
 import AuthApiService from '../services/auth-api-service';
+import './LoginForm.css';
 
 class LoginForm extends Component {
     static contextType = UserContext
@@ -45,6 +46,11 @@ class LoginForm extends Component {
     render() {
         const { error } = this.state
         return (
+            <>
+            <section id='introduction'>
+                <p>Stuck inside and indecisive?</p>
+                <p>Indecisio helps cure your boredom by suggesting things to do based on your mood and favorite activities.</p>
+            </section>
             <section id='form-wrapper'>
             <form className="login-form activity-form" onSubmit={e => this.handleLogin(e)}>
                 <h2>Login</h2>
@@ -60,6 +66,7 @@ class LoginForm extends Component {
                 </Link>
             </form>
             </section>
+                </>
         )
     }
 }
