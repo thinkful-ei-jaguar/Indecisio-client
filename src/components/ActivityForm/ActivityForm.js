@@ -9,16 +9,17 @@ export default class ActivityForm extends React.Component {
 		this.state = {
 			name: '',
 			description: '',
+			category: '',
 			toDashboard: false,
 			error: null
 		}};
-	
+	/*
 	static defaultProps = {
 		onSubmitActivitySuccess: () => {
 			this.location.push("/dashboard");
 		}
 	};
-	
+	*/
 	
 	
 	clearError = () => {
@@ -35,13 +36,13 @@ export default class ActivityForm extends React.Component {
 	};
 	
 	handleReset = (event) => {
-		console.log('Reset form')
+		console.log('Reset form');
 		event.preventDefault();
 		this.setState({
 			name: '',
 			description: ''
 		})
-	}
+	};
 	
 	handleSubmit = (event) => {
 		console.log('Submitting: ' + this.state);
@@ -67,7 +68,7 @@ export default class ActivityForm extends React.Component {
 	
 	
 	render() {
-		const { name, description, toDashboard, error } = this.state;
+		const { name, category, description, toDashboard, error } = this.state;
 		
 		if(toDashboard) {
 			return <Redirect to="/dashboard" />
@@ -90,6 +91,19 @@ export default class ActivityForm extends React.Component {
 					       value={name}
 							required
 						/>
+					<label
+						className='form-input-label'
+						htmlFor="category">
+						Name
+					</label>
+					<input className='activity-form-text-input'
+					       name="category"
+					       placeholder='category'
+					       type="text"
+					       onChange={this.handleChange}
+					       value={category}
+					       required
+					/>
 					<label
 						className='form-input-label'
 						htmlFor="description">

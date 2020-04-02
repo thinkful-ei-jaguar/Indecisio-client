@@ -3,7 +3,8 @@
 #dashboard-wrapper {
    margin: 10vh auto;
    display: flex;
-   max-width: 500px;
+   max-width: 600px;
+    padding: 5vh 5vw;
    justify-content: space-between;
     align-items: center;
    flex-basis: 60vw;
@@ -17,14 +18,14 @@
 }
 
 .dashboard {
-   min-width: 75vw;
+   max-width: 75%;
     max-height: 65vh;
    display: flex;
    justify-content: space-between;
    flex-flow: column-reverse wrap;
     align-items: center;
    flex-basis: 40vh;
-   align-items: center;
+
    flex-grow: 4;
    min-height: 90%;
 
@@ -40,7 +41,7 @@ input:focus  {
 .dashboard > h2 {
    color: var(--main-fg);
    font-size: 4vh;
-   font-family: "Gill Sans";
+    font-family: "Gill Sans", monospace;
 }
 
 
@@ -82,12 +83,12 @@ input:focus  {
    border-radius: 5px;
    min-width: 40%;
    font-size: 2.2vh;
-   box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
+   box-shadow: -2px 10px 11px 0 inset rgba(189, 255, 226, 0.22),
                 -1px 3px 3px 3px rgba(25, 62, 124, 0.43);
    transition-property: background;
    transition-duration: .5s;
    transition-timing-function: linear;
-   border: none;
+
 
 }
 .button-primary:focus {
@@ -100,29 +101,33 @@ input:focus  {
 }
 .button-primary:active {
    background-color: hsl(180, 100%, 30%);
-   box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
+   box-shadow: -2px 10px 11px  inset rgba(189, 255, 226, 0.22),
    -1px 3px 3px 3px inset rgba(25, 62, 124, 0.43);
    border: none;
 }
-
+button.get-random-button {
+    width: 100%;
+}
 .display-random-activity, .display-chosen-activity {
-  min-width: 100%;
+  max-width: 100%;
 }
 
 .display-random-activity > p {
-    padding: .5vh 2vw;
+    padding: .3vh .5vw;
 }
 
 .display-random-activity > button {
     margin: 1vh 1vw;
 }
 
-#dashboard-wrapper > section > button
+#dashboard-wrapper > section > button {
+    background: inherit;
+}
 
 
 li.activity-list-item {
 
-  max-width: 90%;
+  max-width: 100%;
   list-style-type: none;
 
   margin-bottom: 0.5em;
@@ -133,8 +138,8 @@ li.activity-list-item {
 }
 
 .activity-list {
-
-    height: 60%;
+    padding: 0;
+    height: 58%;
     overflow: hidden;
     margin-top: 0;
 }
@@ -142,7 +147,7 @@ li.activity-list-item {
 
 .result-wrapper {
     height: 70vh;
-
+    padding: 0;
     display: flex;
     flex-flow: column-reverse nowrap;
     justify-content: space-between;

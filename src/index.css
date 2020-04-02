@@ -3,12 +3,21 @@
 
 :root {
   --main-bg: #275283;
-  --main-fg: #6e97e7;
-  --accent-one:#419ABE;
+
+  --main-fg: #002fab;
+  --accent-one: #419ABE;
   --accent-two: #00dae3;
   --accent-three: #233A85;
   --white: #fdfbfd;
   --light-text: #adf8ff;
+
+
+
+  --bg: #66b6fc; /* Old browsers */
+  --bg-grad3: -moz-linear-gradient(top, hsl(208,96%,69%) 0%, hsl(203,100%,85%) 100%); /* FF3.6-15 */
+  --bg-grad2: -webkit-linear-gradient(top, hsl(208,96%,69%) 0%,hsl(203,100%,85%) 100%); /* Chrome10-25,Safari5.1-6 */
+  --bg-grad: linear-gradient(to bottom, hsl(208,96%,69%) 0%,hsl(203,100%,85%) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
 }
 
 
@@ -33,7 +42,7 @@ code {
 
 body {
   background-color: var(--main-bg);
-  color: white;
+    color: #d2edff;
 }
 h1,h2,h3,h4,h5 {
   color: var(--accent-three);
