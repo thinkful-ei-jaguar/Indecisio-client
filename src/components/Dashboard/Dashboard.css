@@ -3,7 +3,8 @@
 #dashboard-wrapper {
    margin: 10vh auto;
    display: flex;
-   max-width: 500px;
+   max-width: 600px;
+    padding: 5vh 5vw;
    justify-content: space-between;
     align-items: center;
    flex-basis: 60vw;
@@ -17,7 +18,7 @@
 }
 
 .dashboard {
-   min-width: 75vw;
+   max-width: 75%;
     max-height: 65vh;
    display: flex;
    justify-content: space-between;
@@ -104,25 +105,29 @@ input:focus  {
    -1px 3px 3px 3px inset rgba(25, 62, 124, 0.43);
    border: none;
 }
-
+button.get-random-button {
+    width: 100%;
+}
 .display-random-activity, .display-chosen-activity {
-  min-width: 100%;
+  max-width: 100%;
 }
 
 .display-random-activity > p {
-    padding: .5vh 2vw;
+    padding: .3vh .5vw;
 }
 
 .display-random-activity > button {
     margin: 1vh 1vw;
 }
 
-#dashboard-wrapper > section > button
+#dashboard-wrapper > section > button {
+    background: inherit;
+}
 
 
 li.activity-list-item {
 
-  max-width: 90%;
+  max-width: 100%;
   list-style-type: none;
 
   margin-bottom: 0.5em;
