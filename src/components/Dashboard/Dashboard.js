@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
 import ActivityList from '../MyList/MyList'
 import { Link } from 'react-router-dom'
+import UserProfile from '../UserProfile/UserProfile'
 import './Dashboard.css'
 import ActivityService from '../services/activity-service'
 
@@ -106,7 +107,7 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.context.fetchContextActivities()
+    this.context.fetchContextActivities();
     this.setState({
       activityGenerated: false,
       activitySelected: false
@@ -127,8 +128,9 @@ export default class Dashboard extends Component {
   }
 
   render() {
+
     console.log(this.state.categories)
-    return (
+    return (<>
       <div className="activity-form" id="form-wrapper">
         {/* <div className="test-context">
           Hi, this will have context if it is working:
@@ -152,38 +154,45 @@ export default class Dashboard extends Component {
           </select>
       
       </div>
-      
-        
+     
         <section className='result-wrapper'>
         <div className="display-chosen-activity">
-          {this.state.activitySelected && this.context.activities[0] 
+          {this.state.activitySelected && this.context.activities[0]
             ? `You have chosen "${this.context.activities[this.state.randomIndex].name}."  Enjoy!`
             : ''}
         </div>
-        <div className="display-random-activity">
-          <p>{this.context.activities && this.state.activityGenerated
-            ? `Your random activity is: ${this.context.activities[this.state.randomIndex].name}`        
-            : ''}</p>
-          <p>
-          {this.context.activities && this.state.activityGenerated
-            ? `The description is: ${this.context.activities[this.state.randomIndex].description}`        
+  
+          <div className="display-random-activity">
+            <p>{this.context.activities && this.state.activityGenerated
+            ? `Your random activity is: ${this.context.activities[this.state.randomIndex].name}`
+              : ''}</p>
+            <p>
+              {this.context.activities && this.state.activityGenerated
+            ? `The description is: ${this.context.activities[this.state.randomIndex].description}`
             : ''}
-          </p>
-          <p>
-          {this.context.activities && this.state.activityGenerated
-            ? `Last time you ${this.lastDecision()} this choice`        
+            </p>
+            <p>
+              {this.context.activities && this.state.activityGenerated
+            ? `Last time you ${this.lastDecision()} this choice`
             : ''}
-          </p>
-        <div className="button-group">
-          
-          {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
-          {this.state.activityGenerated && <button className="button-cancel" onClick={this.declineRandomActivity}>Decline</button>}
-        </div>
+            </p>
+            <div className="button-group">
+  
+              {!this.state.activityGenerated && <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
+                Random Activity Please!
+              </button>}
+              {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
+              {this.state.activityGenerated && <button className="button-cancel" onClick={this.declineRandomActivity}>Decline</button>}
+            </div>
+        
         
         </div>
         <ActivityList />
         </section>
+        
       </div>
+      <UserProfile />
+      </>
     )
   }
 }

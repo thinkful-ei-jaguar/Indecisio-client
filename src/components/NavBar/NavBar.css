@@ -1,25 +1,69 @@
-.NavBar {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: baseline;
-
-    margin: 0vh auto;
-    overflow: hidden;
-    position: fixed;
-    bottom: 0;
-    width: 100vw;
-    background: var(--accent-three);
+#brand {
+  background-image: url("../../assets/indecisio.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 4vh;
+  width: 30vw;
+  align-self: baseline;
+    margin: 1vh 1vw;
 }
-#navlist {
-    display: flex;
-    width: 90%;
+.header {
+  background-color: hsl(212, 54%, 33%);
+  display: flex;
     justify-content: space-around;
-    list-style-type: none;
+  flex-flow: row nowrap;
+  width: 100vw;
+  align-items: center;
+    align-content: center;
+    border-bottom: 5px solid white;
 }
+.header > button {
+
+  background-color: inherit;
+  border: none;
+    font-size: 2vh;
+    color: white;
+}
+
+.NavBar {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0vh auto;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  z-index: -1;
+
+}
+
+
+
+#navlist {
+    border-top :5px solid white;
+  background: hsl(212, 54%, 33%);
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  list-style-type: none;
+  position: fixed;
+  bottom: 0;
+  margin: 0 auto;
+  padding: 3vh;
+}
+
 #navlist a {
-    text-decoration: none;
-    color: var(--accent-one);
+  text-decoration: none;
+  color: var(--white);
 }
-#nav-link:hover {
-    text-decoration: underline;
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+button.theme-switch {
+    text-align: center;
+    padding: 1vh 1vw;
 }
