@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ProfileService from '../services/profile-service';
-import '../TopActivities/TopActivites.css';
+
 
 export default class TopActivites extends Component {
     state = {

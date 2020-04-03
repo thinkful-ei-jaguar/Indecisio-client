@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import PublicOnlyRoute from './components/PublicOnlyRoute/PublicOnlyRoute'
@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import ActivityForm from './components/ActivityForm/ActivityForm';
 import RegistrationForm from './components/RegistrationForm/RegistrationForm';
 import LoginForm from './components/LoginForm/LoginForm';
+import TopActivites from './components/TopActivities/TopActivities';
 
 
 /**
@@ -25,7 +26,6 @@ export default function App() {
           path={'/'}
           component={RegistrationForm}
         />
-        
         <PublicOnlyRoute
           exact
           path={'/login'}
@@ -37,6 +37,9 @@ export default function App() {
         <PrivateRoute
           path={'/add-activity'}
           component={ActivityForm}/>
+        <Route
+          path={'/top-activities'}
+          component={TopActivites}/>
       </Switch>
     </main>
   );
