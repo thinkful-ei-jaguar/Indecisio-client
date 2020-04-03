@@ -38,7 +38,6 @@ export default class Dashboard extends Component {
       console.log('Accepted Activity - fetching by category:', this.state.filter)
       this.context.fetchContextActivitiesByCategory(this.state.filter)
     }
-    this.context.createContextRandomIndex()
     this.toggleActivityGenerated()
     this.setState({
       activitySelected: false
@@ -112,6 +111,7 @@ export default class Dashboard extends Component {
       filter: event.target.value
     }, () => console.log('Filter changed - current state: ', this.state))
 
+
     
   }
 
@@ -131,21 +131,11 @@ export default class Dashboard extends Component {
       activitySelected: false
     })
     
-    /**
-     * Right now these are just testing the connection to
-     * the back end.  They might need to be used
-     * from within context.
-     */
-
-    ActivityService.fetchCategories()
-      .then(res => this.setState({
-        categories: res
-      }))
   }
 
   render() {
 
-    
+    console.log('Dashboard render, this.context.randomIndex:', this.context.randomIndex)
     return (<>
       <div className="activity-form" id="form-wrapper">
         <div className="test-context">

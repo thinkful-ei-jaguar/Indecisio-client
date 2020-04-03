@@ -24,15 +24,27 @@ export class ActivityProvider extends Component {
    * state for fetched activities
    */
 
+  createContextRandomIndex = () => {
+    let randomActivityIndex = 0;
+    console.log('context.activities.length: ', this.state.activities.length )
+    randomActivityIndex = this.state.activities[0]
+      ? [Math.floor(Math.random() * this.state.activities.length)] 
+      : 0;
+
+    this.setState({
+      randomIndex: randomActivityIndex
+    })
+  }
+
   fetchContextActivities = () => {
     ActivityService.fetchActivities()
       .then(res=> {
         console.log('Fetched this using service function:', res);
 
         this.setState({
-          activities: res, 
+          activities: res,
           randomIndex: 0
-      });
+      }, () => this.createContextRandomIndex());
     })
   }
 
@@ -45,24 +57,17 @@ export class ActivityProvider extends Component {
           return this.fetchContextActivities()
         } else {
           this.setState({
-            activities: res
-          })
+            activities: res,
+            randomIndex: 0
+          }, () => this.createContextRandomIndex())
         }
         
     })
   }
 
-  createContextRandomIndex = () => {
-    let randomActivityIndex = 0;
-    console.log('context.activities.length: ', this.state.activities.length )
-    randomActivityIndex = this.state.activities[0]
-      ? [Math.floor(Math.random() * this.state.activities.length)] 
-      : 0;
 
-    this.setState({
-      randomIndex: randomActivityIndex
-    })
-  }
+
+  
   
 
   render() {
