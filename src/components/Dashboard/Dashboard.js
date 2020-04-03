@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
-import ActivityList from '../MyList/MyList'
+import MyList from '../MyList/MyList'
 import { Link } from 'react-router-dom'
 import UserProfile from '../UserProfile/UserProfile'
 import './Dashboard.css'
@@ -31,6 +31,13 @@ export default class Dashboard extends Component {
   }
 
   getRandomActivity = () => {  
+    if (this.state.filter === '') {
+      console.log('Accepted Activity - fetching all categories')
+      ActivityService.fetchActivities()
+    } else {
+      console.log('Accepted Activity - fetching by category:', this.state.filter)
+      ActivityService.fetchActivitiesByCategory(this.state.filter)
+    }
     this.createRandomIndex()
     this.toggleActivityGenerated()
     this.setState({
@@ -52,11 +59,16 @@ export default class Dashboard extends Component {
         is_accepted: true,
         is_rejected: false
       })
-      .then(res => this.context.fetchContextActivities())
-
-
+      .then(res => {
+        if (this.state.filter === '') {
+          console.log('Accepted Activity - fetching all categories')
+          this.context.fetchContextActivities()
+        } else {
+          console.log('Accepted Activity - fetching by category:', this.state.filter)
+          this.context.fetchContextActivitiesByCategory(this.state.filter)
+        }
+      })
   }
-
   declineRandomActivity = () => {
     console.log('Random activity declined :(')
     ActivityService.updateActivity(
@@ -67,7 +79,15 @@ export default class Dashboard extends Component {
         is_accepted: false,
         is_rejected: true
       })
-      .then(res => this.context.fetchContextActivities())
+      .then(res => {
+        if (this.state.filter === '') {
+          console.log('Declined Activity - fetching all categories')
+          this.context.fetchContextActivities()
+        } else {
+          console.log('Declined Activity - fetching by category:', this.state.filter)
+          this.context.fetchContextActivitiesByCategory(this.state.filter)
+        }
+      })
     this.getRandomActivity()
   }
 
@@ -101,13 +121,22 @@ export default class Dashboard extends Component {
   handleFilterChange = (event) => {
     this.setState({
       filter: event.target.value
-    }, () => console.log(this.state))
+    }, () => console.log('Filter changed - current state: ', this.state))
 
     
   }
 
   componentDidMount() {
-    this.context.fetchContextActivities();
+    
+    
+    if (this.state.filter === '') {
+      console.log('Component did mount - fetching all categories')
+      this.context.fetchContextActivities()
+    } else {
+      console.log('Component did mount - fetching by category:', this.state.filter)
+      this.context.fetchContextActivitiesByCategory(this.state.filter)
+    }
+
     this.setState({
       activityGenerated: false,
       activitySelected: false
@@ -118,42 +147,25 @@ export default class Dashboard extends Component {
      * the back end.  They might need to be used
      * from within context.
      */
+
     ActivityService.fetchCategories()
       .then(res => this.setState({
         categories: res
       }))
-    
-    ActivityService.fetchActivitiesByCategory('Fitness')
-      .then(res=>console.log('Fitness category:', res))
   }
 
   render() {
 
-    console.log(this.state.categories)
+    
     return (<>
       <div className="activity-form" id="form-wrapper">
         {/* <div className="test-context">
           Hi, this will have context if it is working:
           {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
         </div> */}
-        <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
+        {/* <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
           Random Activity Please!
-        </button>
-
-        <div className="dropdown-div">
-          <label htmlFor="filter-select"></label>
-          <select 
-            value={this.state.filter} 
-            onChange={this.handleFilterChange} 
-          >
-            <option id="filter-select" value="Entertainment">Entertainment</option>
-            <option id="filter-select" value="Chores">Chores</option>
-            <option id="filter-select" value="Learn">Learn</option>
-            <option id="filter-select" value="Fitness">Fitness</option>
-            <option id="filter-select" value="Socialize">Socialize</option>
-          </select>
-      
-      </div>
+        </button> */}
      
         <section className='result-wrapper'>
         <div className="display-chosen-activity">
@@ -176,6 +188,22 @@ export default class Dashboard extends Component {
             ? `Last time you ${this.lastDecision()} this choice`
             : ''}
             </p>
+
+          <div className="dropdown-div">
+              <label htmlFor="filter-select" />
+            <select 
+              value={this.state.filter} 
+              onChange={this.handleFilterChange} 
+            >
+              <option id="filter-select" value="Entertainment">Entertainment</option>
+              <option id="filter-select" value="Chores">Chores</option>
+              <option id="filter-select" value="Learn">Learn</option>
+              <option id="filter-select" value="Fitness">Fitness</option>
+              <option id="filter-select" value="Socialize">Socialize</option>
+          </select>
+      
+        </div>
+
             <div className="button-group">
   
               {!this.state.activityGenerated && <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
@@ -187,7 +215,7 @@ export default class Dashboard extends Component {
         
         
         </div>
-        <ActivityList />
+        <MyList />
         </section>
         
       </div>

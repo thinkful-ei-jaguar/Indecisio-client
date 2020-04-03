@@ -35,7 +35,9 @@ export class ActivityProvider extends Component {
   fetchContextActivitiesByCategory = (cat_name) => {
     ActivityService.fetchActivitiesByCategory(cat_name)
       .then(res=> {
-        console.log('Fetched this using category fetch:', res);
+        this.setState({
+          activities: res
+        })
     })
   }
   
