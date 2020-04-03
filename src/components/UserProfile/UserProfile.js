@@ -24,8 +24,8 @@ export default class UserProfile extends Component {
             <h2>Your Top Activities</h2>
             {error && <p>{error}</p>}
             <ol>
-                {topUserActivities.map(activity => {
-                    return <li>
+                {topUserActivities.map((activity, index) => {
+                    return <li key={index}>
                                 <h3>{activity.name}</h3>
                                 {/* <p>You've completed this activity {activity.accepted_count} times!</p> */}
                             </li>
