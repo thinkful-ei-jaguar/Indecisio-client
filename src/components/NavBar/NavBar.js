@@ -36,8 +36,9 @@ class NavBar extends Component {
       <section className="NavBar">
           <div className="header">
             <h1 id='brand'>{''}</h1>
-              
-              <span id='greeting'>Hello, {this.context.user.name}!</span>
+              {TokenService.hasAuthToken()
+                  ? <span id='greeting'>Hello, {this.context.user.name}!</span>
+                  : <></>}
               <ThemeSwitch />
           </div>
          <ul id='navlist'>
