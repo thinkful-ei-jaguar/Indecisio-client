@@ -136,7 +136,7 @@ li.activity-list-item {
 .activity-list {
     padding: 0;
     height: 50%;
-    overflow: fragments;
+    overflow: hidden;
     margin-top: 0;
 }
 
