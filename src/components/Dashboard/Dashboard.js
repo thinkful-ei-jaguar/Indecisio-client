@@ -20,7 +20,8 @@ export default class Dashboard extends Component {
       activities: [],
       randomIndex: 0,
       categories: [],
-      filter: ''
+      filter: '',
+      chosenActivity: {}
     }
   }
 
@@ -48,7 +49,8 @@ export default class Dashboard extends Component {
     console.log('Random activity accepted :)')
     this.setState({
       activityGenerated: false,
-      activitySelected: true
+      activitySelected: true,
+      chosenActivity: this.context.activities[this.context.randomIndex]
     })
     ActivityService.updateActivity(
       this.context.activities[this.context.randomIndex].id,
@@ -59,6 +61,7 @@ export default class Dashboard extends Component {
         is_rejected: false
       })
       .then(res => {
+        
         if (this.state.filter === '') {
           console.log('Accepted Activity - fetching all categories')
           this.context.fetchContextActivities()
@@ -138,10 +141,10 @@ export default class Dashboard extends Component {
     console.log('Dashboard render, this.context.randomIndex:', this.context.randomIndex)
     return (<>
       <div className="activity-form" id="form-wrapper">
-        <div className="test-context">
+        {/* <div className="test-context">
           Hi, this will have context if it is working:
           {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
-        </div>
+        </div> */}
         {/* <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
           Random Activity Please!
         </button> */}
@@ -149,7 +152,7 @@ export default class Dashboard extends Component {
         <section className='result-wrapper'>
         <div className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0]
-            ? `You have chosen "${this.context.activities[this.context.randomIndex].name}."  Enjoy!`
+            ? `You have chosen "${this.state.chosenActivity.name}."  Enjoy!`
             : ''}
         </div>
   
