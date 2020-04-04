@@ -10,9 +10,22 @@ export default class ActivityForm extends React.Component {
 			name: '',
 			description: '',
 			category: '',
+			categories: [],
 			toDashboard: false,
 			error: null
 		}};
+	
+	
+	componentDidMount() {
+		ActivityService.fetchCategories()
+			.then(categories => {
+				this.setState({
+					categories: [...categories]
+				})
+			})
+		console.log(this.state.categories)
+	}
+	
 	/*
 	static defaultProps = {
 		onSubmitActivitySuccess: () => {
@@ -20,6 +33,7 @@ export default class ActivityForm extends React.Component {
 		}
 	};
 	*/
+	
 	
 	
 	clearError = () => {
@@ -36,19 +50,20 @@ export default class ActivityForm extends React.Component {
 	};
 	
 	handleReset = (event) => {
-		console.log('Reset form');
+		console.log('Reset form')
 		event.preventDefault();
 		this.setState({
 			name: '',
+			category: '',
 			description: ''
 		})
-	};
+	}
 	
 	handleSubmit = (event) => {
 		console.log('Submitting: ' + this.state);
 		event.preventDefault();
-		const {name, description} = this.state;
-		const newActivity = {name, description};
+		const {name, category, description} = this.state;
+		const newActivity = {name, category, description};
 		
 		if(!name.length) {
 			this.setState({error: 'Please enter a name for added activity'})
@@ -58,7 +73,7 @@ export default class ActivityForm extends React.Component {
 			
 			ActivityService.postActivity(newActivity)
 				.then(res => {
-					this.setState({name: '', description: '', toDashboard: true})
+					this.setState({name: '', description: '', category: '' ,toDashboard: true})
 				})
 				.catch(res => {
 					this.setState({error: res.error});
@@ -68,8 +83,8 @@ export default class ActivityForm extends React.Component {
 	
 	
 	render() {
-		const { name, category, description, toDashboard, error } = this.state;
-		
+		const { name, description, category, categories, toDashboard, error } = this.state;
+		console.log(category);
 		if(toDashboard) {
 			return <Redirect to="/dashboard" />
 		}
@@ -83,27 +98,31 @@ export default class ActivityForm extends React.Component {
 						htmlFor="name">
 							Name
 					</label>
-					<input className='activity-form-text-input'
-					       name="name"
-					       placeholder='name'
-					       type="text"
-					       onChange={this.handleChange}
-					       value={name}
-							required
-						/>
-					<label
-						className='form-input-label'
-						htmlFor="category">
-						Name
-					</label>
-					<input className='activity-form-text-input'
-					       name="category"
-					       placeholder='category'
-					       type="text"
-					       onChange={this.handleChange}
-					       value={category}
-					       required
+					<input
+						className='activity-form-text-input'
+						name="name"
+						placeholder='name'
+						type="text"
+						onChange={this.handleChange}
+						aria-label="name"
+						value={name}
+						required
 					/>
+				
+						<label
+							className='form-input-label'
+							htmlFor="category">
+							Category
+						</label>
+						<select
+							className='activity-category-select'
+							name='category'
+							value={category.id}
+							onChange={this.handleChange}>
+							{categories.map(category => (
+								<option id={category.id} key={category.id}>{category.cat_name}</option>
+							))}
+						</select>
 					<label
 						className='form-input-label'
 						htmlFor="description">

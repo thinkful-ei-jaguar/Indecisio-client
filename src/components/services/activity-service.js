@@ -9,7 +9,11 @@ const ActivityService = {
 			headers: {
 				'content-type': 'application/json',
 				'authorization': `Bearer ${TokenService.getAuthToken()}`},
-			body: JSON.stringify({name: newActivity.name, description: newActivity.description})
+			body: JSON.stringify({
+				name: newActivity.name,
+				description: newActivity.description,
+				category: newActivity.category
+			})
 		})
 			.then(res => res.ok
 				? Promise.resolve(res.json())
@@ -29,6 +33,20 @@ const ActivityService = {
 				: Promise.reject('Cannot get Activities')
 			)
 	
+	},
+	
+	fetchCategories : () => {
+		return fetch(`${config.API_ENDPOINT}/categories`, {
+			method: 'GET',
+			headers: {
+				'content-type': 'application/json',
+				'authorization': `Bearer ${TokenService.getAuthToken()}`
+			}
+		})
+			.then(res => res.ok
+				? Promise.resolve(res.json())
+				: Promise.reject('Cannot get categories')
+			)
 	},
 
 	fetchActivitiesByCategory : (cat_name) => {
