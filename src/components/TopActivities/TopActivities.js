@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import ProfileService from '../services/profile-service';
+import TokenService from '../services/token-service'
+import UserProfile from '../UserProfile/UserProfile'
 
 
 export default class TopActivites extends Component {
@@ -19,7 +21,7 @@ export default class TopActivites extends Component {
 
     render() {
         const {error, topActivities} = this.state
-        return(
+        return( <>
         <section id="form-wrapper">
             <h2>Top Activity Suggestions</h2>
             <p>Activities most loved by Indeciders like you!</p>
@@ -28,11 +30,16 @@ export default class TopActivites extends Component {
                 {topActivities.map(activity => {
                     return <li>
                                 <h3>{activity.name}</h3>
-                                {/* <p>You've completed this activity {activity.accepted_count} times!</p> */}
                             </li>
                 })}
             </ol>
         </section>
+        {TokenService.hasAuthToken()
+            ? <section id="form-wrapper">
+                <UserProfile />
+              </section>
+            : <></>}
+        </>
         )
     }
 }
