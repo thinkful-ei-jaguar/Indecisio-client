@@ -96,11 +96,6 @@ export class ActivityProvider extends Component {
     })
   }
 
-
-
-  
-  
-
   render() {
     
     const value = {

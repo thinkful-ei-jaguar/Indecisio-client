@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
@@ -9,10 +9,15 @@ import RegistrationForm from './components/RegistrationForm/RegistrationForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import AppHeader from './components/AppHeader/AppHeader';
 import TopActivities from './components/TopActivities/TopActivities';
+import UserContext from './components/contexts/UserContext';
 /**
  * We could probably change App to be a functional component -Blade 03-25-20
  */
-export default function App() {
+export default class App extends Component {
+  static contextType = UserContext;
+  render () {
+  console.log('user from context:', this.context.user.id)
+  
   return (
     <main className='App'>
       <AppHeader />
@@ -28,9 +33,13 @@ export default function App() {
           path={'/login'}
           component={LoginForm}
         />
+
         <PrivateRoute 
           path={'/dashboard'}
+          props={this.context.user.id}
           component={Dashboard}/>
+
+
         <PrivateRoute
           path={'/add-activity'}
           component={ActivityForm}/>
@@ -41,5 +50,6 @@ export default function App() {
         <NavBar />
     </main>
   );
+  }
 }
 

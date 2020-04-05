@@ -162,7 +162,7 @@ export default class Dashboard extends Component {
   }
 
   render() {
-
+    console.log("Props?", this.props)
     return (<>
       <div className="activity-form" id="form-wrapper">
         <section className='result-wrapper'>
