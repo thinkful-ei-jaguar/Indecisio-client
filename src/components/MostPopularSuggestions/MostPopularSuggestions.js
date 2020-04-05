@@ -1,8 +1,11 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
+import TokenService from '../services/token-service';
 import ProfileService from '../services/profile-service';
-import TopActivityItem from '../TopActivityItem/TopActivityItem'
+import TopActivityItem from '../TopActivityItem/TopActivityItem';
 
 export default class MostPopularSuggestions extends Component {
+    
     state = {
         error: null,
         topActivities: []
@@ -30,9 +33,18 @@ export default class MostPopularSuggestions extends Component {
             <h2>Top Activity Suggestions</h2>
             <p>Activities most loved by Indeciders like you!</p>
             {error && <p>{error}</p>}
-            <ol>
+            {topActivities.length === 0 
+            ? <>
+                <h2>No One Has Decided to do Anything Yet!</h2>
+                {TokenService.hasAuthToken()
+                    ? <Link to='/dashboard'>Get Started Today!</Link>
+                    :<Link to='/'>Get Started Today!</Link>
+                }
+              </>  
+            :<ol>
                 {topActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
-            </ol>
+             </ol>
+            }
         </section>
         )
     }

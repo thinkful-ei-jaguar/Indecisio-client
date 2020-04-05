@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import ProfileService from '../services/profile-service';
 import UserContext from '../contexts/UserContext';
-import TopActivityItem from '../TopActivityItem/TopActivityItem'
+import TopActivityItem from '../TopActivityItem/TopActivityItem';
 import '../UserProfile/UserProfile.css';
 
 export default class UserProfile extends Component {
@@ -34,9 +35,15 @@ export default class UserProfile extends Component {
             <h2>{user.name}'s Top Activities</h2>
             <p>Activities most loved by you!</p>
             {error && <p>{error}</p>}
-            <ol>
-                {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} key={index}/>)}
-            </ol>
+            {topUserActivities.length === 0 
+            ? <>
+                <h2>You haven't decided to do anything yet!</h2>
+                <Link to='/dashboard'>Get Started Today!</Link>
+              </>
+            :<ol>
+                {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
+             </ol>
+            }
             </section>
         )
     }
