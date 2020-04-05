@@ -232,5 +232,6 @@ export default class Dashboard extends Component {
 }
 
 Dashboard.defaultProps = {
-  activities: []
+  activities: [],
+  user: 0
 }

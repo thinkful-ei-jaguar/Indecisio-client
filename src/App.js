@@ -36,7 +36,7 @@ export default class App extends Component {
 
         <PrivateRoute 
           path={'/dashboard'}
-          props={this.context.user.id}
+          user={this.context.user.id}
           component={Dashboard}/>
 
 
