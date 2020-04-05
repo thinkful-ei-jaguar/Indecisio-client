@@ -7,14 +7,6 @@ state = {
     topActivities: []
 }
 
-componentDidMount() {
-    ProfileService.getTopActvities()
-        .then(res => {
-            this.setState({
-                topActivities: res
-            })
-        })
-}
 
 render() {
     const {error, topActivities} = this.state
