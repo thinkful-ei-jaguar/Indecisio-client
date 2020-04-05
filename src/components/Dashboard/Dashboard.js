@@ -21,6 +21,7 @@ export default class Dashboard extends Component {
       randomIndex: 0,
       categories: [],
       filter: '',
+      creatorFilter: 'global',
       chosenActivity: {}
     }
   }
@@ -32,6 +33,9 @@ export default class Dashboard extends Component {
   }
 
   getRandomActivity = () => {  
+    if(this.state.creatorFilter === 'me') {
+      return this.getUserActivities()
+    }
     if (this.state.filter === '') {
       console.log('Accepted Activity - fetching all categories')
       this.context.fetchContextActivities()
@@ -73,6 +77,9 @@ export default class Dashboard extends Component {
   }
   declineRandomActivity = () => {
     console.log('Random activity declined :(')
+    if (this.state.creatorFilter === 'me') {
+      return this.getUserActivities()
+    }
     ActivityService.updateActivity(
       this.context.activities[this.context.randomIndex].id,
       {
@@ -94,29 +101,47 @@ export default class Dashboard extends Component {
   }
 
   lastDecision = () => {
-    if (this.context.activities[this.context.randomIndex].is_rejected && !this.context.activities[this.context.randomIndex].is_accepted) {
-      
+    if (this.context.activities[this.context.randomIndex].is_rejected && !this.context.activities[this.context.randomIndex].is_accepted) {  
       return 'rejected'
     }
     else if (!this.context.activities[this.context.randomIndex].is_rejected && this.context.activities[this.context.randomIndex].is_accepted) {
-      
       return 'accepted'
     }
     else {
-    
       return 'neither accepted nor rejected'
     }
-
   }
 
   handleFilterChange = (event) => {
     this.setState({
       filter: event.target.value
     }, () => console.log('Filter changed - current state: ', this.state))
+  }
 
+  handleCreatorFilterChange = (event) => {
+    this.setState({
+      creatorFilter: event.target.value
+    }, () => console.log('Creator filter changed - current state: ', this.state))
+  }
 
+  /**
+   * Need to change getUserActivities so that it gets the actual
+   * user_id, probably passing it in as props.
+   */
+  getUserActivities = () => {
+    if (this.state.filter === '') {
+      this.context.fetchContextUserActivities(2)
+    } else {
+      this.context.fetchContextUserActivitiesByCategory(2, this.state.filter)
+    }
+    this.toggleActivityGenerated()
+    this.setState({
+      activitySelected: false
+    })
     
   }
+
+
 
   componentDidMount() {
     
@@ -138,17 +163,8 @@ export default class Dashboard extends Component {
 
   render() {
 
-    console.log('Dashboard render, this.context.randomIndex:', this.context.randomIndex)
     return (<>
       <div className="activity-form" id="form-wrapper">
-        {/* <div className="test-context">
-          Hi, this will have context if it is working:
-          {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
-        </div> */}
-        {/* <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
-          Random Activity Please!
-        </button> */}
-     
         <section className='result-wrapper'>
         <div className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0]
@@ -185,10 +201,17 @@ export default class Dashboard extends Component {
               <option id="filter-select" value="Socialize">Socialize</option>
           </select>
       
+          <label htmlFor="creator-filter-select">Filter by creator:</label>
+            <select 
+              value={this.state.creatorFilter} 
+              onChange={this.handleCreatorFilterChange} 
+            >
+              <option id="creator-filter-select" value="global">Created by anyone</option>
+              <option id="creator-filter-select" value="me">Created by me</option>
+          </select>
         </div>
 
             <div className="button-group">
-  
               {!this.state.activityGenerated && <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
                 Random Activity Please!
               </button>}
