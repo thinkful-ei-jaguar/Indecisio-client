@@ -26,10 +26,10 @@ export default class TopActivityItem extends Component {
         return (
             <>
                 {expanded 
-                    ? <li key={key}><h3>{activity.name}</h3>
-                            <p>{activity.description}</p>
+                    ? <li key={key}><h3>{activity.name} <button onClick={e => this.handleClose()}>Close</button></h3>
+                            <p>{activity.description} </p>
                             <p>This activity was accepted {activity.accepted_count || activity.global_accepted_count} times!</p>
-                            <button onClick={e => this.handleClose()}>Close</button>
+                            
                         </li>
                     : <li key={key}>{activity.name} <button onClick={e => this.handleOpen()}>Open</button></li>}
             </>
