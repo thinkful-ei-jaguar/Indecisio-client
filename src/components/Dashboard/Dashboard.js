@@ -172,11 +172,12 @@ export default class Dashboard extends Component {
             </p>
 
           <div className="dropdown-div">
-              <label htmlFor="filter-select" />
+              <label htmlFor="filter-select">Filter by Category:</label>
             <select 
               value={this.state.filter} 
               onChange={this.handleFilterChange} 
             >
+              <option id="filter-select" value="">All Categories</option>
               <option id="filter-select" value="Entertainment">Entertainment</option>
               <option id="filter-select" value="Chores">Chores</option>
               <option id="filter-select" value="Learn">Learn</option>
