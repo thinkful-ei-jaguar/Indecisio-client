@@ -165,7 +165,7 @@ export default class Dashboard extends Component {
     return (<>
       <div className="activity-form" id="form-wrapper">
         <section className='result-wrapper'>
-        <div className="display-chosen-activity">
+        <div id="chosen" className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0]
             ? `You have chosen "${this.state.chosenActivity.name}."  Enjoy!`
             : ''}

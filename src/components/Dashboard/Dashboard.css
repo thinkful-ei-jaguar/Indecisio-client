@@ -123,7 +123,6 @@ input:focus  {
    transition-duration: .5s;
    transition-timing-function: linear;
    border: none;
-
 }
 .button-primary:focus {
    outline: none;
@@ -143,7 +142,12 @@ button.get-random-button {
     width: 100%;
 }
 .display-random-activity, .display-chosen-activity {
-  max-width: 100%;
+    max-width: 100%;
+    color: var(--white);
+}
+
+#chosen {
+    color: var(--white);
 }
 
 .display-random-activity > p {
