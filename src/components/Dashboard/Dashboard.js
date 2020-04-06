@@ -143,7 +143,7 @@ export default class Dashboard extends Component {
 
 
   componentDidMount() {
-    
+    console.log('USER: ' + this.props.user);
     
     if (this.state.filter === '') {
       console.log('Component did mount - fetching all categories')
