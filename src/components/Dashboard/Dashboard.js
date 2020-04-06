@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
 import MyList from '../MyList/MyList'
 import { Link } from 'react-router-dom'
-import UserProfile from '../UserProfile/UserProfile'
 import './Dashboard.css'
 import ActivityService from '../services/activity-service'
 
@@ -225,7 +224,7 @@ export default class Dashboard extends Component {
         </section>
         
       </div>
-      <UserProfile />
+      
       </>
     )
   }
