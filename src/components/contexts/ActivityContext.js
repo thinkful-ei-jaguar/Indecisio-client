@@ -4,7 +4,9 @@ import ActivityService from '../services/activity-service'
 const ActivityContext = React.createContext({
   activities: [],
   fetchContextActivities: () => {},
+  fetchContextUserActivities: () => {},
   fetchContextActivitiesByCategory: () => {},
+  fetchContextUserActivitiesByCategory: () => {},
   postActivity: () => {},
   createContextRandomIndex: () => {}
 });
@@ -48,6 +50,18 @@ export class ActivityProvider extends Component {
     })
   }
 
+  fetchContextUserActivities = (user_id) => {
+    ActivityService.fetchUserActivities(user_id)
+      .then(res=> {
+        console.log('Fetched user activities with service function:', res);
+
+        this.setState({
+          activities: res,
+          randomIndex: 0
+      }, () => this.createContextRandomIndex());
+    })
+  }
+
   fetchContextActivitiesByCategory = (cat_name) => {
     ActivityService.fetchActivitiesByCategory(cat_name)
       .then(res=> {
@@ -65,18 +79,32 @@ export class ActivityProvider extends Component {
     })
   }
 
-
-
-  
-  
+  fetchContextUserActivitiesByCategory = (user_id, cat_name) => {
+    ActivityService.fetchUserActivitiesByCategory(user_id, cat_name)
+      .then(res=> {
+        console.log('Res from fetch user activities by category:', res)
+        if (res.length === 0) {
+          console.log('You have no activities in that category')
+          return this.fetchContextUserActivities()
+        } else {
+          this.setState({
+            activities: res,
+            randomIndex: 0
+          }, () => this.createContextRandomIndex())
+        }
+        
+    })
+  }
 
   render() {
     
     const value = {
       fetchContextActivities: this.fetchContextActivities,
+      fetchContextUserActivities: this.fetchContextUserActivities,
       activities: this.state.activities,
       randomIndex: this.state.randomIndex,
       fetchContextActivitiesByCategory: this.fetchContextActivitiesByCategory,
+      fetchContextUserActivitiesByCategory: this.fetchContextUserActivitiesByCategory,
       createContextRandomIndex: this.createContextRandomIndex
     }
 
