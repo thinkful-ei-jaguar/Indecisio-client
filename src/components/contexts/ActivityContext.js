@@ -28,7 +28,7 @@ export class ActivityProvider extends Component {
     let randomActivityIndex = 0;
     console.log('context.activities.length: ', this.state.activities.length )
     randomActivityIndex = this.state.activities[0]
-      ? [Math.floor(Math.random() * this.state.activities.length)] 
+      ? (Math.floor(Math.random() * this.state.activities.length)) 
       : 0;
 
     this.setState({
