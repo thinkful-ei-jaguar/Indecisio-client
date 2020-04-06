@@ -3,6 +3,7 @@ import ActivityService from '../services/activity-service'
 
 const ActivityContext = React.createContext({
   activities: [],
+  emptyMessage: '',
   fetchContextActivities: () => {},
   fetchContextUserActivities: () => {},
   fetchContextActivitiesByCategory: () => {},
@@ -18,7 +19,8 @@ export class ActivityProvider extends Component {
     super(props);
     this.state = {
       activities: [],
-      randomIndex: 0
+      randomIndex: 0,
+      emptyMessage: ''
     }
   }
   /**
@@ -68,11 +70,15 @@ export class ActivityProvider extends Component {
         console.log('Res from fetch activities by category:', res)
         if (res === 'No activity with that category') {
           console.log('You have no activities in that category')
+          this.setState({
+            emptyMessage: 'You have no activities in that category.  Here is an activity from another category: '
+          })
           return this.fetchContextActivities()
         } else {
           this.setState({
             activities: res,
-            randomIndex: 0
+            randomIndex: 0,
+            emptyMessage: ''
           }, () => this.createContextRandomIndex())
         }
         
@@ -85,6 +91,9 @@ export class ActivityProvider extends Component {
         console.log('Res from fetch user activities by category:', res)
         if (res.length === 0) {
           console.log('You have no activities in that category')
+          this.setState({
+            emptyMessage: 'You have not created any activities in that category.  Here is an activity from another cateogry that you created:'
+          })
           return this.fetchContextUserActivities()
         } else {
           this.setState({
@@ -102,6 +111,7 @@ export class ActivityProvider extends Component {
       fetchContextActivities: this.fetchContextActivities,
       fetchContextUserActivities: this.fetchContextUserActivities,
       activities: this.state.activities,
+      emptyMessage: this.state.emptyMessage,
       randomIndex: this.state.randomIndex,
       fetchContextActivitiesByCategory: this.fetchContextActivitiesByCategory,
       fetchContextUserActivitiesByCategory: this.fetchContextUserActivitiesByCategory,
