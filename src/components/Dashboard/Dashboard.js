@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
-import MyList from '../MyList/MyList'
+import TopActivities from '../TopActivities/TopActivities';
 import { Link } from 'react-router-dom'
 import UserProfile from '../UserProfile/UserProfile'
 import './Dashboard.css'
@@ -18,9 +18,7 @@ export default class Dashboard extends Component {
       activityGenerated: false,
       activitySelected: true,
       activities: [],
-      randomIndex: 0,
-      categories: [],
-      filter: ''
+      randomIndex: 0
     }
   }
 
@@ -30,14 +28,8 @@ export default class Dashboard extends Component {
     })
   }
 
-  getRandomActivity = () => {  
-    if (this.state.filter === '') {
-      console.log('Accepted Activity - fetching all categories')
-      this.context.fetchContextActivities()
-    } else {
-      console.log('Accepted Activity - fetching by category:', this.state.filter)
-      this.context.fetchContextActivitiesByCategory(this.state.filter)
-    }
+  getRandomActivity = () => {
+    this.createRandomIndex()
     this.toggleActivityGenerated()
     this.setState({
       activitySelected: false
@@ -51,115 +43,89 @@ export default class Dashboard extends Component {
       activitySelected: true
     })
     ActivityService.updateActivity(
-      this.context.activities[this.context.randomIndex].id,
+      this.context.activities[this.state.randomIndex].id,
       {
-        name: this.context.activities[this.context.randomIndex].name,
-        description: this.context.activities[this.context.randomIndex].description,
+        name: this.context.activities[this.state.randomIndex].name,
+        description: this.context.activities[this.state.randomIndex].description,
         is_accepted: true,
         is_rejected: false
       })
-      .then(res => {
-        if (this.state.filter === '') {
-          console.log('Accepted Activity - fetching all categories')
-          this.context.fetchContextActivities()
-        } else {
-          console.log('Accepted Activity - fetching by category:', this.state.filter)
-          this.context.fetchContextActivitiesByCategory(this.state.filter)
-        }
-      })
+      .then(res => this.context.fetchContextActivities())
+
+
   }
+
   declineRandomActivity = () => {
     console.log('Random activity declined :(')
     ActivityService.updateActivity(
-      this.context.activities[this.context.randomIndex].id,
+      this.context.activities[this.state.randomIndex].id,
       {
-        name: this.context.activities[this.context.randomIndex].name,
-        description: this.context.activities[this.context.randomIndex].description,
+        name: this.context.activities[this.state.randomIndex].name,
+        description: this.context.activities[this.state.randomIndex].description,
         is_accepted: false,
         is_rejected: true
       })
-      .then(res => {
-        if (this.state.filter === '') {
-          console.log('Declined Activity - fetching all categories')
-          this.context.fetchContextActivities()
-        } else {
-          console.log('Declined Activity - fetching by category:', this.state.filter)
-          this.context.fetchContextActivitiesByCategory(this.state.filter)
-        }
-      })
+      .then(res => this.context.fetchContextActivities())
     this.getRandomActivity()
   }
 
+  createRandomIndex = () => {
+    let randomActivityIndex = 0;
+    randomActivityIndex = this.context.activities[0]
+      ? [Math.floor(Math.random() * this.context.activities.length)]
+      : 0;
+
+    this.setState({
+      randomIndex: randomActivityIndex
+    })
+  }
+
   lastDecision = () => {
-    if (this.context.activities[this.context.randomIndex].is_rejected && !this.context.activities[this.context.randomIndex].is_accepted) {
-      
+    if (this.context.activities[this.state.randomIndex].is_rejected && !this.context.activities[this.state.randomIndex].is_accepted) {
+      console.log('rejected')
       return 'rejected'
     }
-    else if (!this.context.activities[this.context.randomIndex].is_rejected && this.context.activities[this.context.randomIndex].is_accepted) {
-      
+    else if (!this.context.activities[this.state.randomIndex].is_rejected && this.context.activities[this.state.randomIndex].is_accepted) {
+      console.log('accepted')
       return 'accepted'
     }
     else {
-    
+      console.log('neither')
       return 'neither accepted nor rejected'
     }
 
   }
 
-  handleFilterChange = (event) => {
-    this.setState({
-      filter: event.target.value
-    }, () => console.log('Filter changed - current state: ', this.state))
-
-
-    
-  }
-
   componentDidMount() {
-    
-    
-    if (this.state.filter === '') {
-      console.log('Component did mount - fetching all categories')
-      this.context.fetchContextActivities()
-    } else {
-      console.log('Component did mount - fetching by category:', this.state.filter)
-      this.context.fetchContextActivitiesByCategory(this.state.filter)
-    }
-
+    this.context.fetchContextActivities();
     this.setState({
       activityGenerated: false,
       activitySelected: false
     })
-    
   }
 
   render() {
-
-    console.log('Dashboard render, this.context.randomIndex:', this.context.randomIndex)
     return (<>
-      <div className="activity-form" id="form-wrapper">
-        <div className="test-context">
+    
+      <div className="activity-form flyer" id="form-wrapper">
+        {/* <div className="test-context">
           Hi, this will have context if it is working:
           {this.context.activities[0] ? this.context.activities[0].name : 'context is not working'}
-        </div>
-        {/* <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
-          Random Activity Please!
-        </button> */}
-     
+        </div> */}
         <section className='result-wrapper'>
         <div className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0]
-            ? `You have chosen "${this.context.activities[this.context.randomIndex].name}."  Enjoy!`
+            ? `You have chosen "${this.context.activities[this.state.randomIndex].name}."  Enjoy!`
             : ''}
         </div>
   
           <div className="display-random-activity">
             <p>{this.context.activities && this.state.activityGenerated
-            ? `Your random activity is: ${this.context.activities[this.context.randomIndex].name}`
+            ? `Your random activity is: ${this.context.activities[this.state.randomIndex].name}`
               : ''}</p>
             <p>
               {this.context.activities && this.state.activityGenerated
-            ? `The description is: ${this.context.activities[this.context.randomIndex].description}`
+            ? `The description is: ${this.context.activities[this.state.randomIndex].description}`
             : ''}
             </p>
             <p>
@@ -167,22 +133,6 @@ export default class Dashboard extends Component {
             ? `Last time you ${this.lastDecision()} this choice`
             : ''}
             </p>
-
-          <div className="dropdown-div">
-              <label htmlFor="filter-select" />
-            <select 
-              value={this.state.filter} 
-              onChange={this.handleFilterChange} 
-            >
-              <option id="filter-select" value="Entertainment">Entertainment</option>
-              <option id="filter-select" value="Chores">Chores</option>
-              <option id="filter-select" value="Learn">Learn</option>
-              <option id="filter-select" value="Fitness">Fitness</option>
-              <option id="filter-select" value="Socialize">Socialize</option>
-          </select>
-      
-        </div>
-
             <div className="button-group">
   
               {!this.state.activityGenerated && <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
@@ -194,11 +144,11 @@ export default class Dashboard extends Component {
         
         
         </div>
-        <MyList />
-        </section>
         
+        </section>
+        <UserProfile />
       </div>
-      <UserProfile />
+  
       </>
     )
   }

@@ -8,13 +8,26 @@
   --accent-one: #419ABE;
   --accent-two: #00dae3;
   --accent-three: #233A85;
-  --white: #fdfbfd;
+  --white: #bedafd;
   --light-text: #adf8ff;
 
+  --navbar-bg: hsl(212, 54%, 33%);
+}
 
+  .dark {
+  main-bg: #275283;
+  main-fg: #419ABE;
+  accent-one: #56e3e3;
+  accent-two: #233A85;
+  accent-three: #6e97e7;
+  }
 
-
-
+light {
+  main-bg: #e7e7e7;
+  main-fg: #275283;
+  accent-one: #6e97e7;
+  accent-two: #233A85 ;
+  accent-three: #56e3e3;
 }
 
 
@@ -39,13 +52,14 @@ code {
 
 body {
   background-color: var(--main-bg);
-    color: #d2edff;
+    color: var(--main-fg);
+
 }
 h1,h2,h3,h4,h5 {
-  color: var(--accent-two);
+  color: var(--white);
 }
 #form-wrapper > form > h2 {
-  color: var(--accent-three);
+  color: var(--white);
 }
 
 .app-header {

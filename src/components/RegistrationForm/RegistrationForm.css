@@ -17,13 +17,13 @@
     cursor: pointer;
     background: linear-gradient(145deg, rgba(190, 190, 190, 0.6) 4%, hsla(234, 16%, 53%, 0.58)99%);
     color: white;
-    padding: 1vh 1vw;
+    padding: .5vh .5vw;
     border-radius: 5px;
     text-align: center;
     width: 45%;
     font-size: 1.5vh;
-    box-shadow: -5px -5px 10px rgba(124, 160, 185, 0.67),
-    5px 5px 10px rgba(33, 41, 54, 0.75);
+    box-shadow: -5px -5px 15px rgba(62, 128, 238, 0.67),
+    5px 5px 15px rgba(33, 41, 54, 0.75);
     transition-property: background;
     transition-duration: 2s;
     transition-timing-function: ease-in-out;

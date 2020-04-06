@@ -12,7 +12,8 @@ const ActivityService = {
 			body: JSON.stringify({
 				name: newActivity.name,
 				description: newActivity.description,
-				category: newActivity.category
+				category_id: newActivity.category,
+				creator_id: newActivity.creator
 			})
 		})
 			.then(res => res.ok
@@ -48,7 +49,7 @@ const ActivityService = {
 				: Promise.reject('Cannot get categories')
 			)
 	},
-
+	
 	fetchActivitiesByCategory : (cat_name) => {
     return fetch(`${config.API_ENDPOINT}/categories/${cat_name}`, {
       method: 'GET',
@@ -78,20 +79,7 @@ const ActivityService = {
 			: Promise.reject('An error occured while trying to update')
 		)},
 
-	fetchCategories: () => {
-		return fetch(`${config.API_ENDPOINT}/categories`, {
-			method: 'GET',
-			headers : {
-    		'content-type': 'application/json',
-				'authorization': `Bearer ${TokenService.getAuthToken()}`
-			 },
-		})
-		.then(res => res.json())
-	},
-
-	fetchByCategory: () => {
-
-	}
+	
 }	
 
 export default ActivityService;

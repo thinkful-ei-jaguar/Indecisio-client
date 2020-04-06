@@ -33,7 +33,7 @@ export function ThemeProvider (props) {
 	
 	const toggle = () => {
 		const body = document.getElementsByTagName('body')[0];
-		body.style.cssText = 'transition: background 3s ease';
+		body.style.cssText = 'transition: background .5s ease';
 		
 		setDark(!dark);
 		window.localStorage.setItem('darkTheme', !dark);
@@ -53,14 +53,15 @@ const darkTheme = [
 	'--main-bg: #275283',
 	'--main-fg: #419ABE',
 	'--accent-one: #56e3e3',
-	'--accent-two: #6e97e7',
-	'--accent-three: #233A85'
+	'--accent-three: #6e97e7',
+	'--accent-two: #233A85',
+	'--white: white '
 ]
 
 const lightTheme = [
 	'--main-bg: #e7e7e7 ',
 	'--main-fg: #275283 ',
 	'--accent-one: #6e97e7',
-	'--accent-two: #233A85 ',
-	'--accent-three: #56e3e3 '
+	'--main-fg: #233A85 ',
+	'--accent-three: #56e3e3'
 ]

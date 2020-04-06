@@ -110,11 +110,11 @@ class RegistrationForm extends Component {
                 {error && (<ValidationError message={error}/>)}
                 {touched && (<ValidationError message={this.validatePassword()}/>)}
                     <label className='form-input-label' htmlFor='name'>Name</label>
-                        <input className='registration-form-text-input activity-form-text-input' ref={this.firstInput} name='name' placeholder='Name' type='text' required/>
+                        <input className='registration-form-text-input activity-form-text-input' ref={this.firstInput} name='name' placeholder='Name' type='text' aria-label="name" required/>
                     <label className='form-input-label' htmlFor='username'>Username</label>
-                        <input className='registration-form-text-input activity-form-text-input' name='username' placeholder='Username' type='text' required/>
+                        <input className='registration-form-text-input activity-form-text-input' name='username' placeholder='Username' type='text' aria-label="username" required/>
                     <label className='form-input-label' htmlFor='password'/>
-                        <input className='registration-form-text-input activity-form-text-input' onChange={e => this.passwordUpdated(e.currentTarget.value)} name='password' placeholder='Password' type='password' required/>
+                        <input className='registration-form-text-input activity-form-text-input' onChange={e => this.passwordUpdated(e.currentTarget.value)}aria-label='password' name='password' placeholder='Password' type='password' required/>
                     <button className='button-primary' type='submit'>Submit</button>
                     <button className='button-guest' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
                     <Link to='/login' className='register-redirect-link'>

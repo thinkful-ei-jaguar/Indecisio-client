@@ -1,32 +1,45 @@
 
 
 #form-wrapper {
-   margin: 1vh auto;
-   display: flex;
-   max-width: 600px;
+    margin: 1vh auto;
+    display: flex;
+    max-width: 80vw;
     padding: 1vh 1vw;
-   justify-content: space-around;
+    justify-content: space-around;
     align-items: center;
-   flex-basis: 60vw;
-   border-radius: 10px;
-   flex-flow: column  nowrap;
-   background-color: var(--main-fg);
-   min-height: 60vh;
+    flex-basis: 60vw;
+    border-radius: 10px;
+    flex-flow: column nowrap;
+    background-color: var(--main-fg);
+    min-height: 60vh;
     max-height: 80vh;
-
-   
+    animation: flyin 0.5s 1 0s ease-in-out;
 }
 
+@keyframes flyin {
+    0%{
+        transform: scale(0);
+
+    }
+    100%{
+        transform: scale(1);
+
+    }
+}
+
+
+
+
 .dashboard {
-   max-width: 75%;
+    max-width: 75%;
     max-height: 80vh    ;
-   display: flex;
-   justify-content: space-around;
-   flex-flow: column wrap;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: column wrap;
     align-items: center;
-   flex-basis: 40vh;
-   align-items: center;
-   flex-grow: 4;
+    flex-basis: 40vh;
+    align-items: center;
+    flex-grow: 4;
 
 
 }
