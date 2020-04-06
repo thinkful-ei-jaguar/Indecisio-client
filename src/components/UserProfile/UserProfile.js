@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 import ProfileService from '../services/profile-service';
 import UserContext from '../contexts/UserContext';
+import TopActivityItem from '../TopActivityItem/TopActivityItem';
 import '../UserProfile/UserProfile.css';
 
 export default class UserProfile extends Component {
@@ -8,20 +10,7 @@ export default class UserProfile extends Component {
 
     state = {
         error: null,
-        topUserActivities: [],
-        expanded: false
-    }
-
-    handleOpen = () => {
-        this.setState({
-            expanded: true
-        })
-    }
-
-    handleClose = () => {
-        this.setState({
-            expanded: false
-        })
+        topUserActivities: []
     }
 
     componentDidMount() {
@@ -40,23 +29,25 @@ export default class UserProfile extends Component {
 
     render() {
         const {user} = this.context
-        const {error, topUserActivities, expanded} = this.state
+        const {error, topUserActivities} = this.state
         return(
-        <section id="form-wrapper">
+            <section id="form-wrapper">
             <h2>{user.name}'s Top Activities</h2>
+            
             {error && <p>{error}</p>}
-            <ol>
-                {topUserActivities.map((activity, index) => {
-                    return <li key={index}>
-                                {expanded 
-                                    ?<><h3>{activity.name}</h3><p>{activity.description}</p>
-                                        <p>You've completed this activity {activity.accepted_count} times!</p>
-                                        <p onClick={e => this.handleClose()}>close meh!</p></>
-                                    :<><h3>{activity.name}</h3><p onClick={e => this.handleOpen()}>click meh!</p></>}
-                            </li>
-                })}
-            </ol>
-        </section>
+            {topUserActivities.length === 0 
+            ? <>
+                <h2>You haven't decided to do anything yet!</h2>
+                <Link to='/dashboard'>Get Started Today!</Link>
+              </>
+            :<>
+                <p>Activities most loved by you!</p>
+                <ol>
+                    {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
+                </ol>
+             </>
+            }
+            </section>
         )
     }
 }
