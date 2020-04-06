@@ -21,8 +21,10 @@ export default class ActivityList extends Component {
     return (
       <ul className="activity-list">
         <h2>Recently Suggested Activities: </h2>
-        {console.log('activityList index 3:', activityList[3])}
-        {activityList}
+        
+        {activityList[0]}
+        {activityList[1]}
+        {activityList[2]}
       </ul>
     )
   }
