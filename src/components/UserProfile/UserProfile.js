@@ -33,16 +33,19 @@ export default class UserProfile extends Component {
         return(
             <section id="form-wrapper">
             <h2>{user.name}'s Top Activities</h2>
-            <p>Activities most loved by you!</p>
+            
             {error && <p>{error}</p>}
             {topUserActivities.length === 0 
             ? <>
                 <h2>You haven't decided to do anything yet!</h2>
                 <Link to='/dashboard'>Get Started Today!</Link>
               </>
-            :<ol>
-                {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
-             </ol>
+            :<>
+                <p>Activities most loved by you!</p>
+                <ol>
+                    {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
+                </ol>
+             </>
             }
             </section>
         )

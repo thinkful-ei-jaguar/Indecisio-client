@@ -31,7 +31,7 @@ export default class MostPopularSuggestions extends Component {
         return(
         <section id="form-wrapper">
             <h2>Top Activity Suggestions</h2>
-            <p>Activities most loved by Indeciders like you!</p>
+            
             {error && <p>{error}</p>}
             {topActivities.length === 0 
             ? <>
@@ -41,9 +41,12 @@ export default class MostPopularSuggestions extends Component {
                     : <Link to='/'>Get Started Today!</Link>
                 }
               </>  
-            :<ol>
-                {topActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
-             </ol>
+            :<>
+                <p>Activities most loved by Indeciders like you!</p>
+                <ol>
+                    {topActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
+                </ol>
+             </>
             }
         </section>
         )
