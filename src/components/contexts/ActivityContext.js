@@ -9,7 +9,8 @@ const ActivityContext = React.createContext({
   fetchContextActivitiesByCategory: () => {},
   fetchContextUserActivitiesByCategory: () => {},
   postActivity: () => {},
-  createContextRandomIndex: () => {}
+  createContextRandomIndex: () => {},
+  clearContextEmptyMessage: () => {}
 });
 
 export default ActivityContext;
@@ -28,6 +29,12 @@ export class ActivityProvider extends Component {
    * state for fetched activities
    */
 
+
+  clearContextEmptyMessage = () => {
+    this.setState({
+      emptyMessage: ''
+    })
+  }
   createContextRandomIndex = () => {
     let randomActivityIndex = 0;
     console.log('context.activities.length: ', this.state.activities.length )
@@ -56,11 +63,19 @@ export class ActivityProvider extends Component {
     ActivityService.fetchUserActivities(user_id)
       .then(res=> {
         console.log('Fetched user activities with service function:', res);
-
-        this.setState({
-          activities: res,
-          randomIndex: 0
-      }, () => this.createContextRandomIndex());
+        if (res.length === 0) {
+          console.log('You have not created any activities!')
+          this.setState({
+            emptyMessage: 'You have not created any activities!  Get on that!  For now, here is an activity someone else created: '
+          })
+          return this.fetchContextActivities()
+        }
+        else {
+          this.setState({
+            activities: res,
+            randomIndex: 0
+          }, () => this.createContextRandomIndex());
+        }
     })
   }
 
@@ -71,14 +86,13 @@ export class ActivityProvider extends Component {
         if (res === 'No activity with that category') {
           console.log('You have no activities in that category')
           this.setState({
-            emptyMessage: 'You have no activities in that category.  Here is an activity from another category: '
+            emptyMessage: 'There are no activities in that category.  Here is an activity from another category: '
           })
           return this.fetchContextActivities()
         } else {
           this.setState({
             activities: res,
-            randomIndex: 0,
-            emptyMessage: ''
+            randomIndex: 0
           }, () => this.createContextRandomIndex())
         }
         
@@ -115,7 +129,8 @@ export class ActivityProvider extends Component {
       randomIndex: this.state.randomIndex,
       fetchContextActivitiesByCategory: this.fetchContextActivitiesByCategory,
       fetchContextUserActivitiesByCategory: this.fetchContextUserActivitiesByCategory,
-      createContextRandomIndex: this.createContextRandomIndex
+      createContextRandomIndex: this.createContextRandomIndex,
+      clearContextEmptyMessage: this.clearContextEmptyMessage
     }
 
     return (

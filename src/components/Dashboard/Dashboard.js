@@ -32,6 +32,7 @@ export default class Dashboard extends Component {
   }
 
   getRandomActivity = () => {  
+    this.context.clearContextEmptyMessage()
     if(this.state.creatorFilter === 'me') {
       return this.getUserActivities()
     }
@@ -47,7 +48,7 @@ export default class Dashboard extends Component {
   }
 
   acceptRandomActivity = () => {
-    
+    this.context.clearContextEmptyMessage()
     this.setState({
       activityGenerated: false,
       activitySelected: true,
@@ -71,6 +72,7 @@ export default class Dashboard extends Component {
       })
   }
   declineRandomActivity = () => {
+    this.context.clearContextEmptyMessage()
     if (this.state.creatorFilter === 'me') {
       return this.getUserActivities()
     }
@@ -136,6 +138,7 @@ export default class Dashboard extends Component {
 
 
   componentDidMount() {
+    this.context.clearContextEmptyMessage()
     if (this.state.filter === '') {
       this.context.fetchContextActivities()
     } else {
