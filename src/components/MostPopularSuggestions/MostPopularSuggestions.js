@@ -20,19 +20,19 @@ export default class MostPopularSuggestions extends Component {
             })
             .catch(error => {
                 this.setState({
-                    error: error
+                    error: error.message
                 })
             })
     }
 
 
     render() {
-        const {error, topActivities} = this.state
+        const {error, topActivities} = this.state;
         return(
         <section id="form-wrapper">
             <h2>Top Activity Suggestions</h2>
             
-            {error && <p>{error}</p>}
+            {error && <p>Error: {error}</p>}
             {topActivities.length === 0 
             ? <>
                 <h2>No one has decided to do anything yet!</h2>
