@@ -131,6 +131,7 @@ export default class ActivityForm extends React.Component {
 						<select
 							className='activity-category-select'
 							name='category'
+							aria-label='category'
 							placeholder={'Pick one please'}
 							value={this.state.category}
 							onChange={this.handleChange}
@@ -150,6 +151,7 @@ export default class ActivityForm extends React.Component {
 						</label>
 						<textarea
 							id='description-input'
+							aria-label='description'
 							maxLength='200'
 							className='activity-form-textarea-input'
 							placeholder='description'

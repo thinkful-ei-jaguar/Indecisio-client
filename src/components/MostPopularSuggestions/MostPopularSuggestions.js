@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import TokenService from '../services/token-service';
 import ProfileService from '../services/profile-service';
 import TopActivityItem from '../TopActivityItem/TopActivityItem';
+import './MostPopularActivities.css';
 
 export default class MostPopularSuggestions extends Component {
     
@@ -29,7 +30,7 @@ export default class MostPopularSuggestions extends Component {
     render() {
         const {error, topActivities} = this.state;
         return(
-        <section id="form-wrapper">
+        <section id="form-wrapper" >
             <h2>Top Activity Suggestions</h2>
             
             {error && <p>Error: {error}</p>}

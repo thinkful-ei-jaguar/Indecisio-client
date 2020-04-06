@@ -29,6 +29,27 @@
 
 
 
+.dashboard-select {
+    background-color: hsla(205, 87%, 69%, 0.61);
+    color: white;
+    width: 25%;
+    padding:1vh 1vw;
+    height: 5vh;
+    border: none;
+    box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.65), 1px -1px 2px inset white;
+}
+
+.dropdown-div {
+    display: flex;
+    justify-content: space-between;
+    margin: 1vh auto;
+    align-items: center;
+}
+
+
+.dropdown-div {
+    color: var(--white)
+}
 
 .dashboard {
     max-width: 75%;

@@ -118,20 +118,7 @@ const ActivityService = {
 			: Promise.reject('An error occured while trying to update')
 		)},
 
-	fetchCategories: () => {
-		return fetch(`${config.API_ENDPOINT}/categories`, {
-			method: 'GET',
-			headers : {
-    		'content-type': 'application/json',
-				'authorization': `Bearer ${TokenService.getAuthToken()}`
-			 },
-		})
-		.then(res => res.json())
-	},
-
-	fetchByCategory: () => {
-
-	}
+	
 }	
 
 export default ActivityService;

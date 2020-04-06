@@ -224,7 +224,7 @@ a.nav-link {
     color: white;
 }
 
-.element-animation{
+.element-animation {
     animation: animationFrames ease 4s;
     animation-iteration-count: 1;
     transform-origin: 100% 0%;

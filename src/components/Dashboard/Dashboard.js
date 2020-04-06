@@ -188,7 +188,8 @@ export default class Dashboard extends Component {
 
           <div className="dropdown-div">
               <label htmlFor="filter-select">Filter by Category:</label>
-            <select 
+            <select
+              className='dashboard-select'
               value={this.state.filter} 
               onChange={this.handleFilterChange} 
             >
@@ -201,7 +202,8 @@ export default class Dashboard extends Component {
           </select>
       
           <label htmlFor="creator-filter-select">Filter by creator:</label>
-            <select 
+            <select
+                className='dashboard-select'
               value={this.state.creatorFilter} 
               onChange={this.handleCreatorFilterChange} 
             >
