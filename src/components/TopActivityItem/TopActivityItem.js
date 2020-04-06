@@ -22,16 +22,16 @@ export default class TopActivityItem extends Component {
     
     render() {
         const {expanded} = this.state
-        const {activity, key} = this.props
+        const {activity, index} = this.props
         return (
             <>
                 {expanded 
-                    ? <li key={key}><h3>{activity.name} <button onClick={e => this.handleClose()}>Close</button></h3>
+                    ? <li key={index}><h3>{activity.name} <button onClick={e => this.handleClose()}>Close</button></h3>
                             <p>{activity.description} </p>
                             <p>This activity was accepted {activity.accepted_count || activity.global_accepted_count} times!</p>
                             <p>Suggested by {activity.username}</p>
                         </li>
-                    : <li key={key}>{activity.name} <button onClick={e => this.handleOpen()}>Open</button></li>}
+                    : <li key={index}>{activity.name} <button onClick={e => this.handleOpen()}>Open</button></li>}
             </>
         )
     }

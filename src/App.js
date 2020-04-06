@@ -43,6 +43,7 @@ export default class App extends Component {
         <PrivateRoute
           path={'/add-activity'}
           component={ActivityForm}/>
+          
         <Route
           path={'/top-activities'}
           component={TopActivities}/>

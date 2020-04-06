@@ -43,7 +43,7 @@ export default class UserProfile extends Component {
             :<>
                 <p>Activities most loved by you!</p>
                 <ol>
-                    {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
+                    {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} index={index} />)}
                 </ol>
              </>
             }

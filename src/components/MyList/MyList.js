@@ -20,7 +20,7 @@ export default class ActivityList extends Component {
           : [];
     return (
       <ul className="activity-list">
-        <h2>Possible Activities: </h2>
+        <h2>Recently Suggested Activities: </h2>
         {activityList}
       </ul>
     )
