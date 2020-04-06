@@ -101,7 +101,7 @@ export default class ActivityForm extends React.Component {
 			return <Redirect to="/dashboard" />
 		}
 		return (
-			<section id='form-wrapper'>
+			<section id='form-wrapper' className={toDashboard ? 'fade-out' : ''}>
 				<form className="activity-form" onSubmit={this.handleSubmit}>
 					<h2 id='form-name'>Add Activity</h2>
 					{error && (<ValidationError message={error} clearError={this.clearError}/>)}

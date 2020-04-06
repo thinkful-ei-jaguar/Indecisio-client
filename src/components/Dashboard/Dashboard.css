@@ -18,11 +18,11 @@
 
 @keyframes flyin {
     0%{
-        transform: scale(0);
+        transform: scale(0) translate(200vw,200vh);
 
     }
     100%{
-        transform: scale(1);
+        transform: scale(1) translate(0vw,0vh);
 
     }
 }
