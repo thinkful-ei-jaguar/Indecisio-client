@@ -35,10 +35,10 @@ export default class MostPopularSuggestions extends Component {
             {error && <p>{error}</p>}
             {topActivities.length === 0 
             ? <>
-                <h2>No One Has Decided to do Anything Yet!</h2>
+                <h2>No one has decided to do anything yet!</h2>
                 {TokenService.hasAuthToken()
                     ? <Link to='/dashboard'>Get Started Today!</Link>
-                    :<Link to='/'>Get Started Today!</Link>
+                    : <Link to='/'>Get Started Today!</Link>
                 }
               </>  
             :<ol>
