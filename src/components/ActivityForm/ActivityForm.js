@@ -16,6 +16,7 @@ export default class ActivityForm extends React.Component {
 			category: 0,
 			categories: [],
 			toDashboard: false,
+			successMessage: null,
 			error: null
 		}};
 	
@@ -29,14 +30,7 @@ export default class ActivityForm extends React.Component {
 
 			})
 	}
-	
-	/*
-	static defaultProps = {
-		onSubmitActivitySuccess: () => {
-			this.location.push("/dashboard");
-		}
-	};
-	*/
+
 	
 	
 	
@@ -62,7 +56,8 @@ export default class ActivityForm extends React.Component {
 		this.setState({
 			name: '',
 			category_id: null,
-			description: ''
+			description: '',
+			toDashboard: true
 		})
 	}
 
@@ -85,8 +80,11 @@ export default class ActivityForm extends React.Component {
 			
 			ActivityService.postActivity(newActivity)
 				.then(res => {
-					this.setState({name: '', description: '', category: 0 ,toDashboard: true})
+					this.setState({name: '', description: '', category: 0 , successMessage: 'Your activity was submitted! Redirecting...'})
 				})
+				.then(
+					setTimeout(function(){this.setState({toDashboard: true})}.bind(this), 2000)
+				)
 				.catch(res => {
 					this.setState({error: res.error});
 				});
@@ -95,7 +93,7 @@ export default class ActivityForm extends React.Component {
 	
 	
 	render() {
-		const { name, description, category, categories, toDashboard, error } = this.state;
+		const { name, description, category, categories, toDashboard, successMessage, error } = this.state;
 	
 		if(toDashboard) {
 			return <Redirect to="/dashboard" />
@@ -105,6 +103,7 @@ export default class ActivityForm extends React.Component {
 				<form className="activity-form" onSubmit={this.handleSubmit}>
 					<h2 id='form-name'>Add Activity</h2>
 					{error && (<ValidationError message={error} clearError={this.clearError}/>)}
+					{successMessage && <p>{successMessage}</p>}
 					<div className='input-wrapper'>
 						<label
 							className='form-input-label'

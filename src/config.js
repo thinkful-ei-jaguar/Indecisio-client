@@ -1,3 +1,3 @@
 module.exports = {
-  API_ENDPOINT: process.env.API_ENDPOINT || 'http://localhost:8000/api'
+  API_ENDPOINT: process.env.API_ENDPOINT || 'https://arcane-springs-29657.herokuapp.com/api'
 };
