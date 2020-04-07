@@ -1,4 +1,7 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import './TopActivityItem.css';
 
 export default class TopActivityItem extends Component {
     constructor(props) {
@@ -26,12 +29,12 @@ export default class TopActivityItem extends Component {
         return (
             <>
                 {expanded 
-                    ? <li key={index}><h3>{activity.name} <button onClick={e => this.handleClose()}>Close</button></h3>
-                            <p>{activity.description} </p>
-                            <p>This activity was accepted {activity.accepted_count || activity.global_accepted_count} times!</p>
-                            <p>Suggested by {activity.username}</p>
+                    ? <li key={index} id="expandedListItem" className="liItem"><h3 id="liHeading"><span id="nameSpan">{activity.name}</span> <button id="topTenButton" onClick={e => this.handleClose()}><FontAwesomeIcon icon={faChevronUp}/></button></h3>
+                            <p id="expanded-info">{activity.description} </p>
+                            <p id="expanded-info">This activity was accepted {activity.accepted_count || activity.global_accepted_count} times!</p>
+                            <p id="expanded-info">Suggested by {activity.username}</p>
                         </li>
-                    : <li key={index}>{activity.name} <button onClick={e => this.handleOpen()}>Open</button></li>}
+                    : <li id="liHeading" className="liItem" key={index}><span id="nameSpan">{activity.name}</span>  <button id="topTenButton" onClick={e => this.handleOpen()}><FontAwesomeIcon icon={faChevronDown}/></button></li>}
             </>
         )
     }

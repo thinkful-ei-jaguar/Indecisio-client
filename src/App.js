@@ -38,13 +38,11 @@ export default class App extends Component {
           path={'/dashboard'}
           component={() => <Dashboard user={this.context.user.id}/>}
         />
-          
         
-
         <PrivateRoute
           path={'/add-activity'}
           component={ActivityForm}/>
-          
+
         <Route
           path={'/top-activities'}
           component={TopActivities}/>
