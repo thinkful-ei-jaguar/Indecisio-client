@@ -36,23 +36,13 @@
     color: white;
     border: none;
     width: 80%;
-    padding:1vh .2vw;
+    margin: 1vh;
     height: 3vh;
     border: none;
     box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.65), 1px -1px 2px inset white;
 }
 
-.dropdown-div {
-    display: flex;
-    justify-content: space-between;
-    margin: 1vh auto;
-    align-items: center;
-}
 
-
-.dropdown-div {
-    color: var(--light-text)
-}
 
 .dashboard {
     max-width: 80%;
@@ -150,9 +140,22 @@ button.get-random-button {
     max-width: 100%;
     color: var(--white);
 }
+
+.hideMeh {
+    display: none;
+}
+.suggestionBorder {
+    border-style: groove;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
 .dropdown-div {
     display : flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    margin: 1vh auto;
+    align-items: center;
+    color: var(--light-text);   
 }
 
 #chosen {
@@ -171,6 +174,9 @@ button.get-random-button {
     background: inherit;
 }
 
+.filter-select {
+    white-space: nowrap;
+}
 
 li.activity-list-item {
   max-width: 100%;
@@ -200,4 +206,5 @@ li.activity-list-item {
 .button-group {
     display: flex;
     justify-content: space-between;
+    margin-top: 15px;
 }
