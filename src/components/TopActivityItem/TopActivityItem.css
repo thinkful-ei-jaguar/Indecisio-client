@@ -1,5 +1,6 @@
 ol {
     list-style: none;
+    padding: unset;
 }
 
 #expandedListItem {
@@ -17,10 +18,10 @@ ol {
 }
 
 .liItem {
-    padding: 1vw;
+    padding: 5px;
     border-style: groove;
     border-radius: 10px;
-    margin-bottom: 1vw;
+    margin-bottom: 10px;
 }
 
 #topTenButton {
