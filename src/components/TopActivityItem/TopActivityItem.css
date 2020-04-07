@@ -1,0 +1,36 @@
+ol {
+    list-style: none;
+    padding: unset;
+}
+
+#expandedListItem {
+    font-weight: bolder;
+}
+
+#nameSpan {
+    padding-right: 2vw;
+}
+
+#expandedLiHeading, #liHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.liItem {
+    padding: 5px;
+    border-style: groove;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#topTenButton {
+    background-color: unset;
+    color: var(--white);
+    border-style: none;
+    font-size: larger;
+}
+
+#expanded-info{
+    font-weight: normal;
+}

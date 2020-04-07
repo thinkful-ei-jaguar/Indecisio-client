@@ -18,7 +18,6 @@ export default class Dashboard extends Component {
       activities: [],
       randomIndex: 0,
       categories: [],
-      showFilters: false,
       filter: '',
       creatorFilter: 'global',
       chosenActivity: {}
@@ -135,12 +134,6 @@ export default class Dashboard extends Component {
     
   }
 
-    handleFilters = () => {
-      this.setState({
-        showFilters: !this.state.showFilters
-      })
-    }
-
 
   componentDidMount() {
     this.context.clearContextEmptyMessage()
@@ -184,8 +177,7 @@ export default class Dashboard extends Component {
             ? `Last time you ${this.lastDecision()} this choice`
             : ''}
             </p>
-   
-            {this.state.showFilters && <div className="dropdown-div">
+             <div className="dropdown-div">
               <label htmlFor="filter-select">Filter by Category:</label>
             <select
               className='dashboard-select'
@@ -209,7 +201,7 @@ export default class Dashboard extends Component {
               <option id="creator-filter-select" value="global">Created by anyone</option>
               <option id="creator-filter-select" value="me">Created by me</option>
           </select>
-        </div>}
+        </div>
 
             <div className="button-group">
               {!this.state.activityGenerated && <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
