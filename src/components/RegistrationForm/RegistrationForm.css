@@ -23,13 +23,13 @@
 .button-guest {
     border: none;
     cursor: pointer;
-    background: linear-gradient(145deg, var(--dark) 4%, hsla(234, 16%, 53%, 0.58)99%);
-    color: white;
+    background: linear-gradient(145deg, var(--dark) 4%, hsla(234, 16%, 33%, 0.58)99%);
+    color: #c6c6c6;
     padding: .5vh .5vw;
     border-radius: 5px;
     text-align: center;
     width: 45%;
-    font-size: 1.5vh;
+    font-size: 2vh;
     box-shadow: -5px -5px 15px inset rgba(50, 157, 238, 0.61),
     5px 5px 15px rgba(33, 41, 54, 0.75);
     transition-property: background;

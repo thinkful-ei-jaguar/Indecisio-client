@@ -190,7 +190,7 @@ export default class Dashboard extends Component {
             ? `Last time you ${this.lastDecision()} this choice`
             : ''}
             </p>
-            {!this.showFilters && <button onClick={this.handleFilters}>Filters</button>}
+            {!this.showFilters && <button id='show-filters' onClick={this.handleFilters}>i</button>}
             {this.state.showFilters && <div className="dropdown-div">
               <label htmlFor="filter-select">Filter by Category:</label>
             <select
