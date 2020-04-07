@@ -23,7 +23,7 @@ export default class Dashboard extends Component {
       chosenActivity: {}
     }
   }
-
+  
   toggleActivityGenerated = () => {
     this.setState({
       activityGenerated: true
@@ -93,6 +93,7 @@ export default class Dashboard extends Component {
     this.getRandomActivity()
   }
 
+
   lastDecision = () => {
     if (this.context.activities[this.context.randomIndex].is_rejected && !this.context.activities[this.context.randomIndex].is_accepted) {  
       return 'rejected'
@@ -117,10 +118,6 @@ export default class Dashboard extends Component {
     })
   }
 
-  /**
-   * Need to change getUserActivities so that it gets the actual
-   * user_id, probably passing it in as props.
-   */
   getUserActivities = () => {
     if (this.state.filter === '') {
       this.context.fetchContextUserActivities(this.props.user)
