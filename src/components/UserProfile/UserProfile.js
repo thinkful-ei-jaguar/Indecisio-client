@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import ProfileService from '../services/profile-service';
 import UserContext from '../contexts/UserContext';
 import TopActivityItem from '../TopActivityItem/TopActivityItem';
-import '../UserProfile/UserProfile.css';
+import './UserProfile.css';
 
 export default class UserProfile extends Component {
     static contextType = UserContext
@@ -41,7 +41,7 @@ export default class UserProfile extends Component {
                 <Link to='/dashboard'>Get Started Today!</Link>
               </>
             :<>
-                <p>Activities most loved by you!</p>
+                <p classNAme='user-profile'>Activities most loved by you!</p>
                 <ol>
                     {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} index={index} />)}
                 </ol>

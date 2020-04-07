@@ -1,0 +1,7 @@
+p.user-profile {
+    color: var(--light-text);
+}
+
+#popular-wrapper, p {
+    color: var(--light-text);
+}

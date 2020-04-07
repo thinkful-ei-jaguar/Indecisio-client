@@ -21,6 +21,8 @@ export default class App extends Component {
   return (
     <main className='App'>
       <AppHeader />
+        <NavBar />
+    
       <Switch>
         <PublicOnlyRoute
           exact
@@ -34,7 +36,7 @@ export default class App extends Component {
           component={LoginForm}
         />
 
-        <PrivateRoute 
+        <PrivateRoute
           path={'/dashboard'}
           component={() => <Dashboard user={this.context.user.id}/>}
         />
@@ -47,7 +49,6 @@ export default class App extends Component {
           path={'/top-activities'}
           component={TopActivities}/>
       </Switch>
-        <NavBar />
     </main>
   );
   }

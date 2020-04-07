@@ -3,7 +3,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   height: 4vh;
-  width: 30vw;
+  width: 70vw;
   align-self: baseline;
     margin: 1vh 1vw;
 }
@@ -13,6 +13,7 @@
     justify-content: space-around;
   flex-flow: row nowrap;
   width: 100vw;
+  height: 10vh;
   align-items: center;
     align-content: center;
     border-bottom: 5px solid white;
@@ -37,6 +38,7 @@
   bottom: 0;
   width: 100vw;
   min-height: 10vh;
+  max-height: 10vh;
   z-index: 1;
 
 }
@@ -54,6 +56,8 @@
   bottom: 0;
   margin: 0 auto;
   padding: 3vh 1vw;
+
+
 }
 
 #navlist a {
@@ -67,4 +71,84 @@
 button.theme-switch {
     text-align: center;
     padding: 1vh 1vw;
+}
+
+
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .NavBar {
+    top: 0;
+    width: 50vw;
+    bottom: unset;
+    min-height:10vh;
+    max-height: 10vh;
+  }
+
+  #navlist {
+    bottom: unset;
+    top: 0;
+    width: 50vw;
+    position: absolute;
+    border-top: none;
+    border-bottom: 5px solid white;
+    min-height:10vh;
+    max-height: 10vh;
+    align-items: center;
+    background-color: transparent;
+  }
+
+}
+
+@media all and (min-width: 1024px) and (max-width: 2880px) {
+  .NavBar {
+    top: 0;
+    width: 50vw;
+    bottom: unset;
+    min-height:10vh;
+    max-height: 10vh;
+
+  }
+
+  #navlist {
+    bottom: unset;
+    top: 0;
+    width: 50vw;
+    position: absolute;
+    border-top: none;
+    border-bottom: 5px solid white;
+    min-height:10vh;
+    max-height: 10vh;
+    padding: 1vh auto;
+    align-items: center;
+    background-color: transparent;
+
+
+  }
+
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .NavBar {
+    top: 0;
+    width: 50vw;
+    bottom: unset;
+    min-height:10vh;
+    max-height: 10vh;
+  }
+
+  #navlist {
+    bottom: unset;
+    top: 0;
+    width: 48vw;
+    position: absolute;
+    border-top: none;
+    border-bottom: 5px solid white;
+    min-height:10vh;
+    max-height: 10vh;
+    padding: 2vh;
+    align-items: center;
+    background-color: transparent;
+  }
+
+
 }
