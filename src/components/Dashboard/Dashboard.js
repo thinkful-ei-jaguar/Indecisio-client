@@ -152,7 +152,7 @@ export default class Dashboard extends Component {
 
   render() {
     return (<>
-      <div className="activity-form" id="dashboard-wrapper">
+      <div className="form-wrapper" id="dashboard-wrapper">
         <section className='result-wrapper'>
         <div id="chosen" className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0]

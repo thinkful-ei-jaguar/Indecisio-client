@@ -35,7 +35,7 @@ light {
 *:not(body) { transition: all .5s ease; }
 
 
-body {
+html, body {
   margin: 0;
   font-family: 'Exo', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -47,6 +47,7 @@ body {
   background-color: var(--main-bg);
   color: var(--main-fg);
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 code {
@@ -71,9 +72,12 @@ main.App {
   align-items: center;
   flex-flow: column nowrap;
 
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
+button.theme-switch {
+  z-index: 1001;
+}
 
 #brand {
   color: var(--main-fg);
@@ -85,6 +89,7 @@ main.App {
   .form-wrapper, #dashboard-wrapper {
     min-width: 45vw;
     max-width:50vw;
+    margin: 5vh 0 5vh 0;
   }
 }
 
@@ -92,14 +97,18 @@ main.App {
   .form-wrapper, #dashboard-wrapper {
     min-width: 55vw;
     max-width:60vw;
+    margin: 5vh 0 5vh 0;
   }
+
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) {
   .form-wrapper, #dashboard-wrapper {
     min-width:75vw;
     max-width:80vw;
+    margin: 5vh 0 5vh 0;
   }
+
 
   section.top-activities {
     flex-flow: column wrap;

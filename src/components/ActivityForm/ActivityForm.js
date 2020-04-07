@@ -151,7 +151,8 @@ export default class ActivityForm extends React.Component {
 						<textarea
 							id='description-input'
 							aria-label='description'
-							maxLength='200'
+							cols='5'
+							maxLength='350'
 							className='activity-form-textarea-input'
 							placeholder='description'
 							name="description"

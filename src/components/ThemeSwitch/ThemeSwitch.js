@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 import ThemeContext  from '../contexts/ThemeContext';
 
@@ -12,7 +14,7 @@ export default function ThemeSwitch(props) {
 			onClick={() => toggle()}
 			className='theme-switch'
 		>
-		Theme
+			<FontAwesomeIcon icon={theme ? faSun : faMoon} />
 		</button>
 		)
 }

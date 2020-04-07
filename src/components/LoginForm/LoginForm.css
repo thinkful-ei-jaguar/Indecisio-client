@@ -6,7 +6,8 @@ form#login-form {
     flex-basis: 40vh;
     align-items: center;
     flex-grow: 4;
-    min-height: 60%;
+    max-height: 45%;
+    min-height: 35%;
 
     color: var(--light-text);
 }
