@@ -199,15 +199,4 @@ li.activity-list-item {
 .button-group {
     display: flex;
     justify-content: space-between;
-
-
-}
-
-button#show-filters {
-    width: 10%;
-    padding: 5px 5px;
-    background-image: url('../../assets/icons/filter.ico');
-    border: none;
-    color: lightcyan;
-    font-size: .8em;
 }
