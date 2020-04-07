@@ -32,14 +32,13 @@ export default class Dashboard extends Component {
   }
 
   getRandomActivity = () => {  
+    this.context.clearContextEmptyMessage()
     if(this.state.creatorFilter === 'me') {
       return this.getUserActivities()
     }
     if (this.state.filter === '') {
-      console.log('Accepted Activity - fetching all categories')
       this.context.fetchContextActivities()
     } else {
-      console.log('Accepted Activity - fetching by category:', this.state.filter)
       this.context.fetchContextActivitiesByCategory(this.state.filter)
     }
     this.toggleActivityGenerated()
@@ -49,7 +48,7 @@ export default class Dashboard extends Component {
   }
 
   acceptRandomActivity = () => {
-    console.log('Random activity accepted :)')
+    this.context.clearContextEmptyMessage()
     this.setState({
       activityGenerated: false,
       activitySelected: true,
@@ -66,16 +65,14 @@ export default class Dashboard extends Component {
       .then(res => {
         
         if (this.state.filter === '') {
-          console.log('Accepted Activity - fetching all categories')
           this.context.fetchContextActivities()
         } else {
-          console.log('Accepted Activity - fetching by category:', this.state.filter)
           this.context.fetchContextActivitiesByCategory(this.state.filter)
         }
       })
   }
   declineRandomActivity = () => {
-    console.log('Random activity declined :(')
+    this.context.clearContextEmptyMessage()
     if (this.state.creatorFilter === 'me') {
       return this.getUserActivities()
     }
@@ -89,10 +86,8 @@ export default class Dashboard extends Component {
       })
       .then(res => {
         if (this.state.filter === '') {
-          console.log('Declined Activity - fetching all categories')
           this.context.fetchContextActivities()
         } else {
-          console.log('Declined Activity - fetching by category:', this.state.filter)
           this.context.fetchContextActivitiesByCategory(this.state.filter)
         }
       })
@@ -114,13 +109,13 @@ export default class Dashboard extends Component {
   handleFilterChange = (event) => {
     this.setState({
       filter: event.target.value
-    }, () => console.log('Filter changed - current state: ', this.state))
+    })
   }
 
   handleCreatorFilterChange = (event) => {
     this.setState({
       creatorFilter: event.target.value
-    }, () => console.log('Creator filter changed - current state: ', this.state))
+    })
   }
 
   /**
@@ -129,9 +124,9 @@ export default class Dashboard extends Component {
    */
   getUserActivities = () => {
     if (this.state.filter === '') {
-      this.context.fetchContextUserActivities(2)
+      this.context.fetchContextUserActivities(this.props.user)
     } else {
-      this.context.fetchContextUserActivitiesByCategory(2, this.state.filter)
+      this.context.fetchContextUserActivitiesByCategory(this.props.user, this.state.filter)
     }
     this.toggleActivityGenerated()
     this.setState({
@@ -143,13 +138,10 @@ export default class Dashboard extends Component {
 
 
   componentDidMount() {
-    console.log('USER: ' + this.props.user);
-    
+    this.context.clearContextEmptyMessage()
     if (this.state.filter === '') {
-      console.log('Component did mount - fetching all categories')
       this.context.fetchContextActivities()
     } else {
-      console.log('Component did mount - fetching by category:', this.state.filter)
       this.context.fetchContextActivitiesByCategory(this.state.filter)
     }
 
@@ -161,7 +153,6 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    console.log("Props?", this.props)
     return (<>
       <div className="activity-form" id="form-wrapper">
         <section className='result-wrapper'>
@@ -172,9 +163,12 @@ export default class Dashboard extends Component {
         </div>
   
           <div className="display-random-activity">
-            <p>{this.context.activities && this.state.activityGenerated
-            ? `Your random activity is: ${this.context.activities[this.context.randomIndex].name}`
-              : ''}</p>
+            <div className="empty-message">{this.context.emptyMessage}</div>
+            <p>
+              {this.context.activities && this.state.activityGenerated
+                ? `Your random activity is: ${this.context.activities[this.context.randomIndex].name}`
+                : ''}
+            </p>
             <p>
               {this.context.activities && this.state.activityGenerated
             ? `The description is: ${this.context.activities[this.context.randomIndex].description}`
@@ -233,6 +227,5 @@ export default class Dashboard extends Component {
 }
 
 Dashboard.defaultProps = {
-  activities: [],
   user: 0
 }
