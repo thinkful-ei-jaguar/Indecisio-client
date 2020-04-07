@@ -137,6 +137,8 @@ button.get-random-button {
 .display-random-activity, .display-chosen-activity {
     display: flex;
     flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
     max-width: 100%;
     color: var(--white);
 }
@@ -144,6 +146,7 @@ button.get-random-button {
 .hideMeh {
     display: none;
 }
+
 .suggestionBorder {
     border-style: groove;
     border-radius: 10px;
@@ -200,11 +203,30 @@ li.activity-list-item {
     padding: 0;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .button-group {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-top: 15px;
+}
+
+#result-buttons {
+    margin-bottom: 1vh;
+    padding: 1vh;
+}
+
+.button-choose {
+    background-color: unset;
+    color: var(--white);
+    border-style: none;
+    font-size: 25px;
+    padding: 1vw;
+}
+
+.button-choose:hover {
+    cursor: pointer;
 }

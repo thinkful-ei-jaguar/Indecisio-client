@@ -3,7 +3,8 @@ import ActivityContext from '../contexts/ActivityContext'
 import MyList from '../MyList/MyList'
 import './Dashboard.css';
 import ActivityService from '../services/activity-service'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export default class Dashboard extends Component {
   
@@ -155,15 +156,11 @@ export default class Dashboard extends Component {
     return (<>
       <div className="form-wrapper" id="dashboard-wrapper">
         <section className='result-wrapper'>
-        <div className="button-group">
+        <div>
               <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
                 Random Activity Please!
               </button>
-              {/* {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
-              {this.state.activityGenerated && <button className="button-cancel" onClick={this.declineRandomActivity}>Decline</button>} */}
-        </div>
-
-        <div className="dropdown-div">
+              <div className="dropdown-div">
               <label className="filter-select" htmlFor="filter-select">Choose by Category:</label>
             <select
               className='dashboard-select'
@@ -188,17 +185,18 @@ export default class Dashboard extends Component {
               <option id="creator-filter-select" value="me">Created by me</option>
           </select>
         </div>
+        </div>
   
-          <div className={ (this.state.activityGenerated) ? "display-random-activity suggestionBorder" : "display-random-activity"}>
+          <div className={ (this.state.activityGenerated || this.state.activitySelected) ? "display-random-activity suggestionBorder" : "hideMeh"}>
             <div className="empty-message">{this.context.emptyMessage}</div>
-            <p>
+            <h3>
               {this.context.activities && this.state.activityGenerated
-                ? `Your random activity is: ${this.context.activities[this.context.randomIndex].name}`
+                ? `${this.context.activities[this.context.randomIndex].name}`
                 : <></>}
-            </p>
+            </h3>
             <p>
               {this.context.activities && this.state.activityGenerated
-            ? `The description is: ${this.context.activities[this.context.randomIndex].description}`
+            ? `${this.context.activities[this.context.randomIndex].description}`
             : <></>}
             </p>
             <p>
@@ -209,17 +207,15 @@ export default class Dashboard extends Component {
 
               <div id="chosen" className="display-chosen-activity">
                 {this.state.activitySelected && this.context.activities[0]
-                  ? <h2>You have chosen "{this.state.chosenActivity.name}."  Enjoy!</h2>
+                  ? <h3><FontAwesomeIcon icon={faCheck}/> You have chosen "{this.state.chosenActivity.name}."  Enjoy!</h3>
                   : ''}
-              <div className="button-group">
-                {this.state.activityGenerated && <button className="button-primary" onClick={this.acceptRandomActivity}>Accept</button>}
-                {this.state.activityGenerated && <button className="button-cancel" onClick={this.declineRandomActivity}>Decline</button>}
+              <div className="button-group" id="result-buttons">
+                {this.state.activityGenerated && <button className="button-choose" onClick={this.acceptRandomActivity}><FontAwesomeIcon icon={faCheck}/> Let's Do It!</button>}
+                {this.state.activityGenerated && <button className="button-choose" onClick={this.declineRandomActivity}><FontAwesomeIcon icon={faBan}/> No, Thanks!</button>}
               </div>
               </div>
         </div>
-        <MyList />
         </section>
-        
       </div>
       
       </>
