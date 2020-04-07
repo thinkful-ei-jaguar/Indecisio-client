@@ -2,18 +2,19 @@ import React, {Component} from 'react'
 import TokenService from '../services/token-service'
 import MostPopularSuggestions from '../MostPopularSuggestions/MostPopularSuggestions'
 import UserProfile from '../UserProfile/UserProfile'
+import './top-activities.css';
 
-
-export default class TopActivites extends Component {
+export default class TopActivities extends Component {
 
     render() {
 
-        return( <>
+        return(
+            <section className="top-activities">
         <MostPopularSuggestions />
         {TokenService.hasAuthToken()
             ? <UserProfile />
             : <></>}
-        </>)
+        </section>)
     }
 
 }

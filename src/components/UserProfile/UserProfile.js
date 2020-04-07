@@ -31,7 +31,7 @@ export default class UserProfile extends Component {
         const {user} = this.context
         const {error, topUserActivities} = this.state
         return(
-            <section id="form-wrapper">
+            <section id="popular-wrapper">
             <h2>{user.name}'s Top Activities</h2>
             
             {error && <p>{error}</p>}

@@ -50,18 +50,18 @@ export function ThemeProvider (props) {
 }
 
 const darkTheme = [
-	'--main-bg: #275283',
-	'--main-fg: #419ABE',
-	'--accent-one: #56e3e3',
-	'--accent-three: #6e97e7',
-	'--accent-two: #233A85',
-	'--white: white '
+	'--main-fg: hsl(199, 97%, 25%)',
+	'--main-bg: hsl(210, 100%, 12%)',
+	'--accent-one: hsl(193,97%,85%)',
+	'--accent-two: hsl(197, 97%, 75%)',
+	'--error: hsl(3, 98%, 60%)',
+	'--happy: hsl(126, 87%, 66%);',
 ]
 
 const lightTheme = [
-	'--main-bg: #e7e7e7 ',
-	'--main-fg: #275283 ',
-	'--accent-one: #6e97e7',
-	'--main-fg: #233A85 ',
-	'--accent-three: #56e3e3'
+	'--main-bg: hsl(193,97%,85%) ',
+	'--main-fg: hsl(199, 97%, 30%) ',
+	'--accent-one: hsl(225, 59%, 27%)',
+	'--accent-two: #6e97e7 ',
+	'--accent-three: hsl(197, 97%, 85%)'
 ]

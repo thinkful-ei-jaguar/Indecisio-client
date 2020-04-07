@@ -30,7 +30,7 @@ export default class MostPopularSuggestions extends Component {
     render() {
         const {error, topActivities} = this.state;
         return(
-        <section id="form-wrapper" >
+        <section id="popular-wrapper" >
             <h2>Top Activity Suggestions</h2>
             
             {error && <p>Error: {error}</p>}
@@ -43,7 +43,7 @@ export default class MostPopularSuggestions extends Component {
                 }
               </>  
             :<>
-                <p>Activities most loved by Indeciders like you!</p>
+                <p className='popular'>Activities most loved by Indeciders like you!</p>
                 <ol>
                     {topActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
                 </ol>

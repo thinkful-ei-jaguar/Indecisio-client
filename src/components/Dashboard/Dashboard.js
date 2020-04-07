@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import ActivityContext from '../contexts/ActivityContext'
 import MyList from '../MyList/MyList'
-import { Link } from 'react-router-dom'
-import './Dashboard.css'
+import './Dashboard.css';
 import ActivityService from '../services/activity-service'
 
 export default class Dashboard extends Component {
@@ -19,6 +18,7 @@ export default class Dashboard extends Component {
       activities: [],
       randomIndex: 0,
       categories: [],
+      showFilters: false,
       filter: '',
       creatorFilter: 'global',
       chosenActivity: {}
@@ -140,6 +140,11 @@ export default class Dashboard extends Component {
     
   }
 
+    handleFilters = () => {
+      this.setState({
+        showFilters: !this.state.showFilters
+      })
+    }
 
 
   componentDidMount() {
@@ -163,7 +168,7 @@ export default class Dashboard extends Component {
   render() {
     console.log("Props?", this.props)
     return (<>
-      <div className="activity-form" id="form-wrapper">
+      <div className="activity-form" id="dashboard-wrapper">
         <section className='result-wrapper'>
         <div id="chosen" className="display-chosen-activity">
           {this.state.activitySelected && this.context.activities[0]
@@ -185,8 +190,8 @@ export default class Dashboard extends Component {
             ? `Last time you ${this.lastDecision()} this choice`
             : ''}
             </p>
-
-          <div className="dropdown-div">
+            {!this.showFilters && <button onClick={this.handleFilters}>Filters</button>}
+            {this.state.showFilters && <div className="dropdown-div">
               <label htmlFor="filter-select">Filter by Category:</label>
             <select
               className='dashboard-select'
@@ -210,7 +215,7 @@ export default class Dashboard extends Component {
               <option id="creator-filter-select" value="global">Created by anyone</option>
               <option id="creator-filter-select" value="me">Created by me</option>
           </select>
-        </div>
+        </div>}
 
             <div className="button-group">
               {!this.state.activityGenerated && <button className="get-random-button button-primary" onClick={this.getRandomActivity}>

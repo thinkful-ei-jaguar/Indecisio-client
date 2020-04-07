@@ -1,0 +1,4 @@
+.top-activities {
+    display : flex;
+    flex-flow: row wrap;
+}

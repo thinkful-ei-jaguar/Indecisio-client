@@ -103,8 +103,8 @@ class RegistrationForm extends Component {
                 <p>Stuck inside and indecisive?</p> 
                 <p>Indecisio helps cure your boredom by suggesting things to do based on your mood and favorite activities.</p>
             </section>
-            <section id='form-wrapper'>
-                <form className='registration-form activity-form' onSubmit={e => this.handleRegistration(e)}>
+            <section className='form-wrapper'>
+                <form id='registration-form' onSubmit={e => this.handleRegistration(e)}>
                     <h2>Register</h2>
 
                 {error && (<ValidationError message={error}/>)}

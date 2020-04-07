@@ -7,7 +7,7 @@ export default function AppHeader(props) {
 	
 	return (
 		<div className="header">
-			<h1 id='brand'>..................</h1>
+			<h1 id='brand'>indecisio           '</h1>
 			
 			{user.name && <span id='greeting'>Hello, {user.name}!</span>}
 			<ThemeSwitch />
