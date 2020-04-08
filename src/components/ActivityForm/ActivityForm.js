@@ -119,6 +119,7 @@ export default class ActivityForm extends React.Component {
 							onChange={this.handleChange}
 							aria-label="name"
 							value={name}
+							maxLength="50"
 							required
 						/>
 					
@@ -152,7 +153,7 @@ export default class ActivityForm extends React.Component {
 							id='description-input'
 							aria-label='description'
 							cols='5'
-							maxLength='350'
+							maxLength='255'
 							className='activity-form-textarea-input'
 							placeholder='description'
 							name="description"
