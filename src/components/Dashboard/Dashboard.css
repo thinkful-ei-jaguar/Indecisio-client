@@ -54,9 +54,8 @@
     flex-basis: 40vh;
     align-items: center;
     flex-grow: 4;
-
-
 }
+
 input:focus  {
    outline: none;
 }
@@ -77,6 +76,7 @@ input:focus  {
 
    display: none;
 }
+
 .dashboard-textarea-input {
  border: none;
    background-color: var(--accent-two);
@@ -141,6 +141,7 @@ button.get-random-button {
     align-items: center;
     max-width: 100%;
     color: var(--white);
+    padding: 1vh;
 }
 
 .hideMeh {
@@ -191,9 +192,9 @@ li.activity-list-item {
 
 .activity-list {
     padding: 0;
-    width: 80%;
-    height: 50%;
-    overflow: hidden;
+    /* width: 80%;
+    height: 50%; */
+    /* overflow: hidden; */
     margin-top: 0;
 }
 
@@ -204,6 +205,8 @@ li.activity-list-item {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    text-align: center;
+    line-height: 1.5em;
 }
 
 .button-group {

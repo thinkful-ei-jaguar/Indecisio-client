@@ -4,7 +4,7 @@ import MyList from '../MyList/MyList'
 import './Dashboard.css';
 import ActivityService from '../services/activity-service'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faBan, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faBan, faCheck, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default class Dashboard extends Component {
   
@@ -136,6 +136,12 @@ export default class Dashboard extends Component {
     
   }
 
+  goBackToBeginning = () => {
+      this.setState({
+        activitySelected: false
+      })
+  }
+
 
   componentDidMount() {
     this.context.clearContextEmptyMessage()
@@ -187,8 +193,11 @@ export default class Dashboard extends Component {
         </div>
         </div>
   
-          <div className={ (this.state.activityGenerated || this.state.activitySelected) ? "display-random-activity suggestionBorder" : "hideMeh"}>
+          <div className={ (this.state.activityGenerated || this.state.activitySelected) ? "display-random-activity suggestionBorder" : ""}>
             <div className="empty-message">{this.context.emptyMessage}</div>
+            {this.state.activitySelected === false && this.state.activityGenerated === false
+              ? <MyList />
+              : <></>}
             <h3>
               {this.context.activities && this.state.activityGenerated
                 ? `${this.context.activities[this.context.randomIndex].name}`
@@ -207,7 +216,8 @@ export default class Dashboard extends Component {
 
               <div id="chosen" className="display-chosen-activity">
                 {this.state.activitySelected && this.context.activities[0]
-                  ? <h3><FontAwesomeIcon icon={faCheck}/> You have chosen "{this.state.chosenActivity.name}."  Enjoy!</h3>
+                  ? <><h3><FontAwesomeIcon icon={faCheck}/> You have chosen "{this.state.chosenActivity.name}."  Enjoy!</h3>
+                      <button className="button-choose" onClick={e => this.goBackToBeginning()}><FontAwesomeIcon icon={faChevronLeft}/> Go Back</button></>
                   : ''}
               <div className="button-group" id="result-buttons">
                 {this.state.activityGenerated && <button className="button-choose" onClick={this.acceptRandomActivity}><FontAwesomeIcon icon={faCheck}/> Let's Do It!</button>}
