@@ -108,6 +108,7 @@ export default class Dashboard extends Component {
   }
 
   handleFilterChange = (event) => {
+    
     this.setState({
       filter: event.target.value
     })
@@ -131,7 +132,6 @@ export default class Dashboard extends Component {
     })
     
   }
-
 
   componentDidMount() {
     this.context.clearContextEmptyMessage()
@@ -174,16 +174,23 @@ export default class Dashboard extends Component {
               <option id="filter-select" value="Fitness">Fitness</option>
               <option id="filter-select" value="Socialize">Socialize</option>
           </select>
-      
-          <label className="filter-select" htmlFor="creator-filter-select">Choose by Creator:</label>
-            <select
-                className='dashboard-select'
-              value={this.state.creatorFilter} 
-              onChange={this.handleCreatorFilterChange} 
-            >
-              <option id="creator-filter-select" value="global">Created by anyone</option>
-              <option id="creator-filter-select" value="me">Created by me</option>
-          </select>
+  
+          <form>           
+            
+            <input type="radio" id="global" value="global" 
+              checked={this.state.creatorFilter==='global'} 
+              onChange={this.handleCreatorFilterChange}>
+            </input>
+            <label htmlFor="global">Created by anyone</label>
+
+            
+            <input type="radio" id="me" value="me" 
+              checked={this.state.creatorFilter==='me'} 
+              onChange={this.handleCreatorFilterChange}>              
+            </input>
+            <label htmlFor="me">Created by me</label>
+
+          </form>
         </div>
   
           <div className={ (this.state.activityGenerated) ? "display-random-activity suggestionBorder" : "display-random-activity"}>
