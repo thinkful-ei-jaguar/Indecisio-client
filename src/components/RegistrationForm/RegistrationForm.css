@@ -1,13 +1,17 @@
 #introduction {
     text-align: center;
-    margin: 1vh 3vw 1vh 3vw;
-    line-height: 1.2em;
+    margin: .5vh 3vw .2vh 3vw;
+    line-height: 1em;
     display: flex;
     font-size: 2vh;
     font-weight: bold;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: var(--accent-one);
+}
+
+#intro-text {
     color: var(--accent-one);
 }
 #registration-form  {

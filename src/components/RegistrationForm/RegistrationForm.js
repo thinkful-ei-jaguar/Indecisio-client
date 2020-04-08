@@ -100,8 +100,8 @@ class RegistrationForm extends Component {
 
         return (<>
             <section id='introduction'>
-                <p>Stuck inside and indecisive?</p> 
-                <p>Indecisio helps cure your boredom by suggesting things to do based on your mood and favorite activities.</p>
+                <p id='intro-text'>Stuck inside and indecisive?</p>
+                <p id='intro-text'>Indecisio helps cure your boredom by suggesting things to do based on your mood and favorite activities.</p>
             </section>
             <section className='form-wrapper'>
                 <form id='registration-form' onSubmit={e => this.handleRegistration(e)}>
@@ -116,7 +116,7 @@ class RegistrationForm extends Component {
                     <label className='form-input-label' htmlFor='password'/>
                         <input className='registration-form-text-input activity-form-text-input' onChange={e => this.passwordUpdated(e.currentTarget.value)}aria-label='password' name='password' placeholder='Password' type='password' required/>
                     <button className='button-primary' type='submit'>Submit</button>
-                    <button className='button-guest' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
+                    <button className='button-cancel' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
                     <Link to='/login' className='register-redirect-link'>
                         Already have an account?
                     </Link>

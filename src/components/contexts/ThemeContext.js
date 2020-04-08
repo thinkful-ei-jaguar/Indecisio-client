@@ -50,7 +50,7 @@ export function ThemeProvider (props) {
 }
 
 const darkTheme = [
-	'--main-fg: hsl(199, 97%, 25%)',
+	'--main-fg: hsl(213, 54%, 33%)',
 	'--main-bg: hsl(210, 100%, 12%)',
 	'--accent-one: hsl(193,97%,85%)',
 	'--accent-two: hsl(197, 97%, 75%)',
@@ -60,7 +60,7 @@ const darkTheme = [
 
 const lightTheme = [
 	'--main-bg: hsl(193,97%,85%) ',
-	'--main-fg: hsl(199, 97%, 30%) ',
+	'--main-fg:  hsl(213, 54%, 33%) ',
 	'--accent-one: hsl(225, 59%, 27%)',
 	'--accent-two: #6e97e7 ',
 	'--accent-three: hsl(197, 97%, 85%)'

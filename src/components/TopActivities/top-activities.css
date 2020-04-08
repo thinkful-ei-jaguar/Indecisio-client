@@ -1,4 +1,5 @@
-.top-activities {
+section.top-activities {
     display : flex;
     flex-flow: row wrap;
+    max-height: 80vh;
 }

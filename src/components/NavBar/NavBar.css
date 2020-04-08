@@ -3,9 +3,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   height: 4vh;
-  width: 70vw;
+  width: 100vw;
   align-self: baseline;
-    margin: 1vh 1vw;
+    margin: 2.5vh .5vw;
 }
 .header {
   background-color: hsl(212, 54%, 33%);
@@ -43,7 +43,10 @@
 
 }
 
+span#nameSpan {
+  font-size: .7em;
 
+}
 
 #navlist {
     border-top :5px solid white;
@@ -97,6 +100,15 @@ button.theme-switch {
     background-color: transparent;
   }
 
+  .header {
+    min-height:14vh;
+    max-height: 20vh;
+  }
+  span#nameSpan {
+    font-size: .8em;
+    font-color: var(--light-text);
+  }
+
 }
 
 @media all and (min-width: 1024px) and (max-width: 2880px) {
@@ -125,6 +137,7 @@ button.theme-switch {
 
   }
 
+
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) {
@@ -139,16 +152,23 @@ button.theme-switch {
   #navlist {
     bottom: unset;
     top: 0;
-    width: 48vw;
+    width: 50vw;
     position: absolute;
     border-top: none;
     border-bottom: 5px solid white;
     min-height:10vh;
     max-height: 10vh;
-    padding: 2vh;
+    padding: 1vh;
     align-items: center;
     background-color: transparent;
   }
+  .header {
+    max-height: 15vh;
+  }
 
+  span#nameSpan {
+    font-size: .5em;
+    font-color: var(--light-text);
+  }
 
 }

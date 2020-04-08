@@ -96,10 +96,14 @@ export default class ActivityForm extends React.Component {
 		const { name, description, category, categories, toDashboard, successMessage, error } = this.state;
 	
 		if(toDashboard) {
+
+			const wrapper = document.querySelector('#ADDFORM');
+			wrapper.style.cssText = 'animation: slide-out .2s ease-in-out 1 0s;';
+			
 			return <Redirect to="/dashboard" />
 		}
 		return (
-			<section className={toDashboard ? 'form-wrapper slide-out' : 'form-wrapper'}>
+			<section id='ADDFORM' className={toDashboard ? 'form-wrapper slide-out' : 'form-wrapper'}>
 				<form className="activity-form" onSubmit={this.handleSubmit}>
 					<h2 id='form-name'>Add Activity</h2>
 					{error && (<ValidationError message={error} clearError={this.clearError}/>)}
