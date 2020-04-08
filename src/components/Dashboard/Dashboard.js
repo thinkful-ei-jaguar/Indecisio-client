@@ -25,7 +25,7 @@ export default class Dashboard extends Component {
       chosenActivity: {}
     }
   }
-
+  
   toggleActivityGenerated = () => {
     this.setState({
       activityGenerated: true
@@ -95,6 +95,7 @@ export default class Dashboard extends Component {
     this.getRandomActivity()
   }
 
+
   lastDecision = () => {
     if (this.context.activities[this.context.randomIndex].is_rejected && !this.context.activities[this.context.randomIndex].is_accepted) {  
       return 'rejected'
@@ -108,6 +109,7 @@ export default class Dashboard extends Component {
   }
 
   handleFilterChange = (event) => {
+    
     this.setState({
       filter: event.target.value
     })
@@ -119,10 +121,6 @@ export default class Dashboard extends Component {
     })
   }
 
-  /**
-   * Need to change getUserActivities so that it gets the actual
-   * user_id, probably passing it in as props.
-   */
   getUserActivities = () => {
     if (this.state.filter === '') {
       this.context.fetchContextUserActivities(this.props.user)
@@ -136,12 +134,12 @@ export default class Dashboard extends Component {
     
   }
 
+
   goBackToBeginning = () => {
       this.setState({
         activitySelected: false
       })
   }
-
 
   componentDidMount() {
     this.context.clearContextEmptyMessage()
@@ -180,16 +178,23 @@ export default class Dashboard extends Component {
               <option id="filter-select" value="Fitness">Fitness</option>
               <option id="filter-select" value="Socialize">Socialize</option>
           </select>
-      
-          <label className="filter-select" htmlFor="creator-filter-select">Choose by Creator:</label>
-            <select
-                className='dashboard-select'
-              value={this.state.creatorFilter} 
-              onChange={this.handleCreatorFilterChange} 
-            >
-              <option id="creator-filter-select" value="global">Created by anyone</option>
-              <option id="creator-filter-select" value="me">Created by me</option>
-          </select>
+  
+          <form>           
+            
+            <input type="radio" id="global" value="global" 
+              checked={this.state.creatorFilter==='global'} 
+              onChange={this.handleCreatorFilterChange}>
+            </input>
+            <label htmlFor="global">Created by anyone</label>
+
+            
+            <input type="radio" id="me" value="me" 
+              checked={this.state.creatorFilter==='me'} 
+              onChange={this.handleCreatorFilterChange}>              
+            </input>
+            <label htmlFor="me">Created by me</label>
+
+          </form>
         </div>
         </div>
   
