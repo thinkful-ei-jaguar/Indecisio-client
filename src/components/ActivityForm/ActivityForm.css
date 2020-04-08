@@ -97,8 +97,8 @@ input:focus  {
     display:flex;
     flex-direction: row;
     border: none;
-    background-color: var(--dark);
-    color: var(--light-text);
+    background-color: var(--light-text);
+    color: var(--dark);
     border-radius: 5px;
     flex-grow: 0;
     width: 65%;
@@ -110,23 +110,24 @@ input:focus  {
 .button-primary {
     border: none;
     cursor: pointer;
-    color:var(--main-fg);
-    background-color:  var(--light-button-bg);
+    /* color:var(--main-fg);
+    background-color:  var(--light-button-bg); */
+    color: var(--accent-one);
+    background-color: var(--main-bg);
     font-weight: bold;
     padding: 1vh .5vw;
     border-radius: 5px;
+    border-color: var(--dark);
     text-align: center;
     width: 45%;
     font-size: 2.2vh;
-    box-shadow: 3px 3px 12px inset   var(--light-text), 2px 5px 5px rgba(72, 87, 104, 0.74);
+    /* box-shadow: 3px 3px 12px inset, 2px 5px 5px rgba(72, 87, 104, 0.74); */
 
     transition-property: background;
     transition-duration: 3s;
     transition-timing-function: ease-in-out;
-
-
-
 }
+
 .button-primary:focus {
     outline: none;
     border: none;
@@ -145,14 +146,17 @@ input:focus  {
 
 .button-cancel {
     border: none;
-    color: var(--light-text);
+    /* color: var(--light-text); */
     padding: 1vh .5vw;
     border-radius: 5px;
     cursor:pointer;
-    background: hsl(197,98%,30%);
+    /* background: hsl(197,98%,30%); */
+    color: var(--dark);
+    background-color: white;
     font-size: 2.2vh;
+    font-weight: bolder;
     width: 45%;
-    box-shadow: 2px 5px 5px inset #68cfff, 2px 5px 5px rgba(72, 87, 104, 0.74);
+    box-shadow: 2px 5px 5px, 2px 5px 5px rgba(72, 87, 104, 0.74);
     transition-property: background;
     transition-duration: 1s;
     transition-timing-function: ease-in-out;

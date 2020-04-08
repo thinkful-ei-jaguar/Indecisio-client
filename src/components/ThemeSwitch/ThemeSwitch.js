@@ -16,7 +16,7 @@ export default function ThemeSwitch(props) {
 			onClick={() => toggle()}
 			className='theme-switch'
 		>
-			<FontAwesomeIcon icon={dark ? faSun : faMoon} />
+			<FontAwesomeIcon icon={dark ? faSun : faMoon} size="lg"/>
 		</button>
 		)
 }
