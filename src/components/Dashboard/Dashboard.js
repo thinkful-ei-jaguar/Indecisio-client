@@ -72,6 +72,7 @@ export default class Dashboard extends Component {
         }
       })
   }
+  
   declineRandomActivity = () => {
     this.context.clearContextEmptyMessage()
     if (this.state.creatorFilter === 'me') {
@@ -158,14 +159,14 @@ export default class Dashboard extends Component {
 
   render() {
     return (<>
-      <div className="form-wrapper" id="dashboard-wrapper">
+      <div id="dashboard-wrapper">
         <section className='result-wrapper'>
         <div>
               <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
                 Random Activity Please!
               </button>
               <div className="dropdown-div">
-              <label className="filter-select" htmlFor="filter-select">Choose by Category:</label>
+              <label className="filter-select" htmlFor="filter-select">Choices by Category:</label>
             <select
               className='dashboard-select'
               value={this.state.filter} 
@@ -179,15 +180,13 @@ export default class Dashboard extends Component {
               <option id="filter-select" value="Socialize">Socialize</option>
           </select>
   
-          <form>           
+          <form id="radio-options">           
             
             <input type="radio" id="global" value="global" 
               checked={this.state.creatorFilter==='global'} 
               onChange={this.handleCreatorFilterChange}>
             </input>
             <label htmlFor="global">Created by anyone</label>
-
-            
             <input type="radio" id="me" value="me" 
               checked={this.state.creatorFilter==='me'} 
               onChange={this.handleCreatorFilterChange}>              
@@ -203,31 +202,31 @@ export default class Dashboard extends Component {
             {this.state.activitySelected === false && this.state.activityGenerated === false
               ? <MyList />
               : <></>}
-            <h3>
-              {this.context.activities && this.state.activityGenerated
-                ? `${this.context.activities[this.context.randomIndex].name}`
-                : <></>}
-            </h3>
-            <p>
-              {this.context.activities && this.state.activityGenerated
-            ? `${this.context.activities[this.context.randomIndex].description}`
+            
+            {this.context.activities && this.state.activityGenerated
+              ? <h3>{this.context.activities[this.context.randomIndex].name}</h3>
+              : <></>}
+            
+            
+            {this.context.activities && this.state.activityGenerated
+            ? <p>{this.context.activities[this.context.randomIndex].description}</p>
             : <></>}
-            </p>
-            <p>
-              {this.context.activities && this.state.activityGenerated
-            ? `Last time you ${this.lastDecision()} this choice`
+            
+            
+            {this.context.activities && this.state.activityGenerated
+            ? <p>Last time you {this.lastDecision()} this choice</p>
             : <></>}
-            </p>
-
-              <div id="chosen" className="display-chosen-activity">
+            
+            <div className="button-group" id="result-buttons">
+                {this.state.activityGenerated && <button className="button-choose" onClick={this.acceptRandomActivity}><FontAwesomeIcon icon={faCheck}/> Let's Do It!</button>}
+                {this.state.activityGenerated && <button className="button-choose" onClick={this.declineRandomActivity}><FontAwesomeIcon icon={faBan}/> No, Thanks!</button>}
+              </div>
+              <div id="chosen" className={ (this.state.activitySelected) ? "display-chosen-activity" : "hideMeh"}>
                 {this.state.activitySelected && this.context.activities[0]
                   ? <><h3><FontAwesomeIcon icon={faCheck}/> You have chosen "{this.state.chosenActivity.name}."  Enjoy!</h3>
                       <button className="button-choose" onClick={e => this.goBackToBeginning()}><FontAwesomeIcon icon={faChevronLeft}/> Go Back</button></>
                   : ''}
-              <div className="button-group" id="result-buttons">
-                {this.state.activityGenerated && <button className="button-choose" onClick={this.acceptRandomActivity}><FontAwesomeIcon icon={faCheck}/> Let's Do It!</button>}
-                {this.state.activityGenerated && <button className="button-choose" onClick={this.declineRandomActivity}><FontAwesomeIcon icon={faBan}/> No, Thanks!</button>}
-              </div>
+              
               </div>
         </div>
         </section>
