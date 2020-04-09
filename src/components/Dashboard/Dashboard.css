@@ -40,26 +40,18 @@
     background-color: var(--input-bg);
     color: var(--input-text);
     border: none;
-    width: 80%;
+    width: 60%;
     margin: 1vh;
     height: 3vh;
     border: none;
     box-shadow: -3px 3px 10px inset rgba(70, 70, 140, 0.35), 1px -1px 2px inset white;
 }
 
-
-
-.dashboard {
-    max-width: 80%;
-    max-height: 80vh    ;
-    display: flex;
-    justify-content: space-around;
-    flex-flow: column wrap;
-    align-items: center;
-    flex-basis: 40vh;
-    align-items: center;
-    flex-grow: 4;
+#radio-options {
+    font-size: 15px;
 }
+
+
 
 input:focus  {
    outline: none;
@@ -71,7 +63,7 @@ input:focus  {
 
 .dashboard > h2 {
    color: var(--header-text);
-   font-size: 4vh;
+   font-size: 2vh;
    font-family: "Gill Sans";
 }
 
@@ -80,31 +72,6 @@ input:focus  {
 .form-input-label {
 
    display: none;
-}
-
-.dashboard-textarea-input {
- border: none;
-   background-color: var(--input-bg);
-   border-radius: 5px;
-   flex-grow: 0.5;
-   min-width: 60%;
-   padding: 1vh 1vw;
-   font-size: 1.2rem;
-   box-shadow: 1px 3px 19px inset hsl(210, 20%, 60%);
-}
-
-.dashboard-text-input {
-   display:flex;
-    background-color: var(--input-bg);
-   flex-direction: row;
-   border: none;
-   color: var(--input-text);
-   border-radius: 5px;
-   flex-grow: 0;
-   min-width: 60%;
-   padding: 1vh 1vw;
-   font-size: 1.2rem;
-    box-shadow: 1px 3px 19px inset hsla(210, 20%, 60%, 0.3);
 }
 
 .button-primary {
@@ -123,6 +90,7 @@ input:focus  {
    transition-timing-function: linear;
    border: none;
 }
+
 .button-primary:focus {
    outline: none;
    border: none;
@@ -138,7 +106,9 @@ input:focus  {
    border: none;
 }
 button.get-random-button {
-    width: 100%;
+    width: 70%;
+    margin: 5px;
+    font-size: 18px;
 }
 .display-random-activity, .display-chosen-activity {
     display: flex;
@@ -162,8 +132,9 @@ button.get-random-button {
 }
 .dropdown-div {
     display : flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-around;
+    padding: 1vh;
     margin: 1vh auto;
     align-items: center;
     color: var(--main-text);
@@ -173,8 +144,13 @@ button.get-random-button {
     color: var(--main-text);
 }
 
+.display-random-activity > h3 {
+    font-size: 15px;
+}
+
 .display-random-activity > p {
-    padding: .4vh .5vw;
+    padding: .3vh .4vw;
+    font-size: 12px;
 }
 
 .display-random-activity > button {
@@ -185,8 +161,9 @@ button.get-random-button {
     background: inherit;
 }
 
-.filter-select {
+#filter-select {
     white-space: nowrap;
+    font-size: 15px;
 }
 
 li.activity-list-item {
@@ -199,22 +176,29 @@ li.activity-list-item {
 
 .activity-list {
     padding: 0;
-    /* width: 80%;
-    height: 50%; */
-    /* overflow: hidden; */
     margin-top: 0;
 }
 
+.activity-list > h2 {
+    font-size: 15px;
+}
+
+
+.activity-list > li {
+    font-size: 12px;
+}
+
+.hideMeh {
+    display: none
+}
 
 .result-wrapper {
-    height: 70vh;
-    padding: 0;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     text-align: center;
-    line-height: 1.5em;
 }
+
 
 .button-group {
     display: flex;
@@ -233,10 +217,95 @@ li.activity-list-item {
     background-color: unset;
     color: var(--white);
     border-style: none;
-    font-size: 25px;
-    padding: 1vw;
+    font-size: 15px;
+    padding: 2vw;
 }
 
 .button-choose:hover {
     cursor: pointer;
+}
+
+@media screen and (min-width: 700px) {
+    #radio-options {
+        font-size: 18px;
+    }
+
+    button.get-random-button {
+        width: 60%;
+        margin: 10px;
+        padding: 10px;
+        font-size: 22px;
+    }
+
+    .display-random-activity > h3 {
+        font-size: 20px;
+    }
+
+    .display-random-activity > p {
+        padding: .3vh .4vw;
+        font-size: 15px;
+    }
+
+    .filter-select {
+        white-space: nowrap;
+        font-size: 18px;
+    }
+
+    .activity-list > h2 {
+        font-size: 20px;
+    }
+
+
+    .activity-list > li {
+        font-size: 15px;
+    }
+
+    .button-choose {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #radio-options {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .dropdown-div {
+        justify-content: center;
+    }
+
+    button.get-random-button {
+        width: 65%;
+        margin: 10px;
+        padding: 10px;
+        font-size: 22px;
+    }
+
+    .display-random-activity > h3 {
+        font-size: 20px;
+    }
+
+    .display-random-activity > p {
+        padding: .3vh .4vw;
+        font-size: 15px;
+    }
+
+    .filter-select {
+        white-space: nowrap;
+        font-size: 18px;
+    }
+
+    .activity-list > h2 {
+        font-size: 20px;
+    }
+
+
+    .activity-list > li {
+        font-size: 15px;
+    }
+
+    .button-choose {
+        font-size: 22px;
+    }
 }
