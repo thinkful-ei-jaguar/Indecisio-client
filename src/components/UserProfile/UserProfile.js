@@ -41,9 +41,9 @@ export default class UserProfile extends Component {
                 <Link to='/dashboard'>Get Started Today!</Link>
               </>
             :<>
-                <p classNAme='user-profile'>Activities most loved by you!</p>
+                <p className='user-profile'>Activities most loved by you!</p>
                 <ol>
-                    {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} index={index} />)}
+                    {topUserActivities.map((activity, index) => <TopActivityItem activity={activity} key={index} />)}
                 </ol>
              </>
             }
