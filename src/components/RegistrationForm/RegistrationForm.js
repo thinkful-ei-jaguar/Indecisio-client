@@ -116,7 +116,7 @@ class RegistrationForm extends Component {
                     <label className='form-input-label' htmlFor='password'/>
                         <input className='registration-form-text-input activity-form-text-input' onChange={e => this.passwordUpdated(e.currentTarget.value)}aria-label='password' name='password' placeholder='Password' type='password' required/>
                     <button className='button-primary' type='submit'>Submit</button>
-                    <button className='button-cancel' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
+                    <button className='button-guest' onClick={e => this.handleGuestLogin(e)}>Login as Guest</button>
                     <Link to='/login' className='register-redirect-link'>
                         Already have an account?
                     </Link>

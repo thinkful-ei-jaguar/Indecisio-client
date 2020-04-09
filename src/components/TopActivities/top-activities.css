@@ -1,5 +1,7 @@
 section.top-activities {
     display : flex;
     flex-flow: row wrap;
+    width: 100vw;
     max-height: 80vh;
+    justify-content: space-between;
 }

@@ -27,7 +27,7 @@ class NavBar extends Component {
       return <>
             <li><Link className='nav-link' to='/top-activities'>Top Activities</Link></li>
                <li><Link className='nav-link' to='/login'>Login</Link></li>
-               <li><Link className='nav-link' to='/'>Register</Link></li>
+               <li><Link className='nav-link' to='/register'>Register</Link></li>
             </>
    }
 

@@ -10,6 +10,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import AppHeader from './components/AppHeader/AppHeader';
 import TopActivities from './components/TopActivities/TopActivities';
 import UserContext from './components/contexts/UserContext';
+import Landing from './components/Landing/Landing';
 /**
  * We could probably change App to be a functional component -Blade 03-25-20
  */
@@ -22,11 +23,16 @@ export default class App extends Component {
     <main className='App'>
       <AppHeader />
         <NavBar />
-    
+      
       <Switch>
         <PublicOnlyRoute
           exact
           path={'/'}
+          component={Landing}
+        />
+        <PublicOnlyRoute
+          exact
+          path={'/register'}
           component={RegistrationForm}
         />
         

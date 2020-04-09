@@ -2,20 +2,21 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide|Cabin:400,500,500i,600,600i,700i|Do+Hyeon|Exo:100,100i,400,500,500i,600,600i,800i,900,900i|Gotu|Play|Quantico:400,700|Teko:400,500,600&display=swap');
 
 :root {
-  --main-bg: hsl(210, 100%, 12%);
-  --dark: hsl(210, 100%, 22%);
-  --main-fg:  hsl(199, 97%, 20%);
-  --accent-one: hsl(199, 97%, 30%);
-  --accent-two: hsl(197, 97%, 75%);
-  --accent-three: #233A85;
-  --white: #bedafd;
-  --light-text:  hsl(195, 88%, 88%);
-  --light-button-bg: hsl(195, 85%, 68%);
-  --danger: hsl(3, 98%, 60%);
-  --happy: hsl(126, 87%, 66%);
-  --black: hsl(0, 0%, 0%);
+  --main-bg: hsl(210, 20%, 80%);
+  --main-text: hsl(210, 20%, 20%);
+  --card-bg: hsl(210,20%,70%);
+  --header-text: hsl(210, 20%, 25%);
+  --hovered-bg: hsl(210, 20%, 75%);
+  --input-bg: hsl(210, 20%, 30%);
+  --input-text: hsl(210, 20%, 90%);
+  --primary: hsl(210,100%, 40%);
+  --secondary: hsl(210, 40%, 60%);
+  --primary-text: hsl(210,40%, 90%);
+  --secondary-text: hsl(210, 40%, 10%);
+  --primary-hovered: hsl(210,40%, 80%);
+  --secondary-hovered: hsl(210, 40%, 20%);
 
-  --navbar-bg: hsl(212, 54%, 33%);
+  --navbar-bg: hsl(210, 100%, 38%);
 }
 
 /*
@@ -43,12 +44,12 @@ html, body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-height: 100vh;
+  max-height: 200vh;
   max-width: 100vw;
   background-color: var(--main-bg);
-  color: var(--main-fg);
+  color: var(--main-text);
   box-sizing: border-box;
-  overflow: hidden;
+
 }
 
 code {
@@ -57,13 +58,13 @@ code {
 }
 
 h1,h2,h3,h4,h5 {
-  color: var(--white);
+  color: var(--primary);
 }
 #form-wrapper > form > h2 {
-  color: var(--white);
+  color: var(--header-text);
 }
 
-.app-header {
+#app-header {
   display: flex;
 }
 .theme-switch {
@@ -83,16 +84,20 @@ button.theme-switch {
 }
 
 #brand {
-  font-size: 1px;
+  font-family: 'Montserrat Subrayada', sans-serif;
+  font-size: 18px;
 }
 
 
 
 @media all and (min-width: 1024px) and (max-width: 2880px) {
-  .form-wrapper, #dashboard-wrapper {
+  .form-wrapper, #dashboard-wrapper{
     min-width: 45vw;
     max-width:50vw;
-    margin: 5vh 0 5vh 0;
+    margin: 5vh 0 2vh 0;
+  }
+  #popular-wrapper {
+    max-width: 45vw;
   }
 }
 
@@ -101,6 +106,9 @@ button.theme-switch {
     min-width: 55vw;
     max-width:60vw;
     margin: 2vh 0 2vh 0;
+  }
+  #popular-wrapper {
+    max-width: 45vw;
   }
 
   .header {
@@ -114,7 +122,9 @@ button.theme-switch {
     max-width:80vw;
     margin: 5vh 0 5vh 0;
   }
-
+  #popular-wrapper {
+    max-width: 45vw;
+  }
 
   section.top-activities {
     flex-flow: column wrap;

@@ -1,0 +1,12 @@
+.landing-page {
+    display: flex;
+    flex-flow: column nowrap;
+
+}
+
+.hero {
+    text-align: center;
+    background-color: var(--header-text);
+    width: 100vw;
+    height: 40vw;
+}

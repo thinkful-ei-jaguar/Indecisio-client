@@ -4,6 +4,7 @@ import ActivityService from '../services/activity-service';
 import ValidationError from '../ValidationError/ValidationError';
 import UserContext from '../contexts/UserContext';
 import './ActivityForm.css';
+import SlideFrame from '../animation/SlideFrame';
 
 export default class ActivityForm extends React.Component {
 	static contextType = UserContext;
@@ -103,6 +104,8 @@ export default class ActivityForm extends React.Component {
 			return <Redirect to="/dashboard" />
 		}
 		return (
+			
+			
 			<section id='ADDFORM' className={toDashboard ? 'form-wrapper slide-out' : 'form-wrapper'}>
 				<form className="activity-form" onSubmit={this.handleSubmit}>
 					<h2 id='form-name'>Add Activity</h2>
@@ -172,6 +175,7 @@ export default class ActivityForm extends React.Component {
 					</div>
 				</form>
 			</section>
+			
 		)
 		
 	}

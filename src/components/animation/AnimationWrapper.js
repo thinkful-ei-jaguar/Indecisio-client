@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
-import Form from './Form';
+import ActivityForm from '../ActivityForm/ActivityForm';
 import SlideFrame from "./SlideFrame";
 
 const AnimateWrap = () => {
@@ -11,7 +11,7 @@ const AnimateWrap = () => {
 				{show ? "enter" : "exit"}
 			</button>
 			<SlideFrame show={show}>
-				<Form />
+				<ActivityForm />
 			</SlideFrame>
 		</div>
 	);

@@ -48,17 +48,17 @@ class LoginForm extends Component {
         return (
             <>
             <section id='introduction'>
-                <p>Welcome back!!!</p>
-                <p>We are so happy you have decided not to burden yourself with choice.</p>
+                <p id='intro-text'>Welcome back!!!</p>
+                <p id={'intro-text'}>We are so happy you have decided not to burden yourself with choice.</p>
             </section>
             <section className='form-wrapper'>
             <form id="login-form" onSubmit={e => this.handleLogin(e)}>
                 <h2>Login</h2>
 
                 <label className='form-input-label' htmlFor='username'>Username</label>
-                    <input className='login-form-text-input' ref={this.firstInput} name='username' placeholder='Username' type='text' required/>
+                    <input className='login-form-text-input' ref={this.firstInput} name='username' aria-label='username' placeholder='Username' type='text' required/>
                 <label className='form-input-label' htmlFor='password'>Password</label>
-                    <input className='login-form-text-input' name='password' placeholder='Password' type='password' required/>
+                    <input className='login-form-text-input' name='password' aria-label='password' placeholder='Password' type='password' required/>
                     {error && (<ValidationError message={error} />)}
                 <button className='button-primary' type='submit'>Submit</button>
                 <Link to='/' className='login-redirect-link'>

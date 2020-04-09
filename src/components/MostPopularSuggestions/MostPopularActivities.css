@@ -1,20 +1,39 @@
-p.popular , li {
-       color: var(--white)
+#popular-wrapper  li {
+        background-color: var(--input-bg);
+        color: var(--main-text);
+        max-heigth: 8vh;
    }
 
 #popular-wrapper {
     padding: 1vh 1vw;
-    margin: 3vh 1vw 10vh 1vw;
+    margin: 5vh 1vw 2vh 1vw;
     display: flex;
-    min-width: 35vw;
-    max-width: 45vw;
+    position: relative;
+    min-width: 44vw;
+    max-width: 95vw;
+    align-content: center;
     justify-content: space-around;
-
+    animation: slide-in 1s ease-out 0s 1;
     border-radius: 10px;
-    flex-flow: column wrap;
-    min-height: 65vh;
-    background-color: var(--main-fg);
-    box-shadow: 6px 6px 16px rgba(10, 16, 51, 0.59),
-    -6px -6px 16px rgba(57, 145, 233, 0.57);
+    flex-flow: column nowrap;
+    min-height: 75vh;
+    max-height: 195vh;
+    background-color: var(--card-bg);
+    box-shadow: var(--big-shadow);
 }
 
+@keyframes slide-in {
+    0% {
+        transform: translateX(0px) scale(2)
+    }
+    25% {
+        transform: translateX(200vw) scale(0)
+
+    }
+    75% {
+        transform: translateX(-200vw) scale(0)
+    }
+    100% {
+        transform: translateX(0px) scale(1)
+    }
+}

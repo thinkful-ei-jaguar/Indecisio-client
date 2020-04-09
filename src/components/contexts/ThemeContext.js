@@ -50,18 +50,47 @@ export function ThemeProvider (props) {
 }
 
 const darkTheme = [
-	'--main-fg: hsl(213, 54%, 33%)',
-	'--main-bg: hsl(210, 100%, 12%)',
-	'--accent-one: hsl(193,97%,85%)',
-	'--accent-two: hsl(197, 97%, 75%)',
-	'--error: hsl(3, 98%, 60%)',
-	'--happy: hsl(126, 87%, 66%);',
+	'--main-text: hsl(210, 20%, 90%)',
+	'--main-bg: hsl(209, 14%, 28%)',
+	'--card-bg: hsl(210,6%,32%)',
+	'--header-text: hsl(210, 30%, 75%)',
+	'--hovered-bg: hsl(210, 30%, 75%)',
+	'--hovered-text: hsk(210, 30%, 25%)',
+	'--input-bg: hsl(210, 20%, 40%)',
+	'--input-text: hsl(210, 20%, 90%)',
+	'--input-shadow: hsla(210,4%, 80%, 0.5)',
+	'--secondary-text: hsl(210,30%, 20%)',
+	'--primary: hsl(210, 100%, 85%)',
+	'--primary-text: hsl(210,50%, 35%)',
+	'--secondary: hsl(220, 57%, 44%)',
+	'--primary-hovered: hsl(210,40%, 35%)',
+	'--secondary-hovered: hsl(210, 40%, 55%)',
+	`--big-shadow:
+		1px 1px 2px inset hsla(220,6%,20%,0.5),
+	    -1px -1px 2px inset hsla(210,5%,43%,0.3),
+	    -15px 15px 30px hsla(210, 6%, 20%, 0.2),
+	    -15px -15px 30px hsla(220, 5%, 43%, 0.9),
+		15px -15px 30px hsla(210, 6%, 20%, 0.2),
+	    15px 15px 30px hsla(220, 6%, 20%, 0.9);`,
+	'--small-shadow: 6px 6px 12px hsla(210, 5%, 20%, 0.7), -6px -6px 12px hsla(210, 5%, 60%, 0.4);',
+	
 ]
 
 const lightTheme = [
-	'--main-bg: hsl(193,97%,85%) ',
-	'--main-fg:  hsl(213, 54%, 33%) ',
-	'--accent-one: hsl(225, 59%, 27%)',
-	'--accent-two: #6e97e7 ',
-	'--accent-three: hsl(197, 97%, 85%)'
+	'--main-text: hsl(210, 20%, 35%)',
+	'--main-bg: hsl(210, 20%, 80%)',
+	'--card-bg: hsl(210,10%,90%)',
+	'--header-text: hsl(210, 90%, 75%)',
+	'--hovered-bg: hsl(210, 30%, 75%)',
+	'--input-bg: hsl(210, 25%, 90%)',
+	'--input-text: hsl(210, 20%, 10%)',
+	'--input-shadow: hsla(210,4%, 40%, 0.5)',
+	'--secondary-text: hsl(210,30%, 20%)',
+	'--primary: hsl(210, 100%, 35%)',
+	'--primary-text: hsl(210,60%, 100%)',
+	'--secondary: hsl(210, 40%, 90%)',
+	'--primary-hovered: hsl(210,40%, 55%)',
+	'--secondary-hovered: hsl(210, 40%, 35%)',
+	'--primary-shadow: 3px 3px 12px inset hsla(210,4%, 40%, 0.5)',
+	'--small-shadow: 6px 6px 12px hsla(210, 5%, 20%, 0.7), -6px -6px 12px hsla(210, 5%, 80%, 0.4);'
 ]
