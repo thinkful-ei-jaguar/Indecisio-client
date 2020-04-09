@@ -17,6 +17,7 @@ export default class Dashboard extends Component {
     this.state = {
       activityGenerated: false,
       activitySelected: true,
+      activityDenied: false,
       activities: [],
       randomIndex: 0,
       categories: [],
@@ -44,7 +45,8 @@ export default class Dashboard extends Component {
     }
     this.toggleActivityGenerated()
     this.setState({
-      activitySelected: false
+      activitySelected: false,
+      activityDenied: false
     })
   }
 
@@ -72,6 +74,7 @@ export default class Dashboard extends Component {
         }
       })
   }
+  
   declineRandomActivity = () => {
     this.context.clearContextEmptyMessage()
     if (this.state.creatorFilter === 'me') {
@@ -92,7 +95,11 @@ export default class Dashboard extends Component {
           this.context.fetchContextActivitiesByCategory(this.state.filter)
         }
       })
-    this.getRandomActivity()
+    this.setState({
+      activityDenied: true,
+      activityGenerated: false
+    })
+    // this.getRandomActivity()
   }
 
 
@@ -109,16 +116,40 @@ export default class Dashboard extends Component {
   }
 
   handleFilterChange = (event) => {
-    
     this.setState({
       filter: event.target.value
     })
+    if (event.target.value !== '') {
+      this.context.fetchContextActivitiesByCategory(event.target.value)
+    }
+    else {
+      this.context.fetchContextActivities()
+    }
+    
   }
 
   handleCreatorFilterChange = (event) => {
     this.setState({
       creatorFilter: event.target.value
     })
+
+    if (event.target.value === 'me') {
+      if(this.state.filter === '') {
+        this.context.fetchContextUserActivities(this.props.user)
+      }
+      else {
+        this.context.fetchContextUserActivitiesByCategory(this.props.user, this.state.filter)
+      }
+    }
+    else {
+      if(this.state.filter !== '') {
+        this.context.fetchContextActivitiesByCategory(this.state.filter)
+      }
+      else {
+        this.context.fetchContextActivities()
+      }
+    }
+    
   }
 
   getUserActivities = () => {
@@ -137,7 +168,8 @@ export default class Dashboard extends Component {
 
   goBackToBeginning = () => {
       this.setState({
-        activitySelected: false
+        activitySelected: false,
+        activityDenied: false
       })
   }
 
@@ -151,21 +183,22 @@ export default class Dashboard extends Component {
 
     this.setState({
       activityGenerated: false,
-      activitySelected: false
+      activitySelected: false,
+      activityDenied: false
     })
     
   }
 
   render() {
     return (<>
-      <div className="form-wrapper" id="dashboard-wrapper">
+      <div id="dashboard-wrapper">
         <section className='result-wrapper'>
         <div>
               <button className="get-random-button button-primary" onClick={this.getRandomActivity}>
                 Random Activity Please!
               </button>
               <div className="dropdown-div">
-              <label className="filter-select" htmlFor="filter-select">Choose by Category:</label>
+              <label className="filter-select" htmlFor="filter-select">Choices by Category:</label>
             <select
               className='dashboard-select'
               value={this.state.filter} 
@@ -179,15 +212,13 @@ export default class Dashboard extends Component {
               <option id="filter-select" value="Socialize">Socialize</option>
           </select>
   
-          <form>           
+          <form id="radio-options">           
             
             <input type="radio" id="global" value="global" 
               checked={this.state.creatorFilter==='global'} 
               onChange={this.handleCreatorFilterChange}>
             </input>
             <label htmlFor="global">Created by anyone</label>
-
-            
             <input type="radio" id="me" value="me" 
               checked={this.state.creatorFilter==='me'} 
               onChange={this.handleCreatorFilterChange}>              
@@ -198,36 +229,39 @@ export default class Dashboard extends Component {
         </div>
         </div>
   
-          <div className={ (this.state.activityGenerated || this.state.activitySelected) ? "display-random-activity suggestionBorder" : ""}>
+          <div className={ (this.state.activityGenerated || this.state.activitySelected || this.state.activityDenied) ? "display-random-activity suggestionBorder" : ""}>
             <div className="empty-message">{this.context.emptyMessage}</div>
-            {this.state.activitySelected === false && this.state.activityGenerated === false
+            {this.state.activitySelected === false && this.state.activityGenerated === false && this.state.activityDenied === false
               ? <MyList />
               : <></>}
-            <h3>
-              {this.context.activities && this.state.activityGenerated
-                ? `${this.context.activities[this.context.randomIndex].name}`
-                : <></>}
-            </h3>
-            <p>
-              {this.context.activities && this.state.activityGenerated
-            ? `${this.context.activities[this.context.randomIndex].description}`
+            
+            {this.context.activities && this.state.activityGenerated
+              ? <h3>{this.context.activities[this.context.randomIndex].name}</h3>
+              : <></>}
+            
+            
+            {this.context.activities && this.state.activityGenerated
+            ? <p>{this.context.activities[this.context.randomIndex].description}</p>
             : <></>}
-            </p>
-            <p>
-              {this.context.activities && this.state.activityGenerated
-            ? `Last time you ${this.lastDecision()} this choice`
+            
+            
+            {this.context.activities && this.state.activityGenerated
+            ? <p>Last time you {this.lastDecision()} this choice</p>
             : <></>}
-            </p>
-
-              <div id="chosen" className="display-chosen-activity">
+            
+            <div className="button-group" id="result-buttons">
+                {this.state.activityGenerated && <button className="button-choose" onClick={this.acceptRandomActivity}><FontAwesomeIcon icon={faCheck}/> Let's Do It!</button>}
+                {this.state.activityGenerated && <button className="button-choose" onClick={this.declineRandomActivity}><FontAwesomeIcon icon={faBan}/> No, Thanks!</button>}
+              </div>
+              <div id="chosen" className={ (this.state.activitySelected || this.state.activityDenied) ? "display-chosen-activity" : "hideMeh"}>
                 {this.state.activitySelected && this.context.activities[0]
                   ? <><h3><FontAwesomeIcon icon={faCheck}/> You have chosen "{this.state.chosenActivity.name}."  Enjoy!</h3>
                       <button className="button-choose" onClick={e => this.goBackToBeginning()}><FontAwesomeIcon icon={faChevronLeft}/> Go Back</button></>
                   : ''}
-              <div className="button-group" id="result-buttons">
-                {this.state.activityGenerated && <button className="button-choose" onClick={this.acceptRandomActivity}><FontAwesomeIcon icon={faCheck}/> Let's Do It!</button>}
-                {this.state.activityGenerated && <button className="button-choose" onClick={this.declineRandomActivity}><FontAwesomeIcon icon={faBan}/> No, Thanks!</button>}
-              </div>
+                {this.state.activityDenied && this.context.activities[0]
+                  ?<><h3><FontAwesomeIcon icon={faBan}/> You've decided not to to this activity.</h3>
+                  <button className="button-choose" onClick={e => this.goBackToBeginning()}><FontAwesomeIcon icon={faChevronLeft}/> Go Back</button></>
+                  : ''}
               </div>
         </div>
         </section>
