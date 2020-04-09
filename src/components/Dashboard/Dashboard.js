@@ -118,37 +118,59 @@ export default class Dashboard extends Component {
   handleFilterChange = (event) => {
     this.setState({
       filter: event.target.value
+    }, () => {
+        console.log('Creator filter:', this.state.creatorFilter)
+        if (this.state.creatorFilter === 'me') {
+          if(this.state.filter === '') {
+            console.log('needs to fire this one')
+            this.context.fetchContextUserActivities(this.props.user)
+          }
+          else {
+            this.context.fetchContextUserActivitiesByCategory(this.props.user, this.state.filter)
+          }
+        }
+        else {
+          if(this.state.filter !== '') {
+            this.context.fetchContextActivitiesByCategory(this.state.filter)
+          }
+          else {
+            this.context.fetchContextActivities()
+          }
+        }
     })
-    if (event.target.value !== '') {
-      this.context.fetchContextActivitiesByCategory(event.target.value)
-    }
-    else {
-      this.context.fetchContextActivities()
-    }
+    // if (event.target.value !== '') {
+    //   this.context.fetchContextActivitiesByCategory(event.target.value)
+    // }
+    // else {
+    //   this.context.fetchContextActivities()
+    // }
     
   }
 
   handleCreatorFilterChange = (event) => {
     this.setState({
       creatorFilter: event.target.value
+    }, () => {
+      console.log('Creator filter:', this.state.creatorFilter)
+      if (this.state.creatorFilter === 'me') {
+        if(this.state.filter === '') {
+          console.log('needs to fire this one')
+          this.context.fetchContextUserActivities(this.props.user)
+        }
+        else {
+          this.context.fetchContextUserActivitiesByCategory(this.props.user, this.state.filter)
+        }
+      }
+      else {
+        if(this.state.filter !== '') {
+          this.context.fetchContextActivitiesByCategory(this.state.filter)
+        }
+        else {
+          this.context.fetchContextActivities()
+        }
+      }
     })
 
-    if (event.target.value === 'me') {
-      if(this.state.filter === '') {
-        this.context.fetchContextUserActivities(this.props.user)
-      }
-      else {
-        this.context.fetchContextUserActivitiesByCategory(this.props.user, this.state.filter)
-      }
-    }
-    else {
-      if(this.state.filter !== '') {
-        this.context.fetchContextActivitiesByCategory(this.state.filter)
-      }
-      else {
-        this.context.fetchContextActivities()
-      }
-    }
     
   }
 
