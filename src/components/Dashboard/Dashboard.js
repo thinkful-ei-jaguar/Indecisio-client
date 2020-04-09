@@ -17,6 +17,7 @@ export default class Dashboard extends Component {
     this.state = {
       activityGenerated: false,
       activitySelected: true,
+      activityDenied: false,
       activities: [],
       randomIndex: 0,
       categories: [],
@@ -44,7 +45,8 @@ export default class Dashboard extends Component {
     }
     this.toggleActivityGenerated()
     this.setState({
-      activitySelected: false
+      activitySelected: false,
+      activityDenied: false
     })
   }
 
@@ -93,7 +95,11 @@ export default class Dashboard extends Component {
           this.context.fetchContextActivitiesByCategory(this.state.filter)
         }
       })
-    this.getRandomActivity()
+    this.setState({
+      activityDenied: true,
+      activityGenerated: false
+    })
+    // this.getRandomActivity()
   }
 
 
@@ -110,16 +116,40 @@ export default class Dashboard extends Component {
   }
 
   handleFilterChange = (event) => {
-    
     this.setState({
       filter: event.target.value
     })
+    if (event.target.value !== '') {
+      this.context.fetchContextActivitiesByCategory(event.target.value)
+    }
+    else {
+      this.context.fetchContextActivities()
+    }
+    
   }
 
   handleCreatorFilterChange = (event) => {
     this.setState({
       creatorFilter: event.target.value
     })
+
+    if (event.target.value === 'me') {
+      if(this.state.filter === '') {
+        this.context.fetchContextUserActivities(this.props.user)
+      }
+      else {
+        this.context.fetchContextUserActivitiesByCategory(this.props.user, this.state.filter)
+      }
+    }
+    else {
+      if(this.state.filter !== '') {
+        this.context.fetchContextActivitiesByCategory(this.state.filter)
+      }
+      else {
+        this.context.fetchContextActivities()
+      }
+    }
+    
   }
 
   getUserActivities = () => {
@@ -138,7 +168,8 @@ export default class Dashboard extends Component {
 
   goBackToBeginning = () => {
       this.setState({
-        activitySelected: false
+        activitySelected: false,
+        activityDenied: false
       })
   }
 
@@ -152,7 +183,8 @@ export default class Dashboard extends Component {
 
     this.setState({
       activityGenerated: false,
-      activitySelected: false
+      activitySelected: false,
+      activityDenied: false
     })
     
   }
@@ -197,9 +229,9 @@ export default class Dashboard extends Component {
         </div>
         </div>
   
-          <div className={ (this.state.activityGenerated || this.state.activitySelected) ? "display-random-activity suggestionBorder" : ""}>
+          <div className={ (this.state.activityGenerated || this.state.activitySelected || this.state.activityDenied) ? "display-random-activity suggestionBorder" : ""}>
             <div className="empty-message">{this.context.emptyMessage}</div>
-            {this.state.activitySelected === false && this.state.activityGenerated === false
+            {this.state.activitySelected === false && this.state.activityGenerated === false && this.state.activityDenied === false
               ? <MyList />
               : <></>}
             
@@ -221,12 +253,15 @@ export default class Dashboard extends Component {
                 {this.state.activityGenerated && <button className="button-choose" onClick={this.acceptRandomActivity}><FontAwesomeIcon icon={faCheck}/> Let's Do It!</button>}
                 {this.state.activityGenerated && <button className="button-choose" onClick={this.declineRandomActivity}><FontAwesomeIcon icon={faBan}/> No, Thanks!</button>}
               </div>
-              <div id="chosen" className={ (this.state.activitySelected) ? "display-chosen-activity" : "hideMeh"}>
+              <div id="chosen" className={ (this.state.activitySelected || this.state.activityDenied) ? "display-chosen-activity" : "hideMeh"}>
                 {this.state.activitySelected && this.context.activities[0]
                   ? <><h3><FontAwesomeIcon icon={faCheck}/> You have chosen "{this.state.chosenActivity.name}."  Enjoy!</h3>
                       <button className="button-choose" onClick={e => this.goBackToBeginning()}><FontAwesomeIcon icon={faChevronLeft}/> Go Back</button></>
                   : ''}
-              
+                {this.state.activityDenied && this.context.activities[0]
+                  ?<><h3><FontAwesomeIcon icon={faBan}/> You've decided not to to this activity.</h3>
+                  <button className="button-choose" onClick={e => this.goBackToBeginning()}><FontAwesomeIcon icon={faChevronLeft}/> Go Back</button></>
+                  : ''}
               </div>
         </div>
         </section>
