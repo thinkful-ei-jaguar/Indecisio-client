@@ -24,7 +24,7 @@ h1#brand {
   background-color: inherit;
   border: none;
     font-size: 2.2vh;
-    color: #ffc900;
+    color: var(--sun);
 }
 
 .NavBar {

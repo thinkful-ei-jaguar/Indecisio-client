@@ -29,12 +29,12 @@ export default class TopActivityItem extends Component {
         return (
             <>
                 {expanded 
-                    ? <li key={index} id="expandedListItem" className="liItem"><h3 id="liHeading"><span id="nameSpan">{activity.name}</span> <button id="topTenButton" onClick={e => this.handleClose()}><FontAwesomeIcon icon={faChevronUp}/></button></h3>
+                    ? <li key={index} id="expandedListItem" className="liItem"><h3 id="liHeading"><span id="nameSpan">{activity.name}</span> <button id="topTenButton" onClick={e => this.handleClose()}><FontAwesomeIcon role='button' icon={faChevronUp}/></button></h3>
                             <p id="expanded-info">{activity.description} </p>
                             <p id="expanded-info">This activity was accepted {activity.accepted_count || activity.global_accepted_count} times!</p>
                             <p id="expanded-info">Suggested by {activity.username}</p>
                         </li>
-                    : <li id="liHeading" className="liItem" key={index}><span id="nameSpan">{activity.name}</span>  <button id="topTenButton" onClick={e => this.handleOpen()}><FontAwesomeIcon icon={faChevronDown}/></button></li>}
+                    : <li id="liHeading" className="liItem" key={index}><span id="nameSpan">{activity.name}</span>  <button id="topTenButton" onClick={e => this.handleOpen()}><FontAwesomeIcon role='button' icon={faChevronDown}/></button></li>}
             </>
         )
     }

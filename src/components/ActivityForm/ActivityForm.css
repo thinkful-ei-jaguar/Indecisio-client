@@ -103,8 +103,8 @@ input:focus  {
     border: none;
 }
 .button-primary:hover {
-    background:var(--primary-hovered) ;
-    color: var(--primary-text);
+    background:var(--primary-text) ;
+    color: var(--primary-hovered);
 
 }
 .button-primary:active {
@@ -116,7 +116,7 @@ input:focus  {
 
 .button-cancel {
     border: none;
-    color: var(--secondary-text);
+    color: var(--cancel-text);
     padding: 1vh .5vw;
     border-radius: 5px;
     cursor:pointer;

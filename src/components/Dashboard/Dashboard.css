@@ -58,37 +58,9 @@ input:focus  {
    display: none;
 }
 
-.button-primary {
-   border: none;
-   cursor: pointer;
-   background-color:var(--primary);
-   color: var(--input-text);
-   padding: 1vh 1vw;
-   border-radius: 5px;
-   min-width: 40%;
-   font-size: 2.2vh;
-   box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
-                -1px 3px 3px 3px rgba(25, 62, 124, 0.33);
-   transition-property: background;
-   transition-duration: .5s;
-   transition-timing-function: linear;
-   border: none;
-}
 
-.button-primary:focus {
-   outline: none;
-   border: none;
-}
-.button-primary:hover {
-   background-color: var(--primary-hovered);
-   border: none;
-}
-.button-primary:active {
-   background-color: var(--primary);
-   box-shadow: -2px 10px 11px 0px inset rgba(189, 255, 226, 0.22),
-   -1px 3px 3px 3px inset rgba(25, 62, 124, 0.43);
-   border: none;
-}
+
+
 button.get-random-button {
     width: 70%;
     margin: 5px;
