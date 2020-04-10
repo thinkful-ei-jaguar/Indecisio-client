@@ -9,6 +9,8 @@ ol {
 
 #nameSpan {
     padding-right: 3vh;
+    color: var(--primary);
+    text-shadow: none;
 }
 
 #expandedLiHeading, #liHeading {

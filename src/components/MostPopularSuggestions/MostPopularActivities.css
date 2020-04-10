@@ -11,29 +11,15 @@
     position: relative;
     min-width: 44vw;
     max-width: 95vw;
+    flex-grow: 0;
     align-content: center;
-    justify-content: space-around;
-    animation: slide-in 1s ease-out 0s 1;
+    justify-content: flex-start;
+
     border-radius: 10px;
     flex-flow: column nowrap;
     min-height: 75vh;
-    max-height: 195vh;
+    max-height: 350vh;
     background-color: var(--card-bg);
     box-shadow: var(--big-shadow);
 }
 
-@keyframes slide-in {
-    0% {
-        transform: translateX(0px) scale(2)
-    }
-    25% {
-        transform: translateX(200vw) scale(0)
-
-    }
-    75% {
-        transform: translateX(-200vw) scale(0)
-    }
-    100% {
-        transform: translateX(0px) scale(1)
-    }
-}
