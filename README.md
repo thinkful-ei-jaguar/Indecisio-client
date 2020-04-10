@@ -35,8 +35,31 @@
  - Postgresql | v12.0.1
  
  ##ScreenShots
- 
- <img src="./src/Screenshots/a1.png" height="200px" width="auto" alt="ufbwuf" />
-
+   
+   ![screen](./src/Screenshots/a3.png) 
+  
+   ![screen](./src/Screenshots/a4.png) 
+      
+   ![screen](./src/Screenshots/a5.png) 
+     
+   ![screen](./src/Screenshots/a6.png) 
+      
+   ![screen](./src/Screenshots/a7.png) 
+     
+   ![screen](./src/Screenshots/a8.png) 
+     
+   ![screen](./src/Screenshots/a9.png) 
+      
+   ![screen](./src/Screenshots/a10.png) 
+      
+   ![screen](./src/Screenshots/a11.png) 
+      
+   ![screen](./src/Screenshots/a12.png) 
+     
+   ![screen](./src/Screenshots/a1.png) 
+   
+   ![screen](./src/Screenshots/a2.png) 
+   
+    
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
