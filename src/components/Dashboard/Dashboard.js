@@ -116,6 +116,7 @@ export default class Dashboard extends Component {
   }
 
   handleFilterChange = (event) => {
+    this.context.clearContextEmptyMessage()
     this.setState({
       filter: event.target.value
     }, () => {
@@ -138,18 +139,13 @@ export default class Dashboard extends Component {
           }
         }
     })
-    // if (event.target.value !== '') {
-    //   this.context.fetchContextActivitiesByCategory(event.target.value)
-    // }
-    // else {
-    //   this.context.fetchContextActivities()
-    // }
-    
   }
 
   handleCreatorFilterChange = (event) => {
+    this.context.clearContextEmptyMessage()
     this.setState({
-      creatorFilter: event.target.value
+      creatorFilter: event.target.value,
+
     }, () => {
       console.log('Creator filter:', this.state.creatorFilter)
       if (this.state.creatorFilter === 'me') {
@@ -252,7 +248,7 @@ export default class Dashboard extends Component {
         </div>
   
           <div className={ (this.state.activityGenerated || this.state.activitySelected || this.state.activityDenied) ? "display-random-activity suggestionBorder" : ""}>
-            <div className="empty-message">{this.context.emptyMessage}</div>
+            <div className="empty-message">{this.state.activityGenerated && this.context.emptyMessage}</div>
             {this.state.activitySelected === false && this.state.activityGenerated === false && this.state.activityDenied === false
               ? <MyList />
               : <></>}

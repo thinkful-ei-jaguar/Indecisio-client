@@ -64,7 +64,6 @@ export class ActivityProvider extends Component {
       .then(res=> {
         console.log('Fetched user activities with service function:', res);
         if (res.length === 0) {
-          console.log('You have not created any activities!')
           this.setState({
             emptyMessage: 'You have not created any activities!  Get on that!  For now, here is an activity someone else created: '
           })
@@ -106,7 +105,7 @@ export class ActivityProvider extends Component {
         if (res.length === 0) {
           console.log('You have no activities in that category')
           this.setState({
-            emptyMessage: 'You have not created any activities in that category.  Here is an activity from another category that you created:'
+            emptyMessage: 'You have not created any activities in that category.  Selecting from another category that you created:'
           })
           return this.fetchContextUserActivities()
         } else {
