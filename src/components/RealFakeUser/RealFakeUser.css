@@ -1,0 +1,65 @@
+.real-fake {
+    display: flex;
+    border-radius: 15px; 
+    flex-flow: column nowrap;
+    min-width:15vw;
+    max-width: 60vw;
+    flex-grow: 1;
+    height: 30vh;
+    border: none;
+    margin: 1vh 2vw;
+
+    background-color: #ede8e8;
+    color: hsl(210, 80%, 40%);
+    box-shadow: -35px 35px 60px rgba(112, 123, 127, 0.59);
+}
+
+section#fakeusers-container {
+    display:flex;
+    flex-flow: row wrap;
+    justify-content : space-around;
+    min-height: 25px;
+    width: 100vw;
+    align-items: center;
+    margin: 0 auto;
+}
+#fakeName {
+    padding: .7vw;
+
+}
+p#testimonial {
+    font-size: 12px;
+    padding: 1vh 1vw;
+}
+.img-container {
+    display: flex;
+    width: 18vw;
+    height: 100px;
+    align-self: center;
+    border-radius:80%;
+
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+@media all and (min-width: 1024px) and (max-width: 2880px) {
+    .real-fake {
+        max-width: 30vw
+    }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .real-fake {
+        max-width: 30vw
+    }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .real-fake {
+        max-width: 60vw
+    }
+}
+
+@media all and (max-width: 480px) { }

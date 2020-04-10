@@ -14,7 +14,7 @@
   --primary-text: hsl(210,40%, 90%);
   --secondary-text: hsl(210, 40%, 10%);
   --primary-hovered: hsl(210,40%, 80%);
-  --secondary-hovered: hsl(210, 40%, 20%);
+  --secondary-hovered: hsl(211, 28%, 75%);
 
   --navbar-bg: hsl(210, 100%, 38%);
 }
@@ -76,7 +76,8 @@ main.App {
   align-items: center;
   flex-flow: column nowrap;
 
-  max-height: 100vh;
+  min-height: 100vh;
+  max-height: 300vh;
 }
 
 button.theme-switch {

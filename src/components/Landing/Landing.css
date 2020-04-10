@@ -1,12 +1,79 @@
 .landing-page {
     display: flex;
-    flex-flow: column nowrap;
-
+    max-width: 100vw;
+    flex-flow: column wrap;
+    min-height: 200vh;
+    justify-content: flex-start;
+    background-size: 200vh;
+    max-height: 400vh;
+    background-origin: border-box;
+    background: linear-gradient(40deg, hsla(215,63%,80%,1) 0%, hsla(215,63%,80%,1) 54%, hsla(213,82%,56%,1) 54%,hsla(215,63%,80%,1)55%, hsla(213,82%,56%,1) 100%);
 }
+
+
+.hero > h2, .hero > h5 {
+    color: var(--primary);
+    text-shadow: 1px 1px 10px var(--secondary);
+    text-align: left;
+    padding:0 3vw;
+    flex-flow: column nowrap;
+}
+
+.hero > h5 {
+    margin-left: 5vw;
+    text-shadow: 0 0 8px slateblue;
+}
+span {
+    margin: 2vh 2vw;
+    color: var(--secondary);
+    text-shadow: 1px 1px 10px var(--primary);
+    font-weight: bolder;
+}
+
+
+
+
 
 .hero {
+    display: flex;
+    flex-flow: row nowrap;
     text-align: center;
-    background-color: var(--header-text);
+    justify-content: space-evenly;
+    /*background: linear-gradient(135deg, hsla(209,79%,50%,0.6) 0%, hsla(209,79%,50%,0.8) 60%, hsla(211, 68%, 44%, 0.6) 60%, hsla(211,60%,85%,0.6) 100%);*/
+    background-origin: inherit;
     width: 100vw;
-    height: 40vw;
+    margin-top: 25vh;
+    flex-flow: column nowrap;
+    height: 45vh;
+    margin-bottom: 10vh;
 }
+
+
+section#fakeusers-container {
+
+    display: flex;
+    margin-top: 20vh;
+    flex-flow: row wrap;
+    min-height: 100vw;
+    /*background: linear-gradient(145deg, hsla(209,79%,50%, 0.4) 0%, hsla(209,79%,50%,0.4) 50%, hsla(211,60%,85%,0.3) 50%, hsla(211,60%,85%, 0.4) 100%);*/
+}
+
+
+
+@media all and (min-width: 1024px) and (max-width: 2880px) {
+
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+
+}
+
+@media all and (max-width: 480px) {
+
+
+}
+

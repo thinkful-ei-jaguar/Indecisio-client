@@ -6,15 +6,17 @@ h1#brand {
 }
 .header {
   background-color:  var(--secondary);
+  position:fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
   flex-flow: row nowrap;
   width: 100vw;
   padding: 1vh 2vw;
   height: 10vh;
-  align-items: center;
+  align-items: baseline;
   align-content: center;
-  border-bottom: 2px solid white;
+
   z-index: 1;
 }
 .header > button {
@@ -28,9 +30,9 @@ h1#brand {
 .NavBar {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: baseline;
-  margin: 0vh auto;
+  margin: 0 auto;
   overflow: hidden;
   position: fixed;
   bottom: 0;
@@ -48,22 +50,22 @@ span#nameSpan {
 
 #navlist {
     border-top :5px solid white;
-  background: hsl(212, 54%, 33%);
+  background: var(--secondary);
   display: flex;
   width: 100%;
   justify-content: space-around;
   list-style-type: none;
-  position: fixed;
+  position: absolute;
   bottom: 0;
-  margin: 0 auto;
+  margin: 5vh 0 0 0;
   padding: 3vh 1vw;
 
 
 }
 
-#navlist  a {
+#navlist  a.nav-link {
   text-decoration: none;
-  color: var(--primary);
+  color: var(--header-text);
 }
 
 .nav-link:hover {
@@ -90,9 +92,8 @@ button.theme-switch {
     bottom: unset;
     top: 0;
     width: 50vw;
-    position: absolute;
-    border-top: none;
-    border-bottom: 5px solid white;
+
+    position: relative;
     min-height:10vh;
     max-height: 10vh;
     align-items: center;
@@ -105,7 +106,7 @@ button.theme-switch {
   }
   span#nameSpan {
     font-size: .8em;
-    font-color: var(--light-text);
+    font-color: var(--secondary-text);
   }
 
 }
@@ -124,50 +125,40 @@ button.theme-switch {
     bottom: unset;
     top: 0;
     width: 50vw;
-    position: absolute;
+    position: relative;
     border-top: none;
     border-bottom: 5px solid white;
     min-height:10vh;
     max-height: 10vh;
-    padding: 1vh auto;
+    padding: 1vh 1vw;
     align-items: center;
-    background-color: transparent;
-
-
+    background-color:transparent;
   }
-
-
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) {
   .NavBar {
-    top: 0;
-    width: 50vw;
-    bottom: unset;
+    width: 100vw;
     min-height:10vh;
     max-height: 10vh;
   }
 
   #navlist {
-    bottom: unset;
-    top: 0;
-    width: 50vw;
+    bottom: 0;
+    width: 100vw;
     position: absolute;
-    border-top: none;
-    border-bottom: 5px solid white;
+
     min-height:10vh;
     max-height: 10vh;
     padding: 1vh;
     align-items: center;
-    background-color: transparent;
+    background-color: var(--secondary);
+    color: var(--primary);
   }
   .header {
-    max-height: 15vh;
+    max-height: 10vh;
   }
 
-  span#nameSpan {
-    font-size: .5em;
-    font-color: var(--light-text);
-  }
+
 
 }

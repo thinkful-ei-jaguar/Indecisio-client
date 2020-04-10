@@ -11,6 +11,7 @@ import AppHeader from './components/AppHeader/AppHeader';
 import TopActivities from './components/TopActivities/TopActivities';
 import UserContext from './components/contexts/UserContext';
 import Landing from './components/Landing/Landing';
+
 /**
  * We could probably change App to be a functional component -Blade 03-25-20
  */

@@ -14,26 +14,8 @@
     flex-flow: column wrap;
     min-height: 55vh;
     background-color: var(--card-bg);
-    box-shadow: 6px 6px 16px rgba(10, 16, 51, 0.29),
-    -6px -6px 16px rgba(57, 145, 133, 0.27);
+    box-shadow: 5px 15px 35px rgba(112, 128, 144, 0.34);
 }
-
-@keyframes slide-in {
-    0% {
-        transform: translateX(0px) scale(2)
-    }
-    25% {
-        transform: translateX(200vw) scale(0)
-
-    }
-    75% {
-        transform: translateX(-200vw) scale(0)
-    }
-    100% {
-        transform: translateX(0px) scale(1)
-    }
-}
-
 
 
 .dashboard-select {
