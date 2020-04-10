@@ -27,7 +27,7 @@ function RealFakeUsers() {
 		return users.map(user => (
 			<RealFakeUser
 				name={user.name}
-			
+				key={user.name}
 				text={user.testimonial}
 			/>
 		))
