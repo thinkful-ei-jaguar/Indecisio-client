@@ -5,3 +5,14 @@ section.top-activities {
     max-height: 80vh;
     justify-content: space-between;
 }
+
+.top-activities-lonely {
+    display : flex;
+    flex-flow: row wrap;
+    width: unset;
+    max-height: 80vh;
+    justify-content: space-between;
+}
+.hideMeh {
+    display: none;
+}

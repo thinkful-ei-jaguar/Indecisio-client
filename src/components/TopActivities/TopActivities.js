@@ -9,11 +9,11 @@ export default class TopActivities extends Component {
     render() {
 
         return(
-            <section className="top-activities">
+            <section className={(TokenService.hasAuthToken()) ? "top-activities" : "top-activities-lonely"}>
         <MostPopularSuggestions />
         {TokenService.hasAuthToken()
             ? <UserProfile />
-            : <></>}
+            : <div className="hideMeh"/>}
         </section>)
     }
 
