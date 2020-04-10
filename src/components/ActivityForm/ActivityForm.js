@@ -5,7 +5,6 @@ import ValidationError from '../ValidationError/ValidationError';
 import UserContext from '../contexts/UserContext';
 import './ActivityForm.css';
 
-
 export default class ActivityForm extends React.Component {
 	static contextType = UserContext;
 	
