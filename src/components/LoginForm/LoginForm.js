@@ -47,10 +47,6 @@ class LoginForm extends Component {
         const { error } = this.state;
         return (
             <>
-            <section id='introduction'>
-                <p id='intro-text'>Welcome back!!!</p>
-                <p id={'intro-text'}>We are so happy you have decided not to burden yourself with choice.</p>
-            </section>
             <section className='form-wrapper'>
             <form id="login-form" onSubmit={e => this.handleLogin(e)}>
                 <h2>Login</h2>
@@ -61,7 +57,7 @@ class LoginForm extends Component {
                     <input className='login-form-text-input' name='password' aria-label='password' placeholder='Password' type='password' required/>
                     {error && (<ValidationError message={error} />)}
                 <button className='button-primary' type='submit'>Submit</button>
-                <Link to='/' className='login-redirect-link'>
+                <Link to='/register' className='login-redirect-link'>
                     Don't have an account with us?
                 </Link>
             </form>

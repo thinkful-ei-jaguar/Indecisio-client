@@ -9,7 +9,7 @@ export default class TopActivities extends Component {
     render() {
 
         return(
-            <section className={(TokenService.hasAuthToken()) ? "top-activities" : "top-activities-lonely"}>
+        <section className={(TokenService.hasAuthToken()) ? "top-activities" : "top-activities-lonely"}>
         <MostPopularSuggestions />
         {TokenService.hasAuthToken()
             ? <UserProfile />

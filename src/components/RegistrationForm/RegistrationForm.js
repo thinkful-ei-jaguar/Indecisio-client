@@ -99,10 +99,6 @@ class RegistrationForm extends Component {
         const { error, touched } = this.state
 
         return (<>
-            <section id='introduction'>
-                <p id='intro-text'>Stuck inside and indecisive?</p>
-                <p id='intro-text'>Indecisio helps cure your boredom by suggesting things to do based on your mood and favorite activities.</p>
-            </section>
             <section className='form-wrapper'>
                 <form id='registration-form' onSubmit={e => this.handleRegistration(e)}>
                     <h2>Register</h2>
