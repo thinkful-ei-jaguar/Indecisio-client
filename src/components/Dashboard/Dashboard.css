@@ -32,7 +32,9 @@
 #radio-options {
     font-size: 15px;
 }
-
+#dash-feature {
+    font-size: 2.2vh;
+}
 
 
 input:focus  {

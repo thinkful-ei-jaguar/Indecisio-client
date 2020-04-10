@@ -89,6 +89,9 @@ button.theme-switch {
   font-size: 18px;
 }
 
+select {
+  font-size: 2vh;
+}
 
 
 @media all and (min-width: 1024px) and (max-width: 2880px) {

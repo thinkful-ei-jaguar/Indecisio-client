@@ -43,6 +43,9 @@ p#testimonial {
     background-repeat: no-repeat;
 }
 
+h4#fakeName {
+    color: #0034d4;
+}
 
 @media all and (min-width: 1024px) and (max-width: 2880px) {
     .real-fake {

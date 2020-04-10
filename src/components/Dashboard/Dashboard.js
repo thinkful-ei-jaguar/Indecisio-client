@@ -214,6 +214,7 @@ export default class Dashboard extends Component {
               <div className="dropdown-div">
               <label className="filter-select" htmlFor="filter-select">Choices by Category:</label>
             <select
+                id="dash-filter"
               className='dashboard-select'
               value={this.state.filter} 
               onChange={this.handleFilterChange} 
@@ -227,17 +228,22 @@ export default class Dashboard extends Component {
           </select>
   
           <form id="radio-options">           
+            <div>
             
-            <input type="radio" id="global" value="global" 
-              checked={this.state.creatorFilter==='global'} 
+            <input type="radio" id="global" value="global"
+              checked={this.state.creatorFilter==='global'}
               onChange={this.handleCreatorFilterChange}>
             </input>
             <label htmlFor="global">Created by anyone</label>
-            <input type="radio" id="me" value="me" 
-              checked={this.state.creatorFilter==='me'} 
-              onChange={this.handleCreatorFilterChange}>              
+            </div>
+            <div>
+            
+            <input type="radio" id="me" value="me"
+              checked={this.state.creatorFilter==='me'}
+              onChange={this.handleCreatorFilterChange}>
             </input>
             <label htmlFor="me">Created by me</label>
+            </div>
 
           </form>
         </div>
