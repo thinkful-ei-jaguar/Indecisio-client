@@ -68,7 +68,6 @@ export default class ActivityForm extends React.Component {
 		
 		const {name, description, category} = this.state;
 		const creator = this.context.user.id
-		console.log(creator)
 		const newActivity = {name, description, category, creator};
 
 		

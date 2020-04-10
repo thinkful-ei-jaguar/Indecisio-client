@@ -120,10 +120,8 @@ export default class Dashboard extends Component {
     this.setState({
       filter: event.target.value
     }, () => {
-        console.log('Creator filter:', this.state.creatorFilter)
         if (this.state.creatorFilter === 'me') {
           if(this.state.filter === '') {
-            console.log('needs to fire this one')
             this.context.fetchContextUserActivities(this.props.user)
           }
           else {
@@ -147,10 +145,8 @@ export default class Dashboard extends Component {
       creatorFilter: event.target.value,
 
     }, () => {
-      console.log('Creator filter:', this.state.creatorFilter)
       if (this.state.creatorFilter === 'me') {
         if(this.state.filter === '') {
-          console.log('needs to fire this one')
           this.context.fetchContextUserActivities(this.props.user)
         }
         else {

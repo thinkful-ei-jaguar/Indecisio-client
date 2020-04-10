@@ -18,7 +18,6 @@ import Landing from './components/Landing/Landing';
 export default class App extends Component {
   static contextType = UserContext;
   render () {
-  console.log('user from context:', this.context.user.id)
   
   return (
     <main className='App'>

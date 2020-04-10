@@ -37,7 +37,6 @@ export class ActivityProvider extends Component {
   }
   createContextRandomIndex = () => {
     let randomActivityIndex = 0;
-    console.log('context.activities.length: ', this.state.activities.length )
     randomActivityIndex = this.state.activities[0]
       ? (Math.floor(Math.random() * this.state.activities.length)) 
       : 0;
@@ -50,8 +49,6 @@ export class ActivityProvider extends Component {
   fetchContextActivities = () => {
     ActivityService.fetchActivities()
       .then(res=> {
-        console.log('Fetched this using service function:', res);
-
         this.setState({
           activities: res,
           randomIndex: 0
@@ -62,7 +59,6 @@ export class ActivityProvider extends Component {
   fetchContextUserActivities = (user_id) => {
     ActivityService.fetchUserActivities(user_id)
       .then(res=> {
-        console.log('Fetched user activities with service function:', res);
         if (res.length === 0) {
           this.setState({
             emptyMessage: 'You have not created any activities!  Get on that!  For now, here is an activity someone else created: '
@@ -81,9 +77,7 @@ export class ActivityProvider extends Component {
   fetchContextActivitiesByCategory = (cat_name) => {
     ActivityService.fetchActivitiesByCategory(cat_name)
       .then(res=> {
-        console.log('Res from fetch activities by category:', res)
         if (res === 'No activity with that category') {
-          console.log('You have no activities in that category')
           this.setState({
             emptyMessage: 'There are no activities in that category.  Here is an activity from another category: '
           })
@@ -101,9 +95,7 @@ export class ActivityProvider extends Component {
   fetchContextUserActivitiesByCategory = (user_id, cat_name) => {
     ActivityService.fetchUserActivitiesByCategory(user_id, cat_name)
       .then(res=> {
-        console.log('Res from fetch user activities by category:', res)
         if (res.length === 0) {
-          console.log('You have no activities in that category')
           this.setState({
             emptyMessage: 'You have not created any activities in that category.  Selecting from another category that you created:'
           })

@@ -32,7 +32,6 @@ class RegistrationForm extends Component {
         const hasNum = /\d/;
         const hasUpperCase = /([A-Z])/;
         const hasSpecialChar = /([!@#$%^&])/;
-        console.log(password)
         if (password.length <= 7) {
             return 'Password needs to be at least 8 characters long'
         }
