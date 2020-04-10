@@ -139,13 +139,6 @@ export default class Dashboard extends Component {
           }
         }
     })
-    // if (event.target.value !== '') {
-    //   this.context.fetchContextActivitiesByCategory(event.target.value)
-    // }
-    // else {
-    //   this.context.fetchContextActivities()
-    // }
-    
   }
 
   handleCreatorFilterChange = (event) => {
